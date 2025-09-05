@@ -1,0 +1,62 @@
+<!-- DSFR v1.14.1 - Composant: form - Variante: contact -->
+<!-- Généré le 2025-09-05 14:57 -->
+<!-- HTML de production prêt à l'emploi -->
+
+<form action="/contact" method="post">
+    <fieldset class="fr-fieldset">
+        <legend class="fr-fieldset__legend">
+            <h2>Formulaire de contact</h2>
+        </legend>
+        <div class="fr-fieldset__content">
+            <div class="fr-input-group">
+                <label class="fr-label" for="contact-name">
+                    Nom complet
+                    <span class="fr-hint-text">Prénom et nom</span>
+                </label>
+                <input class="fr-input" type="text" id="contact-name" name="name" required>
+            </div>
+            
+            <div class="fr-input-group">
+                <label class="fr-label" for="contact-email">
+                    Email
+                </label>
+                <input class="fr-input" type="email" id="contact-email" name="email" required>
+            </div>
+            
+            <div class="fr-select-group">
+                <label class="fr-label" for="contact-subject">
+                    Objet
+                </label>
+                <select class="fr-select" id="contact-subject" name="subject" required>
+                    <option value="">Sélectionnez un objet</option>
+                    <option value="info">Demande d'information</option>
+                    <option value="reclamation">Réclamation</option>
+                    <option value="suggestion">Suggestion</option>
+                </select>
+            </div>
+            
+            <div class="fr-input-group">
+                <label class="fr-label" for="contact-message">
+                    Message
+                </label>
+                <textarea class="fr-input" id="contact-message" name="message" rows="5" required></textarea>
+            </div>
+            
+            <div class="fr-checkbox-group">
+                <input type="checkbox" id="contact-consent" name="consent" required>
+                <label class="fr-label" for="contact-consent">
+                    J'accepte que mes données soient traitées
+                </label>
+            </div>
+            
+            <div class="fr-btns-group">
+                <button class="fr-btn" type="submit">
+                    Envoyer
+                </button>
+                <button class="fr-btn fr-btn--secondary" type="reset">
+                    Annuler
+                </button>
+            </div>
+        </div>
+    </fieldset>
+</form>

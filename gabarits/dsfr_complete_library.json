@@ -1,0 +1,606 @@
+{
+  "version": "1.14.1",
+  "generated": "2025-09-05T14:57:06.499727",
+  "total_components": 48,
+  "total_variants": 131,
+  "components": {
+    "header": {
+      "variants": [
+        "basic",
+        "with_search"
+      ],
+      "count": 2,
+      "html": {
+        "basic": "<!-- Header DSFR -->\n<header role=\"banner\" class=\"fr-header\">\n    <div class=\"fr-header__body\">\n        <div class=\"fr-container\">\n            <div class=\"fr-header__body-row\">\n                <div class=\"fr-header__brand fr-enlarge-link\">\n                    <div class=\"fr-header__brand-top\">\n                        <div class=\"fr-header__logo\">\n                            <p class=\"fr-logo\">République<br>Française</p>\n                        </div>\n                    </div>\n                    <div class=\"fr-header__service\">\n                        <a href=\"/\" title=\"Accueil - Nom du service\">\n                            <p class=\"fr-header__service-title\">Nom du service</p>\n                        </a>\n                        <p class=\"fr-header__service-tagline\">Baseline - précisions sur l'organisation</p>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</header>",
+        "with_search": "<header role=\"banner\" class=\"fr-header\">\n    <div class=\"fr-header__body\">\n        <div class=\"fr-container\">\n            <div class=\"fr-header__body-row\">\n                <div class=\"fr-header__brand fr-enlarge-link\">\n                    <div class=\"fr-header__brand-top\">\n                        <div class=\"fr-header__logo\">\n                            <p class=\"fr-logo\">République<br>Française</p>\n                        </div>\n                        <div class=\"fr-header__navbar\">\n                            <button class=\"fr-btn--search fr-btn\" data-fr-opened=\"false\" aria-controls=\"header-search\" title=\"Rechercher\">\n                                Rechercher\n                            </button>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"fr-header__search fr-modal\" id=\"header-search\">\n        <div class=\"fr-container fr-container-lg\">\n            <button class=\"fr-btn--close fr-btn\" aria-controls=\"header-search\" title=\"Fermer\">\n                Fermer\n            </button>\n            <div class=\"fr-search-bar\" id=\"header-search-bar\" role=\"search\">\n                <label class=\"fr-label\" for=\"header-search-bar-input\">\n                    Rechercher\n                </label>\n                <input class=\"fr-input\" placeholder=\"Rechercher\" type=\"search\" id=\"header-search-bar-input\" name=\"search\">\n                <button class=\"fr-btn\" title=\"Rechercher\">\n                    Rechercher\n                </button>\n            </div>\n        </div>\n    </div>\n</header>"
+      }
+    },
+    "footer": {
+      "variants": [
+        "basic",
+        "with_partners"
+      ],
+      "count": 2,
+      "html": {
+        "basic": "<footer class=\"fr-footer\" role=\"contentinfo\" id=\"footer\">\n    <div class=\"fr-container\">\n        <div class=\"fr-footer__body\">\n            <div class=\"fr-footer__brand fr-enlarge-link\">\n                <a href=\"/\" title=\"Retour à l'accueil\">\n                    <p class=\"fr-logo\">République<br>Française</p>\n                </a>\n            </div>\n            <div class=\"fr-footer__content\">\n                <p class=\"fr-footer__content-desc\">\n                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                </p>\n                <ul class=\"fr-footer__content-list\">\n                    <li class=\"fr-footer__content-item\">\n                        <a class=\"fr-footer__content-link\" target=\"_blank\" href=\"https://legifrance.gouv.fr\">legifrance.gouv.fr</a>\n                    </li>\n                    <li class=\"fr-footer__content-item\">\n                        <a class=\"fr-footer__content-link\" target=\"_blank\" href=\"https://gouvernement.fr\">gouvernement.fr</a>\n                    </li>\n                </ul>\n            </div>\n        </div>\n        <div class=\"fr-footer__bottom\">\n            <ul class=\"fr-footer__bottom-list\">\n                <li class=\"fr-footer__bottom-item\">\n                    <a class=\"fr-footer__bottom-link\" href=\"#\">Mentions légales</a>\n                </li>\n                <li class=\"fr-footer__bottom-item\">\n                    <a class=\"fr-footer__bottom-link\" href=\"#\">Données personnelles</a>\n                </li>\n                <li class=\"fr-footer__bottom-item\">\n                    <a class=\"fr-footer__bottom-link\" href=\"#\">Accessibilité : non conforme</a>\n                </li>\n            </ul>\n        </div>\n    </div>\n</footer>",
+        "with_partners": "<footer class=\"fr-footer\" role=\"contentinfo\">\n    <div class=\"fr-footer__partners\">\n        <h4 class=\"fr-footer__partners-title\">Nos partenaires</h4>\n        <div class=\"fr-footer__partners-logos\">\n            <div class=\"fr-footer__partners-main\">\n                <a class=\"fr-footer__partners-link\" href=\"#\" title=\"Partenaire 1\">\n                    <img class=\"fr-responsive-img\" src=\"/placeholder-logo.png\" alt=\"Partenaire 1\">\n                </a>\n            </div>\n            <div class=\"fr-footer__partners-sub\">\n                <a class=\"fr-footer__partners-link\" href=\"#\" title=\"Partenaire 2\">\n                    <img class=\"fr-responsive-img\" src=\"/placeholder-logo.png\" alt=\"Partenaire 2\">\n                </a>\n            </div>\n        </div>\n    </div>\n</footer>"
+      }
+    },
+    "navigation": {
+      "variants": [
+        "basic",
+        "mega_menu"
+      ],
+      "count": 2,
+      "html": {
+        "basic": "<nav class=\"fr-nav\" id=\"navigation\" role=\"navigation\" aria-label=\"Menu principal\">\n    <ul class=\"fr-nav__list\">\n        <li class=\"fr-nav__item\">\n            <a class=\"fr-nav__link\" href=\"#\" target=\"_self\" aria-current=\"page\">Accueil</a>\n        </li>\n        <li class=\"fr-nav__item\">\n            <button class=\"fr-nav__btn\" aria-expanded=\"false\" aria-controls=\"menu-1\">\n                Menu avec sous-menu\n            </button>\n            <div class=\"fr-collapse fr-menu\" id=\"menu-1\">\n                <ul class=\"fr-menu__list\">\n                    <li>\n                        <a class=\"fr-nav__link\" href=\"#\" target=\"_self\">\n                            Sous-élément 1\n                        </a>\n                    </li>\n                    <li>\n                        <a class=\"fr-nav__link\" href=\"#\" target=\"_self\">\n                            Sous-élément 2\n                        </a>\n                    </li>\n                </ul>\n            </div>\n        </li>\n        <li class=\"fr-nav__item\">\n            <a class=\"fr-nav__link\" href=\"#\" target=\"_self\">Page simple</a>\n        </li>\n    </ul>\n</nav>",
+        "mega_menu": "<nav class=\"fr-nav\" role=\"navigation\" aria-label=\"Menu principal\">\n    <ul class=\"fr-nav__list\">\n        <li class=\"fr-nav__item\">\n            <button class=\"fr-nav__btn\" aria-expanded=\"false\" aria-controls=\"mega-menu-1\">\n                Mega menu\n            </button>\n            <div class=\"fr-collapse fr-mega-menu\" id=\"mega-menu-1\">\n                <div class=\"fr-container\">\n                    <div class=\"fr-grid-row fr-grid-row--gutters\">\n                        <div class=\"fr-col-12 fr-col-md-4\">\n                            <h3 class=\"fr-mega-menu__title\">Catégorie 1</h3>\n                            <ul class=\"fr-mega-menu__list\">\n                                <li><a class=\"fr-nav__link\" href=\"#\">Lien 1</a></li>\n                                <li><a class=\"fr-nav__link\" href=\"#\">Lien 2</a></li>\n                            </ul>\n                        </div>\n                        <div class=\"fr-col-12 fr-col-md-4\">\n                            <h3 class=\"fr-mega-menu__title\">Catégorie 2</h3>\n                            <ul class=\"fr-mega-menu__list\">\n                                <li><a class=\"fr-nav__link\" href=\"#\">Lien 3</a></li>\n                                <li><a class=\"fr-nav__link\" href=\"#\">Lien 4</a></li>\n                            </ul>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </li>\n    </ul>\n</nav>"
+      }
+    },
+    "breadcrumb": {
+      "variants": [
+        "basic"
+      ],
+      "count": 1,
+      "html": {
+        "basic": "<nav role=\"navigation\" class=\"fr-breadcrumb\" aria-label=\"vous êtes ici :\">\n    <button class=\"fr-breadcrumb__button\" aria-expanded=\"false\" aria-controls=\"breadcrumb-1\">\n        Voir le fil d'Ariane\n    </button>\n    <div class=\"fr-collapse\" id=\"breadcrumb-1\">\n        <ol class=\"fr-breadcrumb__list\">\n            <li>\n                <a class=\"fr-breadcrumb__link\" href=\"/\">Accueil</a>\n            </li>\n            <li>\n                <a class=\"fr-breadcrumb__link\" href=\"/segment-1\">Segment 1</a>\n            </li>\n            <li>\n                <a class=\"fr-breadcrumb__link\" href=\"/segment-1/segment-2\">Segment 2</a>\n            </li>\n            <li>\n                <a class=\"fr-breadcrumb__link\" aria-current=\"page\">Page Actuelle</a>\n            </li>\n        </ol>\n    </div>\n</nav>"
+      }
+    },
+    "sidemenu": {
+      "variants": [
+        "basic"
+      ],
+      "count": 1,
+      "html": {
+        "basic": "<nav class=\"fr-sidemenu\" aria-label=\"Menu latéral\">\n    <div class=\"fr-sidemenu__inner\">\n        <button class=\"fr-sidemenu__btn\" aria-controls=\"fr-sidemenu-wrapper\" aria-expanded=\"false\">\n            Menu\n        </button>\n        <div class=\"fr-collapse\" id=\"fr-sidemenu-wrapper\">\n            <div class=\"fr-sidemenu__title\">Titre menu</div>\n            <ul class=\"fr-sidemenu__list\">\n                <li class=\"fr-sidemenu__item fr-sidemenu__item--active\">\n                    <a class=\"fr-sidemenu__link\" href=\"#\" aria-current=\"page\">Page active</a>\n                </li>\n                <li class=\"fr-sidemenu__item\">\n                    <a class=\"fr-sidemenu__link\" href=\"#\">Lien niveau 1</a>\n                </li>\n                <li class=\"fr-sidemenu__item\">\n                    <button class=\"fr-sidemenu__btn\" aria-expanded=\"false\" aria-controls=\"sidemenu-sub\">\n                        Avec sous-menu\n                    </button>\n                    <div class=\"fr-collapse\" id=\"sidemenu-sub\">\n                        <ul class=\"fr-sidemenu__list\">\n                            <li class=\"fr-sidemenu__item\">\n                                <a class=\"fr-sidemenu__link\" href=\"#\">Sous-lien 1</a>\n                            </li>\n                            <li class=\"fr-sidemenu__item\">\n                                <a class=\"fr-sidemenu__link\" href=\"#\">Sous-lien 2</a>\n                            </li>\n                        </ul>\n                    </div>\n                </li>\n            </ul>\n        </div>\n    </div>\n</nav>"
+      }
+    },
+    "skiplinks": {
+      "variants": [
+        "basic"
+      ],
+      "count": 1,
+      "html": {
+        "basic": "<div class=\"fr-skiplinks\">\n    <nav class=\"fr-container\" role=\"navigation\" aria-label=\"Accès rapide\">\n        <ul class=\"fr-skiplinks__list\">\n            <li>\n                <a class=\"fr-link\" href=\"#content\">Contenu</a>\n            </li>\n            <li>\n                <a class=\"fr-link\" href=\"#navigation\">Menu</a>\n            </li>\n            <li>\n                <a class=\"fr-link\" href=\"#footer\">Pied de page</a>\n            </li>\n        </ul>\n    </nav>\n</div>"
+      }
+    },
+    "pagination": {
+      "variants": [
+        "basic"
+      ],
+      "count": 1,
+      "html": {
+        "basic": "<nav role=\"navigation\" class=\"fr-pagination\" aria-label=\"Pagination\">\n    <ul class=\"fr-pagination__list\">\n        <li>\n            <a class=\"fr-pagination__link fr-pagination__link--first\" href=\"/page-1\">\n                Première page\n            </a>\n        </li>\n        <li>\n            <a class=\"fr-pagination__link fr-pagination__link--prev fr-pagination__link--lg-label\" href=\"/page-2\">\n                Page précédente\n            </a>\n        </li>\n        <li>\n            <a class=\"fr-pagination__link\" href=\"/page-1\" title=\"Page 1\">1</a>\n        </li>\n        <li>\n            <a class=\"fr-pagination__link\" href=\"/page-2\" title=\"Page 2\">2</a>\n        </li>\n        <li>\n            <a class=\"fr-pagination__link\" aria-current=\"page\" title=\"Page 3\">3</a>\n        </li>\n        <li>\n            <a class=\"fr-pagination__link\" href=\"/page-4\" title=\"Page 4\">4</a>\n        </li>\n        <li>\n            <a class=\"fr-pagination__link\" href=\"/page-5\" title=\"Page 5\">5</a>\n        </li>\n        <li>\n            <a class=\"fr-pagination__link fr-pagination__link--next fr-pagination__link--lg-label\" href=\"/page-4\">\n                Page suivante\n            </a>\n        </li>\n        <li>\n            <a class=\"fr-pagination__link fr-pagination__link--last\" href=\"/page-50\">\n                Dernière page\n            </a>\n        </li>\n    </ul>\n</nav>"
+      }
+    },
+    "button": {
+      "variants": [
+        "primary",
+        "secondary",
+        "tertiary",
+        "tertiary_no_outline",
+        "sm",
+        "lg",
+        "icon_left",
+        "icon_right",
+        "icon_only",
+        "disabled"
+      ],
+      "count": 10,
+      "html": {
+        "primary": "<button class=\"fr-btn\">\n    Label bouton\n</button>",
+        "secondary": "<button class=\"fr-btn fr-btn--secondary\">\n    Label bouton secondaire\n</button>",
+        "tertiary": "<button class=\"fr-btn fr-btn--tertiary\">\n    Label bouton tertiaire\n</button>",
+        "tertiary_no_outline": "<button class=\"fr-btn fr-btn--tertiary-no-outline\">\n    Label bouton tertiaire sans contour\n</button>",
+        "sm": "<button class=\"fr-btn fr-btn--sm\">\n    Petit bouton\n</button>",
+        "lg": "<button class=\"fr-btn fr-btn--lg\">\n    Grand bouton\n</button>",
+        "icon_left": "<button class=\"fr-btn fr-btn--icon-left fr-icon-save-line\">\n    Bouton avec icône à gauche\n</button>",
+        "icon_right": "<button class=\"fr-btn fr-btn--icon-right fr-icon-arrow-right-line\">\n    Bouton avec icône à droite\n</button>",
+        "icon_only": "<button class=\"fr-btn fr-btn--icon-only fr-icon-delete-line\" title=\"Supprimer\">\n    <span class=\"fr-sr-only\">Supprimer</span>\n</button>",
+        "disabled": "<button class=\"fr-btn\" disabled aria-disabled=\"true\">\n    Bouton désactivé\n</button>"
+      }
+    },
+    "button_group": {
+      "variants": [
+        "basic",
+        "inline",
+        "right",
+        "center",
+        "icon_group"
+      ],
+      "count": 5,
+      "html": {
+        "basic": "<div class=\"fr-btns-group\">\n    <button class=\"fr-btn\">\n        Bouton 1\n    </button>\n    <button class=\"fr-btn fr-btn--secondary\">\n        Bouton 2\n    </button>\n</div>",
+        "inline": "<div class=\"fr-btns-group fr-btns-group--inline\">\n    <button class=\"fr-btn\">\n        Action principale\n    </button>\n    <button class=\"fr-btn fr-btn--secondary\">\n        Action secondaire\n    </button>\n</div>",
+        "right": "<div class=\"fr-btns-group fr-btns-group--right\">\n    <button class=\"fr-btn\">\n        Bouton aligné à droite\n    </button>\n</div>",
+        "center": "<div class=\"fr-btns-group fr-btns-group--center\">\n    <button class=\"fr-btn\">\n        Bouton centré\n    </button>\n</div>",
+        "icon_group": "<div class=\"fr-btns-group fr-btns-group--inline\">\n    <button class=\"fr-btn fr-btn--icon-left fr-icon-edit-line\">\n        Modifier\n    </button>\n    <button class=\"fr-btn fr-btn--icon-left fr-icon-delete-line fr-btn--secondary\">\n        Supprimer\n    </button>\n</div>"
+      }
+    },
+    "link": {
+      "variants": [
+        "basic",
+        "icon_left",
+        "icon_right",
+        "sm",
+        "lg",
+        "download"
+      ],
+      "count": 6,
+      "html": {
+        "basic": "<a class=\"fr-link\" href=\"#\">Lien simple</a>",
+        "icon_left": "<a class=\"fr-link fr-link--icon-left fr-icon-arrow-right-line\" href=\"#\">\n    Lien avec icône à gauche\n</a>",
+        "icon_right": "<a class=\"fr-link fr-link--icon-right fr-icon-external-link-line\" href=\"#\">\n    Lien externe\n</a>",
+        "sm": "<a class=\"fr-link fr-link--sm\" href=\"#\">Petit lien</a>",
+        "lg": "<a class=\"fr-link fr-link--lg\" href=\"#\">Grand lien</a>",
+        "download": "<a class=\"fr-link fr-link--download\" href=\"/document.pdf\" download>\n    Télécharger le document\n    <span class=\"fr-link__detail\">PDF - 2.3 Mo</span>\n</a>"
+      }
+    },
+    "back_to_top": {
+      "variants": [
+        "basic"
+      ],
+      "count": 1,
+      "html": {
+        "basic": "<a class=\"fr-link fr-link--icon-left fr-icon-arrow-up-fill\" href=\"#top\">\n    Haut de page\n</a>"
+      }
+    },
+    "input": {
+      "variants": [
+        "text",
+        "email",
+        "number",
+        "tel",
+        "date",
+        "textarea",
+        "with_error",
+        "with_success",
+        "disabled"
+      ],
+      "count": 9,
+      "html": {
+        "text": "<div class=\"fr-input-group\">\n    <label class=\"fr-label\" for=\"text-input\">\n        Label du champ\n        <span class=\"fr-hint-text\">Texte d'aide</span>\n    </label>\n    <input class=\"fr-input\" type=\"text\" id=\"text-input\" name=\"text-input\">\n</div>",
+        "email": "<div class=\"fr-input-group\">\n    <label class=\"fr-label\" for=\"email-input\">\n        Adresse email\n        <span class=\"fr-hint-text\">Format : nom@domaine.fr</span>\n    </label>\n    <input class=\"fr-input\" type=\"email\" id=\"email-input\" name=\"email\">\n</div>",
+        "number": "<div class=\"fr-input-group\">\n    <label class=\"fr-label\" for=\"number-input\">\n        Nombre\n    </label>\n    <input class=\"fr-input\" type=\"number\" id=\"number-input\" name=\"number\" min=\"0\" max=\"100\">\n</div>",
+        "tel": "<div class=\"fr-input-group\">\n    <label class=\"fr-label\" for=\"tel-input\">\n        Téléphone\n        <span class=\"fr-hint-text\">Format : 01 23 45 67 89</span>\n    </label>\n    <input class=\"fr-input\" type=\"tel\" id=\"tel-input\" name=\"tel\">\n</div>",
+        "date": "<div class=\"fr-input-group\">\n    <label class=\"fr-label\" for=\"date-input\">\n        Date\n    </label>\n    <input class=\"fr-input\" type=\"date\" id=\"date-input\" name=\"date\">\n</div>",
+        "textarea": "<div class=\"fr-input-group\">\n    <label class=\"fr-label\" for=\"textarea\">\n        Message\n        <span class=\"fr-hint-text\">Maximum 500 caractères</span>\n    </label>\n    <textarea class=\"fr-input\" id=\"textarea\" name=\"message\" rows=\"5\"></textarea>\n</div>",
+        "with_error": "<div class=\"fr-input-group fr-input-group--error\">\n    <label class=\"fr-label\" for=\"error-input\">\n        Label du champ\n    </label>\n    <input class=\"fr-input fr-input--error\" type=\"text\" id=\"error-input\" aria-invalid=\"true\" aria-describedby=\"error-input-error\">\n    <p id=\"error-input-error\" class=\"fr-error-text\">\n        Message d'erreur\n    </p>\n</div>",
+        "with_success": "<div class=\"fr-input-group fr-input-group--valid\">\n    <label class=\"fr-label\" for=\"valid-input\">\n        Label du champ\n    </label>\n    <input class=\"fr-input fr-input--valid\" type=\"text\" id=\"valid-input\" aria-describedby=\"valid-input-valid\">\n    <p id=\"valid-input-valid\" class=\"fr-valid-text\">\n        Message de validation\n    </p>\n</div>",
+        "disabled": "<div class=\"fr-input-group fr-input-group--disabled\">\n    <label class=\"fr-label\" for=\"disabled-input\">\n        Champ désactivé\n    </label>\n    <input class=\"fr-input\" type=\"text\" id=\"disabled-input\" disabled>\n</div>"
+      }
+    },
+    "select": {
+      "variants": [
+        "basic",
+        "with_hint",
+        "with_error"
+      ],
+      "count": 3,
+      "html": {
+        "basic": "<div class=\"fr-select-group\">\n    <label class=\"fr-label\" for=\"select\">\n        Label de la liste\n    </label>\n    <select class=\"fr-select\" id=\"select\" name=\"select\">\n        <option value=\"\" selected disabled hidden>Sélectionnez une option</option>\n        <option value=\"1\">Option 1</option>\n        <option value=\"2\">Option 2</option>\n        <option value=\"3\">Option 3</option>\n    </select>\n</div>",
+        "with_hint": "<div class=\"fr-select-group\">\n    <label class=\"fr-label\" for=\"select-hint\">\n        Label de la liste\n        <span class=\"fr-hint-text\">Texte d'aide</span>\n    </label>\n    <select class=\"fr-select\" id=\"select-hint\">\n        <option value=\"\">Sélectionnez</option>\n        <option value=\"1\">Option 1</option>\n        <option value=\"2\">Option 2</option>\n    </select>\n</div>",
+        "with_error": "<div class=\"fr-select-group fr-select-group--error\">\n    <label class=\"fr-label\" for=\"select-error\">\n        Label de la liste\n    </label>\n    <select class=\"fr-select fr-select--error\" id=\"select-error\" aria-invalid=\"true\" aria-describedby=\"select-error-desc\">\n        <option value=\"\">Sélectionnez</option>\n        <option value=\"1\">Option 1</option>\n    </select>\n    <p id=\"select-error-desc\" class=\"fr-error-text\">\n        Message d'erreur\n    </p>\n</div>"
+      }
+    },
+    "checkbox": {
+      "variants": [
+        "single",
+        "group",
+        "sm"
+      ],
+      "count": 3,
+      "html": {
+        "single": "<div class=\"fr-checkbox-group\">\n    <input type=\"checkbox\" id=\"checkbox-1\" name=\"checkbox-1\">\n    <label class=\"fr-label\" for=\"checkbox-1\">\n        Label de la case à cocher\n    </label>\n</div>",
+        "group": "<fieldset class=\"fr-fieldset\" aria-labelledby=\"checkboxes-legend\">\n    <legend class=\"fr-fieldset__legend\" id=\"checkboxes-legend\">\n        <h3>Légende du groupe de cases à cocher</h3>\n    </legend>\n    <div class=\"fr-fieldset__content\">\n        <div class=\"fr-checkbox-group\">\n            <input type=\"checkbox\" id=\"checkbox-1\" name=\"checkbox-group\">\n            <label class=\"fr-label\" for=\"checkbox-1\">Option 1</label>\n        </div>\n        <div class=\"fr-checkbox-group\">\n            <input type=\"checkbox\" id=\"checkbox-2\" name=\"checkbox-group\">\n            <label class=\"fr-label\" for=\"checkbox-2\">Option 2</label>\n        </div>\n        <div class=\"fr-checkbox-group\">\n            <input type=\"checkbox\" id=\"checkbox-3\" name=\"checkbox-group\">\n            <label class=\"fr-label\" for=\"checkbox-3\">Option 3</label>\n        </div>\n    </div>\n</fieldset>",
+        "sm": "<div class=\"fr-checkbox-group fr-checkbox-group--sm\">\n    <input type=\"checkbox\" id=\"checkbox-sm\">\n    <label class=\"fr-label\" for=\"checkbox-sm\">\n        Petite case à cocher\n    </label>\n</div>"
+      }
+    },
+    "radio": {
+      "variants": [
+        "basic",
+        "inline",
+        "rich"
+      ],
+      "count": 3,
+      "html": {
+        "basic": "<fieldset class=\"fr-fieldset\" aria-labelledby=\"radio-legend\">\n    <legend class=\"fr-fieldset__legend\" id=\"radio-legend\">\n        <h3>Légende du groupe de boutons radio</h3>\n    </legend>\n    <div class=\"fr-fieldset__content\">\n        <div class=\"fr-radio-group\">\n            <input type=\"radio\" id=\"radio-1\" name=\"radio\" value=\"1\">\n            <label class=\"fr-label\" for=\"radio-1\">Option 1</label>\n        </div>\n        <div class=\"fr-radio-group\">\n            <input type=\"radio\" id=\"radio-2\" name=\"radio\" value=\"2\">\n            <label class=\"fr-label\" for=\"radio-2\">Option 2</label>\n        </div>\n        <div class=\"fr-radio-group\">\n            <input type=\"radio\" id=\"radio-3\" name=\"radio\" value=\"3\">\n            <label class=\"fr-label\" for=\"radio-3\">Option 3</label>\n        </div>\n    </div>\n</fieldset>",
+        "inline": "<fieldset class=\"fr-fieldset fr-fieldset--inline\" aria-labelledby=\"radio-inline-legend\">\n    <legend class=\"fr-fieldset__legend\" id=\"radio-inline-legend\">\n        Choix unique\n    </legend>\n    <div class=\"fr-fieldset__content\">\n        <div class=\"fr-radio-group\">\n            <input type=\"radio\" id=\"radio-inline-1\" name=\"radio-inline\" value=\"oui\">\n            <label class=\"fr-label\" for=\"radio-inline-1\">Oui</label>\n        </div>\n        <div class=\"fr-radio-group\">\n            <input type=\"radio\" id=\"radio-inline-2\" name=\"radio-inline\" value=\"non\">\n            <label class=\"fr-label\" for=\"radio-inline-2\">Non</label>\n        </div>\n    </div>\n</fieldset>",
+        "rich": "<fieldset class=\"fr-fieldset\" aria-labelledby=\"radio-rich-legend\">\n    <legend class=\"fr-fieldset__legend\" id=\"radio-rich-legend\">\n        <h3>Options avec description</h3>\n    </legend>\n    <div class=\"fr-fieldset__content\">\n        <div class=\"fr-radio-group fr-radio-rich\">\n            <input type=\"radio\" id=\"radio-rich-1\" name=\"radio-rich\">\n            <label class=\"fr-label\" for=\"radio-rich-1\">\n                Option 1\n                <span class=\"fr-hint-text\">Description de l'option 1</span>\n            </label>\n        </div>\n        <div class=\"fr-radio-group fr-radio-rich\">\n            <input type=\"radio\" id=\"radio-rich-2\" name=\"radio-rich\">\n            <label class=\"fr-label\" for=\"radio-rich-2\">\n                Option 2\n                <span class=\"fr-hint-text\">Description de l'option 2</span>\n            </label>\n        </div>\n    </div>\n</fieldset>"
+      }
+    },
+    "toggle": {
+      "variants": [
+        "basic",
+        "with_hint",
+        "bordered"
+      ],
+      "count": 3,
+      "html": {
+        "basic": "<div class=\"fr-toggle\">\n    <input type=\"checkbox\" class=\"fr-toggle__input\" id=\"toggle-1\">\n    <label class=\"fr-toggle__label\" for=\"toggle-1\">\n        Label du toggle\n    </label>\n</div>",
+        "with_hint": "<div class=\"fr-toggle\">\n    <input type=\"checkbox\" class=\"fr-toggle__input\" id=\"toggle-hint\">\n    <label class=\"fr-toggle__label\" for=\"toggle-hint\">\n        Label du toggle\n        <span class=\"fr-hint-text\">Texte d'aide</span>\n    </label>\n</div>",
+        "bordered": "<div class=\"fr-toggle fr-toggle--border-bottom\">\n    <input type=\"checkbox\" class=\"fr-toggle__input\" id=\"toggle-bordered\">\n    <label class=\"fr-toggle__label\" for=\"toggle-bordered\">\n        Toggle avec bordure\n    </label>\n</div>"
+      }
+    },
+    "search": {
+      "variants": [
+        "basic",
+        "lg"
+      ],
+      "count": 2,
+      "html": {
+        "basic": "<div class=\"fr-search-bar\" role=\"search\">\n    <label class=\"fr-label\" for=\"search\">\n        Rechercher\n    </label>\n    <input class=\"fr-input\" placeholder=\"Rechercher\" type=\"search\" id=\"search\" name=\"search\">\n    <button class=\"fr-btn\" title=\"Rechercher\">\n        Rechercher\n    </button>\n</div>",
+        "lg": "<div class=\"fr-search-bar fr-search-bar--lg\" role=\"search\">\n    <label class=\"fr-label\" for=\"search-lg\">\n        Rechercher\n    </label>\n    <input class=\"fr-input\" placeholder=\"Que recherchez-vous ?\" type=\"search\" id=\"search-lg\">\n    <button class=\"fr-btn\" title=\"Rechercher\">\n        Rechercher\n    </button>\n</div>"
+      }
+    },
+    "upload": {
+      "variants": [
+        "basic",
+        "multiple",
+        "with_error"
+      ],
+      "count": 3,
+      "html": {
+        "basic": "<div class=\"fr-upload-group\">\n    <label class=\"fr-label\" for=\"file-upload\">\n        Ajouter un fichier\n        <span class=\"fr-hint-text\">Taille maximale : 500 Mo. Formats supportés : jpg, png, pdf</span>\n    </label>\n    <input class=\"fr-upload\" type=\"file\" id=\"file-upload\" name=\"file-upload\">\n</div>",
+        "multiple": "<div class=\"fr-upload-group\">\n    <label class=\"fr-label\" for=\"file-upload-multiple\">\n        Ajouter des fichiers\n        <span class=\"fr-hint-text\">Vous pouvez sélectionner plusieurs fichiers</span>\n    </label>\n    <input class=\"fr-upload\" type=\"file\" id=\"file-upload-multiple\" name=\"files\" multiple>\n</div>",
+        "with_error": "<div class=\"fr-upload-group fr-upload-group--error\">\n    <label class=\"fr-label\" for=\"file-upload-error\">\n        Ajouter un fichier\n    </label>\n    <input class=\"fr-upload fr-upload--error\" type=\"file\" id=\"file-upload-error\" aria-invalid=\"true\" aria-describedby=\"file-error-desc\">\n    <p id=\"file-error-desc\" class=\"fr-error-text\">\n        Le fichier est trop volumineux\n    </p>\n</div>"
+      }
+    },
+    "password": {
+      "variants": [
+        "basic",
+        "new"
+      ],
+      "count": 2,
+      "html": {
+        "basic": "<div class=\"fr-password\" id=\"password\">\n    <label class=\"fr-label\" for=\"password-input\">\n        Mot de passe\n    </label>\n    <div class=\"fr-input-wrap\">\n        <input class=\"fr-password__input fr-input\" type=\"password\" id=\"password-input\" name=\"password\" autocomplete=\"current-password\">\n    </div>\n    <div class=\"fr-password__checkbox fr-checkbox-group fr-checkbox-group--sm\">\n        <input type=\"checkbox\" id=\"password-show\" aria-label=\"Afficher le mot de passe\">\n        <label class=\"fr-password__checkbox-label\" for=\"password-show\">\n            Afficher\n        </label>\n    </div>\n</div>",
+        "new": "<div class=\"fr-password\" id=\"new-password\">\n    <label class=\"fr-label\" for=\"new-password-input\">\n        Nouveau mot de passe\n        <span class=\"fr-hint-text\">12 caractères minimum</span>\n    </label>\n    <div class=\"fr-input-wrap\">\n        <input class=\"fr-password__input fr-input\" type=\"password\" id=\"new-password-input\" name=\"new-password\" autocomplete=\"new-password\">\n    </div>\n    <div class=\"fr-password__checkbox fr-checkbox-group fr-checkbox-group--sm\">\n        <input type=\"checkbox\" id=\"new-password-show\" aria-label=\"Afficher le mot de passe\">\n        <label class=\"fr-password__checkbox-label\" for=\"new-password-show\">\n            Afficher\n        </label>\n    </div>\n    <p class=\"fr-password__requirements\">\n        Votre mot de passe doit contenir :\n        <br>- 12 caractères minimum\n        <br>- 1 majuscule et 1 minuscule\n        <br>- 1 chiffre\n        <br>- 1 caractère spécial\n    </p>\n</div>"
+      }
+    },
+    "range": {
+      "variants": [
+        "basic",
+        "with_output",
+        "double"
+      ],
+      "count": 3,
+      "html": {
+        "basic": "<div class=\"fr-range-group\">\n    <label class=\"fr-label\" for=\"range\">\n        Label du curseur\n    </label>\n    <input type=\"range\" class=\"fr-range\" id=\"range\" name=\"range\" min=\"0\" max=\"100\">\n</div>",
+        "with_output": "<div class=\"fr-range-group\">\n    <label class=\"fr-label\" for=\"range-output\">\n        Volume : <output for=\"range-output\" id=\"range-value\">50</output>%\n    </label>\n    <input type=\"range\" class=\"fr-range\" id=\"range-output\" min=\"0\" max=\"100\" value=\"50\" \n           oninput=\"document.getElementById('range-value').value = this.value\">\n</div>",
+        "double": "<div class=\"fr-range-group\">\n    <label class=\"fr-label\">\n        Prix : entre <output id=\"min-value\">20</output>€ et <output id=\"max-value\">80</output>€\n    </label>\n    <div class=\"fr-range-group__double\">\n        <input type=\"range\" class=\"fr-range\" id=\"range-min\" min=\"0\" max=\"100\" value=\"20\">\n        <input type=\"range\" class=\"fr-range\" id=\"range-max\" min=\"0\" max=\"100\" value=\"80\">\n    </div>\n</div>"
+      }
+    },
+    "form": {
+      "variants": [
+        "contact",
+        "login",
+        "register"
+      ],
+      "count": 3,
+      "html": {
+        "contact": "<form action=\"/contact\" method=\"post\">\n    <fieldset class=\"fr-fieldset\">\n        <legend class=\"fr-fieldset__legend\">\n            <h2>Formulaire de contact</h2>\n        </legend>\n        <div class=\"fr-fieldset__content\">\n            <div class=\"fr-input-group\">\n                <label class=\"fr-label\" for=\"contact-name\">\n                    Nom complet\n                    <span class=\"fr-hint-text\">Prénom et nom</span>\n                </label>\n                <input class=\"fr-input\" type=\"text\" id=\"contact-name\" name=\"name\" required>\n            </div>\n            \n            <div class=\"fr-input-group\">\n                <label class=\"fr-label\" for=\"contact-email\">\n                    Email\n                </label>\n                <input class=\"fr-input\" type=\"email\" id=\"contact-email\" name=\"email\" required>\n            </div>\n            \n            <div class=\"fr-select-group\">\n                <label class=\"fr-label\" for=\"contact-subject\">\n                    Objet\n                </label>\n                <select class=\"fr-select\" id=\"contact-subject\" name=\"subject\" required>\n                    <option value=\"\">Sélectionnez un objet</option>\n                    <option value=\"info\">Demande d'information</option>\n                    <option value=\"reclamation\">Réclamation</option>\n                    <option value=\"suggestion\">Suggestion</option>\n                </select>\n            </div>\n            \n            <div class=\"fr-input-group\">\n                <label class=\"fr-label\" for=\"contact-message\">\n                    Message\n                </label>\n                <textarea class=\"fr-input\" id=\"contact-message\" name=\"message\" rows=\"5\" required></textarea>\n            </div>\n            \n            <div class=\"fr-checkbox-group\">\n                <input type=\"checkbox\" id=\"contact-consent\" name=\"consent\" required>\n                <label class=\"fr-label\" for=\"contact-consent\">\n                    J'accepte que mes données soient traitées\n                </label>\n            </div>\n            \n            <div class=\"fr-btns-group\">\n                <button class=\"fr-btn\" type=\"submit\">\n                    Envoyer\n                </button>\n                <button class=\"fr-btn fr-btn--secondary\" type=\"reset\">\n                    Annuler\n                </button>\n            </div>\n        </div>\n    </fieldset>\n</form>",
+        "login": "<form action=\"/login\" method=\"post\">\n    <fieldset class=\"fr-fieldset\">\n        <legend class=\"fr-fieldset__legend\">\n            <h2>Connexion</h2>\n        </legend>\n        <div class=\"fr-fieldset__content\">\n            <div class=\"fr-input-group\">\n                <label class=\"fr-label\" for=\"login-email\">\n                    Email\n                </label>\n                <input class=\"fr-input\" type=\"email\" id=\"login-email\" name=\"email\" required autocomplete=\"username\">\n            </div>\n            \n            <div class=\"fr-password\" id=\"login-password\">\n                <label class=\"fr-label\" for=\"login-pass\">\n                    Mot de passe\n                </label>\n                <div class=\"fr-input-wrap\">\n                    <input class=\"fr-password__input fr-input\" type=\"password\" id=\"login-pass\" name=\"password\" required autocomplete=\"current-password\">\n                </div>\n                <div class=\"fr-password__checkbox fr-checkbox-group fr-checkbox-group--sm\">\n                    <input type=\"checkbox\" id=\"login-pass-show\">\n                    <label class=\"fr-password__checkbox-label\" for=\"login-pass-show\">\n                        Afficher\n                    </label>\n                </div>\n            </div>\n            \n            <div class=\"fr-checkbox-group\">\n                <input type=\"checkbox\" id=\"login-remember\" name=\"remember\">\n                <label class=\"fr-label\" for=\"login-remember\">\n                    Se souvenir de moi\n                </label>\n            </div>\n            \n            <div class=\"fr-btns-group\">\n                <button class=\"fr-btn\" type=\"submit\">\n                    Se connecter\n                </button>\n                <a class=\"fr-btn fr-btn--secondary\" href=\"/forgot-password\">\n                    Mot de passe oublié ?\n                </a>\n            </div>\n        </div>\n    </fieldset>\n</form>",
+        "register": "<form action=\"/register\" method=\"post\">\n    <fieldset class=\"fr-fieldset\">\n        <legend class=\"fr-fieldset__legend\">\n            <h2>Inscription</h2>\n        </legend>\n        <div class=\"fr-fieldset__content\">\n            <div class=\"fr-grid-row fr-grid-row--gutters\">\n                <div class=\"fr-col-12 fr-col-md-6\">\n                    <div class=\"fr-input-group\">\n                        <label class=\"fr-label\" for=\"register-firstname\">\n                            Prénom\n                        </label>\n                        <input class=\"fr-input\" type=\"text\" id=\"register-firstname\" name=\"firstname\" required>\n                    </div>\n                </div>\n                <div class=\"fr-col-12 fr-col-md-6\">\n                    <div class=\"fr-input-group\">\n                        <label class=\"fr-label\" for=\"register-lastname\">\n                            Nom\n                        </label>\n                        <input class=\"fr-input\" type=\"text\" id=\"register-lastname\" name=\"lastname\" required>\n                    </div>\n                </div>\n            </div>\n            \n            <div class=\"fr-input-group\">\n                <label class=\"fr-label\" for=\"register-email\">\n                    Email\n                </label>\n                <input class=\"fr-input\" type=\"email\" id=\"register-email\" name=\"email\" required>\n            </div>\n            \n            <div class=\"fr-password\">\n                <label class=\"fr-label\" for=\"register-password\">\n                    Mot de passe\n                    <span class=\"fr-hint-text\">12 caractères minimum</span>\n                </label>\n                <div class=\"fr-input-wrap\">\n                    <input class=\"fr-password__input fr-input\" type=\"password\" id=\"register-password\" name=\"password\" required>\n                </div>\n            </div>\n            \n            <div class=\"fr-checkbox-group\">\n                <input type=\"checkbox\" id=\"register-terms\" required>\n                <label class=\"fr-label\" for=\"register-terms\">\n                    J'accepte les <a href=\"/terms\">conditions générales d'utilisation</a>\n                </label>\n            </div>\n            \n            <div class=\"fr-btns-group\">\n                <button class=\"fr-btn\" type=\"submit\">\n                    S'inscrire\n                </button>\n            </div>\n        </div>\n    </fieldset>\n</form>"
+      }
+    },
+    "accordion": {
+      "variants": [
+        "single",
+        "group"
+      ],
+      "count": 2,
+      "html": {
+        "single": "<section class=\"fr-accordion\">\n    <h3 class=\"fr-accordion__title\">\n        <button class=\"fr-accordion__btn\" aria-expanded=\"false\" aria-controls=\"accordion-1\">\n            Titre de l'accordéon\n        </button>\n    </h3>\n    <div class=\"fr-collapse\" id=\"accordion-1\">\n        <div class=\"fr-accordion__inner\">\n            <p>Contenu de l'accordéon</p>\n        </div>\n    </div>\n</section>",
+        "group": "<div class=\"fr-accordions-group\">\n    <section class=\"fr-accordion\">\n        <h3 class=\"fr-accordion__title\">\n            <button class=\"fr-accordion__btn\" aria-expanded=\"false\" aria-controls=\"accordion-group-1\">\n                Premier accordéon\n            </button>\n        </h3>\n        <div class=\"fr-collapse\" id=\"accordion-group-1\">\n            <div class=\"fr-accordion__inner\">\n                <p>Contenu du premier accordéon</p>\n            </div>\n        </div>\n    </section>\n    <section class=\"fr-accordion\">\n        <h3 class=\"fr-accordion__title\">\n            <button class=\"fr-accordion__btn\" aria-expanded=\"false\" aria-controls=\"accordion-group-2\">\n                Second accordéon\n            </button>\n        </h3>\n        <div class=\"fr-collapse\" id=\"accordion-group-2\">\n            <div class=\"fr-accordion__inner\">\n                <p>Contenu du second accordéon</p>\n            </div>\n        </div>\n    </section>\n</div>"
+      }
+    },
+    "alert": {
+      "variants": [
+        "info",
+        "success",
+        "warning",
+        "error",
+        "closable",
+        "sm"
+      ],
+      "count": 6,
+      "html": {
+        "info": "<div class=\"fr-alert fr-alert--info\">\n    <h3 class=\"fr-alert__title\">Information</h3>\n    <p>Ceci est une alerte d'information</p>\n</div>",
+        "success": "<div class=\"fr-alert fr-alert--success\">\n    <h3 class=\"fr-alert__title\">Succès</h3>\n    <p>L'opération s'est déroulée avec succès</p>\n</div>",
+        "warning": "<div class=\"fr-alert fr-alert--warning\">\n    <h3 class=\"fr-alert__title\">Attention</h3>\n    <p>Merci de vérifier les informations saisies</p>\n</div>",
+        "error": "<div class=\"fr-alert fr-alert--error\">\n    <h3 class=\"fr-alert__title\">Erreur</h3>\n    <p>Une erreur est survenue</p>\n</div>",
+        "closable": "<div class=\"fr-alert fr-alert--info\" role=\"alert\">\n    <h3 class=\"fr-alert__title\">Information</h3>\n    <p>Cette alerte peut être fermée</p>\n    <button class=\"fr-btn--close fr-btn\" title=\"Masquer le message\">\n        Masquer le message\n    </button>\n</div>",
+        "sm": "<div class=\"fr-alert fr-alert--info fr-alert--sm\">\n    <p>Petite alerte d'information</p>\n</div>"
+      }
+    },
+    "badge": {
+      "variants": [
+        "basic",
+        "info",
+        "success",
+        "warning",
+        "error",
+        "new",
+        "sm",
+        "group"
+      ],
+      "count": 8,
+      "html": {
+        "basic": "<p class=\"fr-badge\">Badge</p>",
+        "info": "<p class=\"fr-badge fr-badge--info\">Information</p>",
+        "success": "<p class=\"fr-badge fr-badge--success\">Succès</p>",
+        "warning": "<p class=\"fr-badge fr-badge--warning\">Attention</p>",
+        "error": "<p class=\"fr-badge fr-badge--error\">Erreur</p>",
+        "new": "<p class=\"fr-badge fr-badge--new\">Nouveau</p>",
+        "sm": "<p class=\"fr-badge fr-badge--sm\">Petit badge</p>",
+        "group": "<ul class=\"fr-badges-group\">\n    <li>\n        <p class=\"fr-badge fr-badge--info\">Badge 1</p>\n    </li>\n    <li>\n        <p class=\"fr-badge fr-badge--success\">Badge 2</p>\n    </li>\n    <li>\n        <p class=\"fr-badge fr-badge--new\">Badge 3</p>\n    </li>\n</ul>"
+      }
+    },
+    "callout": {
+      "variants": [
+        "basic",
+        "icon",
+        "colored"
+      ],
+      "count": 3,
+      "html": {
+        "basic": "<div class=\"fr-callout\">\n    <h3 class=\"fr-callout__title\">Titre de la mise en avant</h3>\n    <p class=\"fr-callout__text\">\n        Texte de la mise en avant\n    </p>\n</div>",
+        "icon": "<div class=\"fr-callout fr-callout--icon-left fr-icon-information-line\">\n    <h3 class=\"fr-callout__title\">Mise en avant avec icône</h3>\n    <p class=\"fr-callout__text\">\n        Contenu de la mise en avant avec une icône à gauche\n    </p>\n</div>",
+        "colored": "<div class=\"fr-callout fr-callout--green-emeraude\">\n    <h3 class=\"fr-callout__title\">Mise en avant colorée</h3>\n    <p class=\"fr-callout__text\">\n        Cette mise en avant a une couleur de fond\n    </p>\n</div>"
+      }
+    },
+    "card": {
+      "variants": [
+        "basic",
+        "horizontal",
+        "with_image",
+        "no_link",
+        "download"
+      ],
+      "count": 5,
+      "html": {
+        "basic": "<div class=\"fr-card fr-enlarge-link\">\n    <div class=\"fr-card__body\">\n        <div class=\"fr-card__content\">\n            <h3 class=\"fr-card__title\">\n                <a href=\"#\" class=\"fr-card__link\">Titre de la carte</a>\n            </h3>\n            <p class=\"fr-card__desc\">\n                Description de la carte\n            </p>\n            <p class=\"fr-card__detail\">Détail</p>\n        </div>\n    </div>\n</div>",
+        "horizontal": "<div class=\"fr-card fr-card--horizontal fr-enlarge-link\">\n    <div class=\"fr-card__body\">\n        <div class=\"fr-card__content\">\n            <h3 class=\"fr-card__title\">\n                <a href=\"#\" class=\"fr-card__link\">Carte horizontale</a>\n            </h3>\n            <p class=\"fr-card__desc\">\n                Description de la carte horizontale\n            </p>\n        </div>\n    </div>\n    <div class=\"fr-card__header\">\n        <div class=\"fr-card__img\">\n            <img class=\"fr-responsive-img\" src=\"/placeholder.jpg\" alt=\"\">\n        </div>\n    </div>\n</div>",
+        "with_image": "<div class=\"fr-card fr-enlarge-link\">\n    <div class=\"fr-card__header\">\n        <div class=\"fr-card__img\">\n            <img class=\"fr-responsive-img\" src=\"/placeholder.jpg\" alt=\"\">\n        </div>\n        <ul class=\"fr-badges-group\">\n            <li>\n                <p class=\"fr-badge fr-badge--new\">Nouveau</p>\n            </li>\n        </ul>\n    </div>\n    <div class=\"fr-card__body\">\n        <div class=\"fr-card__content\">\n            <h3 class=\"fr-card__title\">\n                <a href=\"#\" class=\"fr-card__link\">Carte avec image</a>\n            </h3>\n            <p class=\"fr-card__desc\">\n                Description\n            </p>\n        </div>\n    </div>\n</div>",
+        "no_link": "<div class=\"fr-card\">\n    <div class=\"fr-card__body\">\n        <div class=\"fr-card__content\">\n            <h3 class=\"fr-card__title\">Carte sans lien</h3>\n            <p class=\"fr-card__desc\">\n                Cette carte n'est pas cliquable\n            </p>\n        </div>\n    </div>\n</div>",
+        "download": "<div class=\"fr-card fr-card--download fr-enlarge-link\">\n    <div class=\"fr-card__body\">\n        <div class=\"fr-card__content\">\n            <h3 class=\"fr-card__title\">\n                <a href=\"/document.pdf\" download class=\"fr-card__link\">\n                    Document à télécharger\n                </a>\n            </h3>\n            <p class=\"fr-card__desc\">Description du document</p>\n            <p class=\"fr-card__detail\">\n                <span class=\"fr-icon-download-line\" aria-hidden=\"true\"></span>\n                PDF - 2.5 Mo\n            </p>\n        </div>\n    </div>\n</div>"
+      }
+    },
+    "content": {
+      "variants": [
+        "basic",
+        "article"
+      ],
+      "count": 2,
+      "html": {
+        "basic": "<div class=\"fr-content\">\n    <h2>Titre de niveau 2</h2>\n    <p>\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh \n        ultricies vehicula ut id elit.\n    </p>\n    <h3>Titre de niveau 3</h3>\n    <p>\n        Donec ullamcorper nulla non metus auctor fringilla.\n    </p>\n    <ul>\n        <li>Élément de liste 1</li>\n        <li>Élément de liste 2</li>\n        <li>Élément de liste 3</li>\n    </ul>\n</div>",
+        "article": "<article class=\"fr-content\">\n    <h1>Titre de l'article</h1>\n    <p class=\"fr-text--lead\">\n        Chapô de l'article qui introduit le contenu principal.\n    </p>\n    <p>\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n    </p>\n    <figure class=\"fr-content-media\">\n        <div class=\"fr-content-media__img\">\n            <img src=\"/image.jpg\" alt=\"Description de l'image\">\n        </div>\n        <figcaption>Légende de l'image</figcaption>\n    </figure>\n    <p>\n        Suite du contenu de l'article...\n    </p>\n</article>"
+      }
+    },
+    "highlight": {
+      "variants": [
+        "basic",
+        "lg",
+        "sm"
+      ],
+      "count": 3,
+      "html": {
+        "basic": "<div class=\"fr-highlight\">\n    <p>Texte mis en exergue</p>\n</div>",
+        "lg": "<div class=\"fr-highlight fr-highlight--lg\">\n    <p>Grande mise en exergue</p>\n</div>",
+        "sm": "<div class=\"fr-highlight fr-highlight--sm\">\n    <p>Petite mise en exergue</p>\n</div>"
+      }
+    },
+    "modal": {
+      "variants": [
+        "basic",
+        "opened"
+      ],
+      "count": 2,
+      "html": {
+        "basic": "<button class=\"fr-btn\" data-fr-opened=\"false\" aria-controls=\"modal-1\">\n    Ouvrir la modale\n</button>\n\n<dialog id=\"modal-1\" class=\"fr-modal\" role=\"dialog\" aria-labelledby=\"modal-1-title\" aria-modal=\"true\">\n    <div class=\"fr-container fr-container--fluid fr-container-md\">\n        <div class=\"fr-grid-row fr-grid-row--center\">\n            <div class=\"fr-col-12 fr-col-md-8 fr-col-lg-6\">\n                <div class=\"fr-modal__body\">\n                    <div class=\"fr-modal__header\">\n                        <button class=\"fr-btn--close fr-btn\" aria-controls=\"modal-1\" title=\"Fermer\">\n                            Fermer\n                        </button>\n                    </div>\n                    <div class=\"fr-modal__content\">\n                        <h1 id=\"modal-1-title\" class=\"fr-modal__title\">\n                            Titre de la modale\n                        </h1>\n                        <p>Contenu de la modale</p>\n                    </div>\n                    <div class=\"fr-modal__footer\">\n                        <div class=\"fr-btns-group fr-btns-group--inline-lg\">\n                            <button class=\"fr-btn\">\n                                Action principale\n                            </button>\n                            <button class=\"fr-btn fr-btn--secondary\">\n                                Action secondaire\n                            </button>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</dialog>",
+        "opened": "<dialog id=\"modal-opened\" class=\"fr-modal\" role=\"dialog\" aria-modal=\"true\" open>\n    <div class=\"fr-container fr-container--fluid fr-container-md\">\n        <div class=\"fr-grid-row fr-grid-row--center\">\n            <div class=\"fr-col-12 fr-col-md-8\">\n                <div class=\"fr-modal__body\">\n                    <div class=\"fr-modal__header\">\n                        <button class=\"fr-btn--close fr-btn\" title=\"Fermer\">\n                            Fermer\n                        </button>\n                    </div>\n                    <div class=\"fr-modal__content\">\n                        <h1 class=\"fr-modal__title\">\n                            Modale ouverte\n                        </h1>\n                        <p>Cette modale est ouverte par défaut</p>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</dialog>"
+      }
+    },
+    "notice": {
+      "variants": [
+        "basic",
+        "info",
+        "warning"
+      ],
+      "count": 3,
+      "html": {
+        "basic": "<div class=\"fr-notice\">\n    <div class=\"fr-container\">\n        <div class=\"fr-notice__body\">\n            <p class=\"fr-notice__title\">\n                Information importante concernant le site\n            </p>\n        </div>\n    </div>\n</div>",
+        "info": "<div class=\"fr-notice fr-notice--info\">\n    <div class=\"fr-container\">\n        <div class=\"fr-notice__body\">\n            <p class=\"fr-notice__title\">\n                Bandeau d'information\n            </p>\n            <button class=\"fr-btn--close fr-btn\" title=\"Masquer le message\">\n                Masquer le message\n            </button>\n        </div>\n    </div>\n</div>",
+        "warning": "<div class=\"fr-notice fr-notice--warning\">\n    <div class=\"fr-container\">\n        <div class=\"fr-notice__body\">\n            <p class=\"fr-notice__title\">\n                ⚠️ Site en maintenance\n            </p>\n        </div>\n    </div>\n</div>"
+      }
+    },
+    "quote": {
+      "variants": [
+        "basic",
+        "image"
+      ],
+      "count": 2,
+      "html": {
+        "basic": "<figure class=\"fr-quote\">\n    <blockquote cite=\"https://source.com\">\n        <p>« Citation importante »</p>\n    </blockquote>\n    <figcaption>\n        <p class=\"fr-quote__author\">Auteur de la citation</p>\n        <ul class=\"fr-quote__source\">\n            <li>\n                <cite>Source de la citation</cite>\n            </li>\n        </ul>\n    </figcaption>\n</figure>",
+        "image": "<figure class=\"fr-quote fr-quote--image\">\n    <blockquote cite=\"https://source.com\">\n        <p>« Citation avec image »</p>\n    </blockquote>\n    <figcaption>\n        <div class=\"fr-quote__image\">\n            <img src=\"/portrait.jpg\" alt=\"Portrait de l'auteur\">\n        </div>\n        <p class=\"fr-quote__author\">Nom de l'auteur</p>\n        <ul class=\"fr-quote__source\">\n            <li>\n                <cite>Titre, fonction</cite>\n            </li>\n        </ul>\n    </figcaption>\n</figure>"
+      }
+    },
+    "stepper": {
+      "variants": [
+        "basic"
+      ],
+      "count": 1,
+      "html": {
+        "basic": "<div class=\"fr-stepper\">\n    <h2 class=\"fr-stepper__title\">\n        <span class=\"fr-stepper__state\">\n            Étape 2 sur 4\n        </span>\n        Titre de l'étape\n    </h2>\n    <div class=\"fr-stepper__steps\" data-fr-current-step=\"2\" data-fr-steps=\"4\"></div>\n    <p class=\"fr-stepper__details\">\n        <span class=\"fr-text--bold\">Prochaine étape :</span> Description de l'étape suivante\n    </p>\n</div>"
+      }
+    },
+    "summary": {
+      "variants": [
+        "basic"
+      ],
+      "count": 1,
+      "html": {
+        "basic": "<nav class=\"fr-summary\" role=\"navigation\" aria-labelledby=\"summary-title\">\n    <h2 class=\"fr-summary__title\" id=\"summary-title\">Sommaire</h2>\n    <ol class=\"fr-summary__list\">\n        <li>\n            <a class=\"fr-summary__link\" href=\"#section-1\">\n                Section 1\n            </a>\n        </li>\n        <li>\n            <a class=\"fr-summary__link\" href=\"#section-2\">\n                Section 2\n            </a>\n            <ol class=\"fr-summary__list\">\n                <li>\n                    <a class=\"fr-summary__link\" href=\"#section-2-1\">\n                        Sous-section 2.1\n                    </a>\n                </li>\n                <li>\n                    <a class=\"fr-summary__link\" href=\"#section-2-2\">\n                        Sous-section 2.2\n                    </a>\n                </li>\n            </ol>\n        </li>\n        <li>\n            <a class=\"fr-summary__link\" href=\"#section-3\">\n                Section 3\n            </a>\n        </li>\n    </ol>\n</nav>"
+      }
+    },
+    "table": {
+      "variants": [
+        "basic",
+        "complex",
+        "bordered"
+      ],
+      "count": 3,
+      "html": {
+        "basic": "<div class=\"fr-table\">\n    <table>\n        <caption>\n            Titre du tableau\n        </caption>\n        <thead>\n            <tr>\n                <th scope=\"col\">En-tête 1</th>\n                <th scope=\"col\">En-tête 2</th>\n                <th scope=\"col\">En-tête 3</th>\n            </tr>\n        </thead>\n        <tbody>\n            <tr>\n                <td>Donnée 1.1</td>\n                <td>Donnée 1.2</td>\n                <td>Donnée 1.3</td>\n            </tr>\n            <tr>\n                <td>Donnée 2.1</td>\n                <td>Donnée 2.2</td>\n                <td>Donnée 2.3</td>\n            </tr>\n        </tbody>\n    </table>\n</div>",
+        "complex": "<div class=\"fr-table\">\n    <table>\n        <caption>\n            Tableau complexe avec en-têtes de ligne\n        </caption>\n        <thead>\n            <tr>\n                <th scope=\"col\">Nom</th>\n                <th scope=\"col\">Prénom</th>\n                <th scope=\"col\">Email</th>\n                <th scope=\"col\">Actions</th>\n            </tr>\n        </thead>\n        <tbody>\n            <tr>\n                <th scope=\"row\">Dupont</th>\n                <td>Jean</td>\n                <td>jean.dupont@example.fr</td>\n                <td>\n                    <button class=\"fr-btn fr-btn--sm fr-btn--tertiary-no-outline\">\n                        Modifier\n                    </button>\n                </td>\n            </tr>\n        </tbody>\n    </table>\n</div>",
+        "bordered": "<div class=\"fr-table fr-table--bordered\">\n    <table>\n        <caption>Tableau avec bordures</caption>\n        <thead>\n            <tr>\n                <th>Colonne 1</th>\n                <th>Colonne 2</th>\n            </tr>\n        </thead>\n        <tbody>\n            <tr>\n                <td>Cellule 1</td>\n                <td>Cellule 2</td>\n            </tr>\n        </tbody>\n    </table>\n</div>"
+      }
+    },
+    "tabs": {
+      "variants": [
+        "basic",
+        "icon"
+      ],
+      "count": 2,
+      "html": {
+        "basic": "<div class=\"fr-tabs\">\n    <ul class=\"fr-tabs__list\" role=\"tablist\" aria-label=\"Onglets\">\n        <li role=\"presentation\">\n            <button id=\"tab-1\" class=\"fr-tabs__tab\" tabindex=\"0\" role=\"tab\" aria-selected=\"true\" aria-controls=\"panel-1\">\n                Onglet 1\n            </button>\n        </li>\n        <li role=\"presentation\">\n            <button id=\"tab-2\" class=\"fr-tabs__tab\" tabindex=\"-1\" role=\"tab\" aria-selected=\"false\" aria-controls=\"panel-2\">\n                Onglet 2\n            </button>\n        </li>\n    </ul>\n    <div id=\"panel-1\" class=\"fr-tabs__panel fr-tabs__panel--selected\" role=\"tabpanel\" aria-labelledby=\"tab-1\" tabindex=\"0\">\n        <p>Contenu de l'onglet 1</p>\n    </div>\n    <div id=\"panel-2\" class=\"fr-tabs__panel\" role=\"tabpanel\" aria-labelledby=\"tab-2\" tabindex=\"0\">\n        <p>Contenu de l'onglet 2</p>\n    </div>\n</div>",
+        "icon": "<div class=\"fr-tabs\">\n    <ul class=\"fr-tabs__list\" role=\"tablist\">\n        <li role=\"presentation\">\n            <button class=\"fr-tabs__tab fr-tabs__tab--icon-left fr-icon-file-line\" role=\"tab\" aria-selected=\"true\">\n                Documents\n            </button>\n        </li>\n        <li role=\"presentation\">\n            <button class=\"fr-tabs__tab fr-tabs__tab--icon-left fr-icon-user-line\" role=\"tab\">\n                Profil\n            </button>\n        </li>\n    </ul>\n</div>"
+      }
+    },
+    "tag": {
+      "variants": [
+        "basic",
+        "clickable",
+        "dismissible",
+        "sm",
+        "icon",
+        "group"
+      ],
+      "count": 6,
+      "html": {
+        "basic": "<p class=\"fr-tag\">Tag simple</p>",
+        "clickable": "<a class=\"fr-tag\" href=\"#\">Tag cliquable</a>",
+        "dismissible": "<button class=\"fr-tag fr-tag--dismiss\" aria-label=\"Retirer le tag\">\n    Tag supprimable\n</button>",
+        "sm": "<p class=\"fr-tag fr-tag--sm\">Petit tag</p>",
+        "icon": "<p class=\"fr-tag fr-tag--icon-left fr-icon-check-line\">\n    Tag avec icône\n</p>",
+        "group": "<ul class=\"fr-tags-group\">\n    <li>\n        <p class=\"fr-tag\">Tag 1</p>\n    </li>\n    <li>\n        <p class=\"fr-tag\">Tag 2</p>\n    </li>\n    <li>\n        <a class=\"fr-tag\" href=\"#\">Tag 3</a>\n    </li>\n</ul>"
+      }
+    },
+    "tile": {
+      "variants": [
+        "basic",
+        "horizontal",
+        "vertical"
+      ],
+      "count": 3,
+      "html": {
+        "basic": "<div class=\"fr-tile fr-enlarge-link\">\n    <div class=\"fr-tile__body\">\n        <h3 class=\"fr-tile__title\">\n            <a href=\"#\" class=\"fr-tile__link\">Titre de la tuile</a>\n        </h3>\n        <p class=\"fr-tile__desc\">Description de la tuile</p>\n    </div>\n</div>",
+        "horizontal": "<div class=\"fr-tile fr-tile--horizontal fr-enlarge-link\">\n    <div class=\"fr-tile__body\">\n        <h3 class=\"fr-tile__title\">\n            <a href=\"#\" class=\"fr-tile__link\">Tuile horizontale</a>\n        </h3>\n        <p class=\"fr-tile__desc\">Description</p>\n    </div>\n</div>",
+        "vertical": "<div class=\"fr-tile fr-tile--vertical fr-enlarge-link\">\n    <div class=\"fr-tile__header\">\n        <div class=\"fr-tile__img\">\n            <img src=\"/icon.svg\" alt=\"\">\n        </div>\n    </div>\n    <div class=\"fr-tile__body\">\n        <h3 class=\"fr-tile__title\">\n            <a href=\"#\" class=\"fr-tile__link\">Tuile verticale</a>\n        </h3>\n        <p class=\"fr-tile__desc\">Description</p>\n    </div>\n</div>"
+      }
+    },
+    "tooltip": {
+      "variants": [
+        "basic"
+      ],
+      "count": 1,
+      "html": {
+        "basic": "<span class=\"fr-tooltip fr-placement\" id=\"tooltip-1\" role=\"tooltip\" aria-hidden=\"true\">\n    Contenu de l'infobulle\n</span>\n<button class=\"fr-btn\" aria-describedby=\"tooltip-1\">\n    Bouton avec infobulle\n</button>"
+      }
+    },
+    "transcription": {
+      "variants": [
+        "basic"
+      ],
+      "count": 1,
+      "html": {
+        "basic": "<div class=\"fr-transcription\">\n    <button class=\"fr-transcription__btn\" aria-expanded=\"false\" aria-controls=\"transcription-1\">\n        Transcription\n    </button>\n    <div class=\"fr-collapse\" id=\"transcription-1\">\n        <div class=\"fr-transcription__footer\">\n            <div class=\"fr-transcription__actions-group\">\n                <button class=\"fr-btn fr-btn--fullscreen\" aria-controls=\"transcription-1\" title=\"Agrandir\">\n                    Agrandir\n                </button>\n            </div>\n        </div>\n        <div class=\"fr-transcription__content\">\n            <p>Contenu de la transcription...</p>\n        </div>\n    </div>\n</div>"
+      }
+    },
+    "logo": {
+      "variants": [
+        "basic",
+        "operator"
+      ],
+      "count": 2,
+      "html": {
+        "basic": "<p class=\"fr-logo\">République<br>Française</p>",
+        "operator": "<div class=\"fr-logo__operator\">\n    <img src=\"/logo-operateur.svg\" alt=\"Nom de l'opérateur\">\n</div>"
+      }
+    },
+    "consent": {
+      "variants": [
+        "basic"
+      ],
+      "count": 1,
+      "html": {
+        "basic": "<div class=\"fr-consent-banner\">\n    <div class=\"fr-container\">\n        <div class=\"fr-consent-banner__body\">\n            <div class=\"fr-consent-banner__title\">\n                <span class=\"fr-consent-banner__title-question\">Cookies et traceurs</span>\n                <span class=\"fr-consent-banner__title-desc\">Ce site utilise des cookies</span>\n            </div>\n            <div class=\"fr-consent-banner__buttons\">\n                <button class=\"fr-btn fr-btn--accept\">\n                    Tout accepter\n                </button>\n                <button class=\"fr-btn fr-btn--refuse\">\n                    Tout refuser\n                </button>\n                <button class=\"fr-btn fr-btn--secondary\">\n                    Personnaliser\n                </button>\n            </div>\n        </div>\n    </div>\n</div>"
+      }
+    },
+    "connect": {
+      "variants": [
+        "basic"
+      ],
+      "count": 1,
+      "html": {
+        "basic": "<div class=\"fr-connect-group\">\n    <button class=\"fr-connect fr-connect--plus\">\n        <span class=\"fr-connect__login\">S'identifier avec</span>\n        <span class=\"fr-connect__brand\">FranceConnect+</span>\n    </button>\n    <p>\n        <a href=\"https://franceconnect.gouv.fr/\" target=\"_blank\" rel=\"noopener\" title=\"Qu'est-ce que FranceConnect - nouvelle fenêtre\">\n            Qu'est-ce que FranceConnect ?\n        </a>\n    </p>\n</div>"
+      }
+    },
+    "display": {
+      "variants": [
+        "basic"
+      ],
+      "count": 1,
+      "html": {
+        "basic": "<div class=\"fr-display\">\n    <button class=\"fr-display__btn\" aria-controls=\"display-settings\" aria-expanded=\"false\">\n        Paramètres d'affichage\n    </button>\n    <div class=\"fr-display__settings\" id=\"display-settings\">\n        <fieldset class=\"fr-fieldset\">\n            <legend class=\"fr-fieldset__legend\">Choisir un thème</legend>\n            <div class=\"fr-fieldset__content\">\n                <div class=\"fr-radio-group\">\n                    <input type=\"radio\" id=\"theme-light\" name=\"theme\" value=\"light\">\n                    <label class=\"fr-label\" for=\"theme-light\">Thème clair</label>\n                </div>\n                <div class=\"fr-radio-group\">\n                    <input type=\"radio\" id=\"theme-dark\" name=\"theme\" value=\"dark\">\n                    <label class=\"fr-label\" for=\"theme-dark\">Thème sombre</label>\n                </div>\n            </div>\n        </fieldset>\n    </div>\n</div>"
+      }
+    },
+    "download": {
+      "variants": [
+        "basic",
+        "card"
+      ],
+      "count": 2,
+      "html": {
+        "basic": "<a class=\"fr-download__link\" href=\"/document.pdf\" download>\n    Télécharger le document\n    <span class=\"fr-download__detail\">\n        PDF – 2,3 Mo\n    </span>\n</a>",
+        "card": "<div class=\"fr-downloads-group\">\n    <h3 class=\"fr-downloads-group__title\">Fichiers à télécharger</h3>\n    <ul>\n        <li>\n            <a class=\"fr-download__link\" href=\"/doc1.pdf\" download>\n                Document 1\n                <span class=\"fr-download__detail\">\n                    PDF – 1,2 Mo\n                </span>\n            </a>\n        </li>\n        <li>\n            <a class=\"fr-download__link\" href=\"/doc2.xlsx\" download>\n                Document 2\n                <span class=\"fr-download__detail\">\n                    XLSX – 450 Ko\n                </span>\n            </a>\n        </li>\n    </ul>\n</div>"
+      }
+    },
+    "follow": {
+      "variants": [
+        "basic"
+      ],
+      "count": 1,
+      "html": {
+        "basic": "<div class=\"fr-follow\">\n    <div class=\"fr-container\">\n        <div class=\"fr-grid-row\">\n            <div class=\"fr-col-12 fr-col-md-8\">\n                <div class=\"fr-follow__newsletter\">\n                    <div>\n                        <h2 class=\"fr-h5\">Abonnez-vous à notre lettre d'information</h2>\n                        <p class=\"fr-text--sm\">Description de la newsletter</p>\n                    </div>\n                    <div>\n                        <a class=\"fr-btn\" href=\"/newsletter\">\n                            S'abonner\n                        </a>\n                    </div>\n                </div>\n            </div>\n            <div class=\"fr-col-12 fr-col-md-4\">\n                <div class=\"fr-follow__social\">\n                    <h2 class=\"fr-h5\">Suivez-nous sur les réseaux sociaux</h2>\n                    <ul class=\"fr-btns-group\">\n                        <li>\n                            <a class=\"fr-btn--twitter fr-btn\" href=\"#\" title=\"Suivre sur Twitter\">\n                                twitter\n                            </a>\n                        </li>\n                        <li>\n                            <a class=\"fr-btn--linkedin fr-btn\" href=\"#\" title=\"Suivre sur LinkedIn\">\n                                linkedin\n                            </a>\n                        </li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
+      }
+    },
+    "share": {
+      "variants": [
+        "basic"
+      ],
+      "count": 1,
+      "html": {
+        "basic": "<div class=\"fr-share\">\n    <p class=\"fr-share__title\">Partager la page</p>\n    <ul class=\"fr-share__group\">\n        <li>\n            <a class=\"fr-share__link fr-share__link--facebook\" title=\"Partager sur Facebook\" href=\"#\" target=\"_blank\" rel=\"noopener\">\n                Partager sur Facebook\n            </a>\n        </li>\n        <li>\n            <a class=\"fr-share__link fr-share__link--twitter\" title=\"Partager sur Twitter\" href=\"#\" target=\"_blank\" rel=\"noopener\">\n                Partager sur Twitter\n            </a>\n        </li>\n        <li>\n            <a class=\"fr-share__link fr-share__link--linkedin\" title=\"Partager sur LinkedIn\" href=\"#\" target=\"_blank\" rel=\"noopener\">\n                Partager sur LinkedIn\n            </a>\n        </li>\n        <li>\n            <a class=\"fr-share__link fr-share__link--mail\" title=\"Envoyer par email\" href=\"mailto:?subject=Titre&body=https://example.fr\">\n                Envoyer par email\n            </a>\n        </li>\n    </ul>\n</div>"
+      }
+    },
+    "translate": {
+      "variants": [
+        "basic"
+      ],
+      "count": 1,
+      "html": {
+        "basic": "<div class=\"fr-translate\">\n    <button class=\"fr-translate__btn fr-btn fr-btn--tertiary\" aria-controls=\"translate-menu\" aria-expanded=\"false\">\n        <span class=\"fr-translate__language\" aria-label=\"Langue sélectionnée\">FR</span>\n        <span class=\"fr-btn__title\">Sélectionner une langue</span>\n    </button>\n    <div class=\"fr-collapse fr-translate__menu\" id=\"translate-menu\">\n        <ul class=\"fr-translate__list\">\n            <li>\n                <a class=\"fr-translate__link\" href=\"#\" hreflang=\"fr\" lang=\"fr\" aria-current=\"true\">\n                    FR - Français\n                </a>\n            </li>\n            <li>\n                <a class=\"fr-translate__link\" href=\"#\" hreflang=\"en\" lang=\"en\">\n                    EN - English\n                </a>\n            </li>\n        </ul>\n    </div>\n</div>"
+      }
+    },
+    "version": {
+      "variants": [
+        "basic"
+      ],
+      "count": 1,
+      "html": {
+        "basic": "<p class=\"fr-version\">\n    Version <strong>1.14.1</strong>\n</p>"
+      }
+    }
+  }
+}

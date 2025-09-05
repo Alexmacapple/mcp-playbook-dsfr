@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test Minimal DSFR</title>
+    
+    <!-- Test avec différentes versions de CDN -->
+    <!-- Option 1: UNPKG (plus fiable) -->
+    <link rel="stylesheet" href="https://unpkg.com/@gouvfr/dsfr@1.11.2/dist/dsfr.css">
+    
+    <style>
+        body { 
+            margin: 20px; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .debug-box {
+            background: #f0f0f0;
+            border: 2px solid #333;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-box">
+        <h1>🧪 Test Minimal DSFR</h1>
+        <p>Si les styles DSFR sont chargés, les composants ci-dessous doivent être stylés correctement.</p>
+    </div>
+
+    <!-- Test 1: Logo République -->
+    <div class="fr-container">
+        <p class="fr-logo">
+            République<br>Française
+        </p>
+    </div>
+
+    <hr>
+
+    <!-- Test 2: Boutons -->
+    <div class="fr-container fr-my-2w">
+        <h2>Boutons</h2>
+        <button class="fr-btn">
+            Bouton primaire
+        </button>
+        <button class="fr-btn fr-btn--secondary">
+            Bouton secondaire
+        </button>
+        <button class="fr-btn fr-btn--tertiary">
+            Bouton tertiaire
+        </button>
+    </div>
+
+    <hr>
+
+    <!-- Test 3: Alertes -->
+    <div class="fr-container fr-my-2w">
+        <h2>Alertes</h2>
+        <div class="fr-alert fr-alert--info">
+            <p class="fr-alert__title">Information</p>
+            <p>Les styles CSS du DSFR semblent fonctionner si cette alerte est bleue.</p>
+        </div>
+        
+        <div class="fr-alert fr-alert--success fr-mt-2w">
+            <p class="fr-alert__title">Succès</p>
+            <p>Cette alerte devrait être verte.</p>
+        </div>
+        
+        <div class="fr-alert fr-alert--warning fr-mt-2w">
+            <p class="fr-alert__title">Attention</p>
+            <p>Cette alerte devrait être orange.</p>
+        </div>
+        
+        <div class="fr-alert fr-alert--error fr-mt-2w">
+            <p class="fr-alert__title">Erreur</p>
+            <p>Cette alerte devrait être rouge.</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Test 4: Badges -->
+    <div class="fr-container fr-my-2w">
+        <h2>Badges</h2>
+        <p>
+            <span class="fr-badge">Badge</span>
+            <span class="fr-badge fr-badge--success">Succès</span>
+            <span class="fr-badge fr-badge--error">Erreur</span>
+            <span class="fr-badge fr-badge--warning">Attention</span>
+            <span class="fr-badge fr-badge--info">Info</span>
+            <span class="fr-badge fr-badge--new">Nouveau</span>
+        </p>
+    </div>
+
+    <hr>
+
+    <!-- Test 5: Formulaire -->
+    <div class="fr-container fr-my-2w">
+        <h2>Formulaire</h2>
+        <div class="fr-input-group">
+            <label class="fr-label" for="test-input">
+                Label du champ
+                <span class="fr-hint-text">Texte d'aide</span>
+            </label>
+            <input class="fr-input" type="text" id="test-input" placeholder="Placeholder">
+        </div>
+        
+        <div class="fr-checkbox-group fr-mt-2w">
+            <input type="checkbox" id="test-checkbox">
+            <label class="fr-label" for="test-checkbox">
+                Case à cocher
+            </label>
+        </div>
+        
+        <div class="fr-radio-group fr-mt-2w">
+            <input type="radio" id="test-radio-1" name="test-radio">
+            <label class="fr-label" for="test-radio-1">
+                Option 1
+            </label>
+        </div>
+        <div class="fr-radio-group">
+            <input type="radio" id="test-radio-2" name="test-radio">
+            <label class="fr-label" for="test-radio-2">
+                Option 2
+            </label>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Test 6: Accordéon -->
+    <div class="fr-container fr-my-2w">
+        <h2>Accordéon</h2>
+        <section class="fr-accordion">
+            <h3 class="fr-accordion__title">
+                <button class="fr-accordion__btn" aria-expanded="false" aria-controls="accordion-1">
+                    Titre de l'accordéon
+                </button>
+            </h3>
+            <div class="fr-collapse" id="accordion-1">
+                <p>Contenu de l'accordéon. Si vous pouvez cliquer pour ouvrir/fermer, le JS fonctionne.</p>
+            </div>
+        </section>
+    </div>
+
+    <hr>
+
+    <!-- Test 7: Table -->
+    <div class="fr-container fr-my-2w">
+        <h2>Tableau</h2>
+        <table class="fr-table">
+            <thead>
+                <tr>
+                    <th scope="col">Colonne 1</th>
+                    <th scope="col">Colonne 2</th>
+                    <th scope="col">Colonne 3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Donnée 1</td>
+                    <td>Donnée 2</td>
+                    <td>Donnée 3</td>
+                </tr>
+                <tr>
+                    <td>Donnée 4</td>
+                    <td>Donnée 5</td>
+                    <td>Donnée 6</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- JavaScript DSFR -->
+    <script type="module" src="https://unpkg.com/@gouvfr/dsfr@1.11.2/dist/dsfr.module.js"></script>
+    <script nomodule src="https://unpkg.com/@gouvfr/dsfr@1.11.2/dist/dsfr.nomodule.js"></script>
+
+    <!-- Diagnostic -->
+    <script>
+        window.addEventListener('load', function() {
+            const diagnostic = [];
+            
+            // Test CSS
+            const btn = document.querySelector('.fr-btn');
+            if (btn) {
+                const styles = window.getComputedStyle(btn);
+                if (styles.backgroundColor !== 'rgba(0, 0, 0, 0)' || styles.padding !== '0px') {
+                    diagnostic.push('✅ CSS chargé');
+                } else {
+                    diagnostic.push('❌ CSS non chargé');
+                }
+            }
+            
+            // Test JS
+            setTimeout(() => {
+                if (window.dsfr) {
+                    diagnostic.push('✅ JS chargé');
+                } else {
+                    diagnostic.push('❌ JS non chargé');
+                }
+                
+                // Afficher le diagnostic
+                const box = document.querySelector('.debug-box');
+                const result = document.createElement('div');
+                result.style.marginTop = '1rem';
+                result.style.padding = '0.5rem';
+                result.style.background = '#fff';
+                result.innerHTML = '<strong>Diagnostic:</strong><br>' + diagnostic.join('<br>');
+                box.appendChild(result);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

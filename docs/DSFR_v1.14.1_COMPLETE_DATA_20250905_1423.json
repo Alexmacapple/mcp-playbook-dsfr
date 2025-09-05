@@ -1,0 +1,474 @@
+{
+  "version": "1.14.1",
+  "updated_at": "2025-09-05T14:21:11.786161",
+  "components": {
+    "dropdown": {
+      "name": "dropdown",
+      "className": "fr-dropdown",
+      "has_scss": false,
+      "has_js": false,
+      "has_template": false,
+      "examples_count": 0,
+      "storybook_url": ""
+    },
+    "pagination": {
+      "name": "pagination",
+      "className": "fr-pagination",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 5,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-pagination-pagination--docs"
+    },
+    "footer": {
+      "name": "footer",
+      "className": "fr-footer",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 12,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-pied-de-page-footer--docs"
+    },
+    "form": {
+      "name": "form",
+      "className": "fr-form",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 20,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-formulaire-form--docs"
+    },
+    "tooltip": {
+      "name": "tooltip",
+      "className": "fr-tooltip",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 8,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-infobulle-tooltip--docs"
+    },
+    "password": {
+      "name": "password",
+      "className": "fr-password",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 6,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-mot-de-passe-password--docs"
+    },
+    "radio": {
+      "name": "radio",
+      "className": "fr-radio",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 13,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-boutons-radio-radio--docs"
+    },
+    "card": {
+      "name": "card",
+      "className": "fr-card",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 41,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-carte-card--docs"
+    },
+    "transcription": {
+      "name": "transcription",
+      "className": "fr-transcription",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 3,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-transcription-transcription--docs"
+    },
+    "translate": {
+      "name": "translate",
+      "className": "fr-translate",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 6,
+      "storybook_url": ""
+    },
+    "highlight": {
+      "name": "highlight",
+      "className": "fr-highlight",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 5,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-mise-en-exergue-highlight--docs"
+    },
+    "input": {
+      "name": "input",
+      "className": "fr-input",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 24,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-champ-de-saisie-input--docs"
+    },
+    "quote": {
+      "name": "quote",
+      "className": "fr-quote",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 4,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-citation-quote--docs"
+    },
+    "alert": {
+      "name": "alert",
+      "className": "fr-alert",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 8,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-alerte-alert--docs"
+    },
+    "accordion": {
+      "name": "accordion",
+      "className": "fr-accordion",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 9,
+      "storybook_url": ""
+    },
+    "follow": {
+      "name": "follow",
+      "className": "fr-follow",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 20,
+      "storybook_url": ""
+    },
+    "segmented": {
+      "name": "segmented",
+      "className": "fr-segmented",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 4,
+      "storybook_url": ""
+    },
+    "checkbox": {
+      "name": "checkbox",
+      "className": "fr-checkbox",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 8,
+      "storybook_url": ""
+    },
+    "navigation": {
+      "name": "navigation",
+      "className": "fr-navigation",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 10,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-navigation-navigation--docs"
+    },
+    "content": {
+      "name": "content",
+      "className": "fr-content",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 13,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-gestionnaire-de-contenu-content--docs"
+    },
+    "stepper": {
+      "name": "stepper",
+      "className": "fr-stepper",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 3,
+      "storybook_url": ""
+    },
+    "user": {
+      "name": "user",
+      "className": "fr-user",
+      "has_scss": false,
+      "has_js": false,
+      "has_template": false,
+      "examples_count": 0,
+      "storybook_url": ""
+    },
+    "tile": {
+      "name": "tile",
+      "className": "fr-tile",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 38,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-tuile-tile--docs"
+    },
+    "tab": {
+      "name": "tab",
+      "className": "fr-tab",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 7,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-onglets-tabs--docs"
+    },
+    "tabnav": {
+      "name": "tabnav",
+      "className": "fr-tabnav",
+      "has_scss": false,
+      "has_js": false,
+      "has_template": false,
+      "examples_count": 0,
+      "storybook_url": ""
+    },
+    "composition": {
+      "name": "composition",
+      "className": "fr-composition",
+      "has_scss": false,
+      "has_js": false,
+      "has_template": false,
+      "examples_count": 0,
+      "storybook_url": ""
+    },
+    "combobox": {
+      "name": "combobox",
+      "className": "fr-combobox",
+      "has_scss": false,
+      "has_js": false,
+      "has_template": false,
+      "examples_count": 0,
+      "storybook_url": ""
+    },
+    "notice": {
+      "name": "notice",
+      "className": "fr-notice",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 10,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-bandeau-d-information-importante-notice--docs"
+    },
+    "search": {
+      "name": "search",
+      "className": "fr-search",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 4,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-barre-de-recherche-search--docs"
+    },
+    "callout": {
+      "name": "callout",
+      "className": "fr-callout",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 3,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-mise-en-avant-callout--docs"
+    },
+    "toggle": {
+      "name": "toggle",
+      "className": "fr-toggle",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 13,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-interrupteur-toggle--docs"
+    },
+    "button": {
+      "name": "button",
+      "className": "fr-button",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 7,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-bouton-button--docs"
+    },
+    "consent": {
+      "name": "consent",
+      "className": "fr-consent",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 8,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-gestionnaire-de-consentement-consent--docs"
+    },
+    "link": {
+      "name": "link",
+      "className": "fr-link",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 15,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-lien-link--docs"
+    },
+    "logo": {
+      "name": "logo",
+      "className": "fr-logo",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 6,
+      "storybook_url": ""
+    },
+    "download": {
+      "name": "download",
+      "className": "fr-download",
+      "has_scss": true,
+      "has_js": false,
+      "has_template": false,
+      "examples_count": 16,
+      "storybook_url": ""
+    },
+    "table": {
+      "name": "table",
+      "className": "fr-table",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 24,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-tableau-table--docs"
+    },
+    "sidemenu": {
+      "name": "sidemenu",
+      "className": "fr-sidemenu",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 6,
+      "storybook_url": ""
+    },
+    "skiplink": {
+      "name": "skiplink",
+      "className": "fr-skiplink",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 5,
+      "storybook_url": ""
+    },
+    "display": {
+      "name": "display",
+      "className": "fr-display",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 6,
+      "storybook_url": ""
+    },
+    "select": {
+      "name": "select",
+      "className": "fr-select",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 10,
+      "storybook_url": ""
+    },
+    "breadcrumb": {
+      "name": "breadcrumb",
+      "className": "fr-breadcrumb",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 7,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-fil-d-ariane-breadcrumb--docs"
+    },
+    "range": {
+      "name": "range",
+      "className": "fr-range",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 6,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-curseur-range--docs"
+    },
+    "modal": {
+      "name": "modal",
+      "className": "fr-modal",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 9,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-modale-modal--docs"
+    },
+    "_part": {
+      "name": "_part",
+      "className": "fr-_part",
+      "has_scss": false,
+      "has_js": false,
+      "has_template": false,
+      "examples_count": 0,
+      "storybook_url": ""
+    },
+    "connect": {
+      "name": "connect",
+      "className": "fr-connect",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 7,
+      "storybook_url": ""
+    },
+    "tag": {
+      "name": "tag",
+      "className": "fr-tag",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 9,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-tag-tag--docs"
+    },
+    "header": {
+      "name": "header",
+      "className": "fr-header",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 17,
+      "storybook_url": ""
+    },
+    "summary": {
+      "name": "summary",
+      "className": "fr-summary",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 5,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-sommaire-summary--docs"
+    },
+    "upload": {
+      "name": "upload",
+      "className": "fr-upload",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 4,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-ajout-de-fichier-upload--docs"
+    },
+    "share": {
+      "name": "share",
+      "className": "fr-share",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 10,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-partage-share--docs"
+    },
+    "badge": {
+      "name": "badge",
+      "className": "fr-badge",
+      "has_scss": true,
+      "has_js": true,
+      "has_template": false,
+      "examples_count": 7,
+      "storybook_url": "https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-badge-badge--docs"
+    }
+  }
+}

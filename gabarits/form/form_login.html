@@ -1,0 +1,50 @@
+<!-- DSFR v1.14.1 - Composant: form - Variante: login -->
+<!-- Généré le 2025-09-05 14:57 -->
+<!-- HTML de production prêt à l'emploi -->
+
+<form action="/login" method="post">
+    <fieldset class="fr-fieldset">
+        <legend class="fr-fieldset__legend">
+            <h2>Connexion</h2>
+        </legend>
+        <div class="fr-fieldset__content">
+            <div class="fr-input-group">
+                <label class="fr-label" for="login-email">
+                    Email
+                </label>
+                <input class="fr-input" type="email" id="login-email" name="email" required autocomplete="username">
+            </div>
+            
+            <div class="fr-password" id="login-password">
+                <label class="fr-label" for="login-pass">
+                    Mot de passe
+                </label>
+                <div class="fr-input-wrap">
+                    <input class="fr-password__input fr-input" type="password" id="login-pass" name="password" required autocomplete="current-password">
+                </div>
+                <div class="fr-password__checkbox fr-checkbox-group fr-checkbox-group--sm">
+                    <input type="checkbox" id="login-pass-show">
+                    <label class="fr-password__checkbox-label" for="login-pass-show">
+                        Afficher
+                    </label>
+                </div>
+            </div>
+            
+            <div class="fr-checkbox-group">
+                <input type="checkbox" id="login-remember" name="remember">
+                <label class="fr-label" for="login-remember">
+                    Se souvenir de moi
+                </label>
+            </div>
+            
+            <div class="fr-btns-group">
+                <button class="fr-btn" type="submit">
+                    Se connecter
+                </button>
+                <a class="fr-btn fr-btn--secondary" href="/forgot-password">
+                    Mot de passe oublié ?
+                </a>
+            </div>
+        </div>
+    </fieldset>
+</form>

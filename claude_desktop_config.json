@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "mcp-playbook-dsfr": {
+      "command": "python3",
+      "args": ["/Users/alex/Desktop/mcp-playbook-dsfr/mcp/server.py"],
+      "env": {},
+      "enable_debug": false
+    }
+  }
+}

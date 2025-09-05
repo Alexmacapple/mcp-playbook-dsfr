@@ -1,0 +1,37 @@
+{
+  "name": "mcp-playbook-dsfr",
+  "version": "2.0.0",
+  "description": "Model Context Protocol server for French Design System (DSFR) v1.14.1 - Production Playbook",
+  "type": "module",
+  "bin": {
+    "mcp-playbook-dsfr": "python3 mcp/server.py"
+  },
+  "scripts": {
+    "start": "python3 mcp/server.py",
+    "test": "python3 test_mcp.py",
+    "install-deps": "pip3 install -r requirements.txt"
+  },
+  "keywords": [
+    "mcp",
+    "dsfr",
+    "design-system",
+    "france",
+    "claude",
+    "ai"
+  ],
+  "author": "DSFR MCP Team",
+  "license": "MIT",
+  "mcp": {
+    "name": "mcp-playbook-dsfr",
+    "version": "2.0.0",
+    "commands": [
+      "generate_component",
+      "list_components",
+      "list_variants",
+      "validate_html",
+      "analyze_needs",
+      "create_page",
+      "get_component_info"
+    ]
+  }
+}

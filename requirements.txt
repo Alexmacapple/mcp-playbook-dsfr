@@ -1,0 +1,17 @@
+"""
+Dependencies for DSFR MCP Server
+"""
+
+# MCP SDK - Required for Claude integration
+mcp>=0.1.0
+
+# Python type hints (for older Python versions)
+typing-extensions>=4.0.0
+
+# Optional: For better performance
+ujson>=5.0.0  # Faster JSON parsing
+
+# Optional: For development
+pytest>=7.0.0
+black>=22.0.0
+mypy>=0.950

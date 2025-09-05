@@ -1,0 +1,88 @@
+
+╔════════════════════════════════════════════════════════════╗
+║        📋 RAPPORT DE CONFORMITÉ DSFR v1.14.1               ║
+╚════════════════════════════════════════════════════════════╝
+
+📊 STATISTIQUES GLOBALES:
+   • Composants vérifiés: 48
+   • Variantes testées: 136
+   • Points de contrôle: 265
+   • ✅ Validations: 232
+   • ❌ Erreurs: 0
+   • ⚠️ Avertissements: 33
+   • Taux de conformité: 87.5%
+
+⚠️ AVERTISSEMENTS (recommandations):
+   ⚠️ alert/closable: Variante non officielle (custom)
+   ⚠️ alert/error: Attribut role recommandé absent
+   ⚠️ alert/info: Attribut role recommandé absent
+   ⚠️ alert/sm: Attribut role recommandé absent
+   ⚠️ alert/sm: Variante non officielle (custom)
+   ⚠️ alert/success: Attribut role recommandé absent
+   ⚠️ alert/warning: Attribut role recommandé absent
+   ⚠️ badge/basic: Variante non officielle (custom)
+   ⚠️ badge/group: Variante non officielle (custom)
+   ⚠️ badge/sm: Variante non officielle (custom)
+   ... et 23 autres avertissements
+
+📦 CONFORMITÉ PAR COMPOSANT:
+   ✅ accordion: 100% (2 variantes)
+   ⚠️ alert: 71% (6 variantes)
+   ✅ back_to_top: 100% (1 variantes)
+   ⚠️ badge: 88% (8 variantes)
+   ✅ breadcrumb: 100% (1 variantes)
+   ⚠️ button: 78% (11 variantes)
+   ✅ button_group: 100% (5 variantes)
+   ⚠️ callout: 70% (3 variantes)
+   ⚠️ card: 75% (5 variantes)
+   ✅ checkbox: 100% (3 variantes)
+   ✅ connect: 100% (1 variantes)
+   ✅ consent: 100% (1 variantes)
+   ✅ content: 100% (2 variantes)
+   ✅ display: 100% (1 variantes)
+   ✅ download: 100% (2 variantes)
+   ✅ follow: 100% (1 variantes)
+   ✅ footer: 100% (2 variantes)
+   ✅ form: 100% (3 variantes)
+   ✅ header: 100% (2 variantes)
+   ✅ highlight: 100% (3 variantes)
+   ✅ input: 100% (10 variantes)
+   ✅ link: 100% (6 variantes)
+   ✅ logo: 100% (2 variantes)
+   ✅ modal: 100% (3 variantes)
+   ✅ navigation: 100% (4 variantes)
+   ⚠️ notice: 89% (3 variantes)
+   ✅ pagination: 100% (1 variantes)
+   ✅ password: 100% (2 variantes)
+   ✅ quote: 100% (2 variantes)
+   ✅ radio: 100% (3 variantes)
+   ✅ range: 100% (3 variantes)
+   ⚠️ search: 75% (2 variantes)
+   ✅ select: 100% (3 variantes)
+   ✅ share: 100% (1 variantes)
+   ✅ sidemenu: 100% (1 variantes)
+   ✅ skiplinks: 100% (1 variantes)
+   ✅ stepper: 100% (1 variantes)
+   ✅ summary: 100% (1 variantes)
+   ✅ table: 100% (3 variantes)
+   ✅ tabs: 91% (2 variantes)
+   ⚠️ tag: 79% (6 variantes)
+   ✅ tile: 100% (3 variantes)
+   ✅ toggle: 100% (3 variantes)
+   ✅ tooltip: 100% (1 variantes)
+   ✅ transcription: 100% (1 variantes)
+   ✅ translate: 100% (1 variantes)
+   ✅ upload: 100% (3 variantes)
+   ✅ version: 100% (1 variantes)
+
+📌 RECOMMANDATIONS:
+   1. Corriger toutes les erreurs critiques (classes CSS manquantes)
+   2. Ajouter les attributs ARIA recommandés pour l'accessibilité
+   3. Vérifier que tous les formulaires ont des labels associés
+   4. Tester avec un lecteur d'écran (NVDA, JAWS)
+   5. Valider avec l'outil officiel de test DSFR
+
+🔗 RESSOURCES:
+   • Documentation DSFR: https://www.systeme-de-design.gouv.fr/
+   • Guide accessibilité RGAA: https://www.numerique.gouv.fr/publications/rgaa-accessibilite/
+   • Validateur W3C: https://validator.w3.org/
