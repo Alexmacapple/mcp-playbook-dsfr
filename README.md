@@ -236,10 +236,7 @@ MIT License - voir [LICENSE](LICENSE)
 
 <div align="center">
 
-**Fait avec ❤️ pour la French Tech gouvernementale**
-
 *🎉 100% Production-Ready - Tous les tests validés*
 
-*Ce projet n'est pas officiellement affilié au gouvernement français*
 
 </div>
