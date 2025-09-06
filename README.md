@@ -363,9 +363,10 @@ Les contributions sont les bienvenues ! Voir [CONTRIBUTING.md](CONTRIBUTING.md) 
 
 ## Auteurs
 
-- **Auteur principal** - [Votre nom](https://github.com/yourusername)
+- **Auteur principal** - [Alexandra Guiderdoni](https://github.com/Alexmacapple)
+- **Co-auteur** - Claude (Assistant IA d'Anthropic)
 
-Voir la liste des [contributeurs](https://github.com/yourusername/mcp-playbook-dsfr/contributors).
+Voir la liste des [contributeurs](https://github.com/Alexmacapple/mcp-playbook-dsfr/contributors).
 
 ## Licence
 
