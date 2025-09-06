@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/alexmacapple-mcp-playbook-dsfr-badge.png)](https://mseep.ai/app/alexmacapple-mcp-playbook-dsfr)
+
 # MCP DSFR
 
 [![Version](https://img.shields.io/badge/version-2.0.0-blue)](https://github.com/yourusername/mcp-playbook-dsfr/releases)
