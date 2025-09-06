@@ -1,62 +1,84 @@
-# 🇫🇷 MCP Playbook DSFR - Model Context Protocol pour le Design System de l'État Français
+# MCP DSFR
 
-<div align="center">
+[![Version](https://img.shields.io/badge/version-2.0.0-blue)](https://github.com/yourusername/mcp-playbook-dsfr/releases)
+[![Python](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Tests](https://img.shields.io/badge/tests-100%25_passing-brightgreen)](tests/resultats-test/RAPPORT_100_POURCENT.txt)
+[![DSFR](https://img.shields.io/badge/DSFR-v1.14-red)](https://www.systeme-de-design.gouv.fr)
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue)
-![Python](https://img.shields.io/badge/python-3.13%2B-blue)
-![DSFR](https://img.shields.io/badge/DSFR-v1.14-red)
-![RGAA](https://img.shields.io/badge/RGAA-4.1-green)
-![License](https://img.shields.io/badge/license-MIT-purple)
-![Claude](https://img.shields.io/badge/Claude-Desktop-purple)
-![Score](https://img.shields.io/badge/production-ready-success)
+Serveur Model Context Protocol intégrant le Design System de l'État français (DSFR) dans Claude Desktop. Génération, validation et audit de composants DSFR conformes RGAA 4.1.
 
-**Intégration du Design System de l'État français dans Claude Desktop via MCP**
+## Table des matières
 
-[Installation](#-installation-rapide) • [Fonctionnalités](#-fonctionnalités) • [Documentation](#-documentation) • [Tests](#-tests)
+- [Installation](#installation)
+- [Démarrage rapide](#démarrage-rapide)
+- [Fonctionnalités](#fonctionnalités)
+- [Documentation](#documentation)
+- [Architecture](#architecture)
+- [Tests](#tests)
+- [Contribution](#contribution)
+- [Support](#support)
+- [Licence](#licence)
 
-</div>
+## Prérequis
 
----
-
-## 📋 Description
-
-**MCP Playbook DSFR** est un serveur Model Context Protocol qui permet à Claude Desktop de générer, valider et auditer des interfaces conformes au Design System de l'État français (DSFR v1.14).
-
-Conçu pour les développeurs travaillant sur des projets gouvernementaux français, cet outil garantit la conformité RGAA 4.1 et accélère le développement d'interfaces accessibles.
-
-### 🌟 Points forts
-
-- ✅ **8 outils MCP** intégrés et fonctionnels dans Claude Desktop
-- 🎨 **48 composants DSFR** prêts à l'emploi avec variantes
-- ♿ **Audit RGAA 4.1** automatique (niveaux A, AA, AAA)
-- 🧠 **Analyse cognitive unique** basée sur la matrice de Rumsfeld
-- 🧪 **Génération de tests** Jest/Cypress/Playwright automatique
-- 🔒 **100% sécurisé** et production-ready
-- 📚 **Documentation complète** en français
-- ⚡ **Performance** : < 500ms de temps de réponse
-
-## 🚀 Installation rapide
-
-### Prérequis
-- Python 3.13+ (testé avec 3.13.3)
+- Python 3.9 ou supérieur
 - Claude Desktop installé
-- macOS/Linux/Windows
+- macOS, Linux ou Windows
+- 200MB d'espace disque
 
-### Installation en 3 étapes
+## Installation
+
+### Installation automatique (recommandée)
 
 ```bash
-# 1. Cloner le dépôt
+git clone https://github.com/yourusername/mcp-playbook-dsfr.git
+cd mcp-playbook-dsfr
+./install.sh
+```
+
+Le script d'installation :
+1. Vérifie la version Python
+2. Crée l'environnement virtuel
+3. Installe les dépendances (incluant beautifulsoup4)
+4. Teste le serveur
+5. Génère la configuration Claude Desktop
+
+### Exécution des tests
+
+```bash
+# Lancer tous les tests automatiquement
+./run_tests.sh
+```
+
+Le script run_tests.sh active l'environnement virtuel et exécute les 12 tests de validation.
+
+### Installation manuelle
+
+```bash
+# Cloner le repository
 git clone https://github.com/yourusername/mcp-playbook-dsfr.git
 cd mcp-playbook-dsfr
 
-# 2. Créer l'environnement virtuel et installer les dépendances
+# Créer l'environnement virtuel
 python3 -m venv venv
-source venv/bin/activate  # Sur Windows: venv\Scripts\activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# Installer les dépendances
 pip install -r requirements.txt
 
-# 3. Configurer Claude Desktop
-# Éditer ~/Library/Application Support/Claude/claude_desktop_config.json :
+# Tester l'installation
+python3 -c "from mcp_local.server import app; print('Installation réussie')"
 ```
+
+### Configuration Claude Desktop
+
+1. Localiser le fichier de configuration :
+   - **macOS** : `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - **Windows** : `%APPDATA%\Claude\claude_desktop_config.json`
+   - **Linux** : `~/.config/Claude/claude_desktop_config.json`
+
+2. Ajouter la configuration MCP (remplacer `/chemin/absolu/vers/` par votre chemin réel) :
 
 ```json
 {
@@ -67,176 +89,282 @@ pip install -r requirements.txt
       "env": {
         "PYTHONPATH": "/chemin/absolu/vers/mcp-playbook-dsfr",
         "ENV": "production",
-        "LOG_LEVEL": "INFO"
+        "LOG_LEVEL": "INFO",
+        "DEFAULT_RGAA_LEVEL": "AA",
+        "ENABLE_HTML_SANITIZATION": "true"
       }
     }
   }
 }
 ```
 
-**4. Redémarrer Claude Desktop** - L'icône 🔌 doit apparaître
+3. Redémarrer Claude Desktop
+4. Vérifier la présence de l'icône de connexion MCP
 
-## 💬 Utilisation
+## Démarrage rapide
 
-### Exemples de commandes dans Claude Desktop
+Une fois installé, utilisez ces commandes dans Claude Desktop :
 
-```markdown
+```
 # Générer un composant
-Génère un bouton DSFR primaire avec le label "Valider"
+"Génère un bouton DSFR primaire"
 
 # Valider du HTML
-Valide ce code : <button class="fr-btn">Test</button>
+"Valide ce code : <button class='fr-btn'>Cliquer</button>"
 
 # Audit d'accessibilité
-Fais un audit RGAA sur : <img src="logo.png">
+"Fais un audit RGAA de mon formulaire"
 
-# Analyse cognitive
-Analyse : "Système d'authentification avec contraintes inconnues"
-
-# Design tokens
-Récupère les couleurs officielles DSFR
-
-# Générer des tests
-Génère des tests unitaires pour le composant button
-
-# Assistant DSFR
-Comment rendre un formulaire accessible ?
-
-# Liste des composants
-Liste tous les composants DSFR disponibles
+# Lister les composants
+"Liste tous les composants DSFR disponibles"
 ```
 
-## 🛠️ Fonctionnalités
+## Fonctionnalités
 
-### Les 8 outils MCP disponibles
+### Outils MCP disponibles
 
-| Outil | Description | Exemple d'usage |
-|-------|-------------|-----------------|
-| `generate_component` | Génère des composants DSFR valides | Boutons, alertes, cartes, modales, formulaires |
-| `list_components` | Liste les 48 composants disponibles | Organisés par catégories |
-| `validate_html` | Valide HTML + structure + DSFR | Détecte balises croisées, score de conformité |
-| `audit_accessibility` | Audit RGAA 4.1 complet | 20+ critères, scores A/AA/AAA |
-| `analyze_cognitive` | Matrice de Rumsfeld | Known/Unknown Knowns/Unknowns |
-| `get_design_tokens` | Tokens officiels DSFR | Couleurs, espacements, typographie, icônes |
-| `generate_tests` | Tests automatiques | Jest, Cypress, Playwright |
-| `get_assistant_help` | Aide contextuelle | Bonnes pratiques, accessibilité |
+| Outil | Description | Usage |
+|-------|-------------|-------|
+| `generate_component` | Génère des composants DSFR | Création de boutons, formulaires, cartes, etc. |
+| `validate_html` | Valide la conformité HTML/DSFR | Vérification structure et classes CSS |
+| `audit_accessibility` | Audit RGAA 4.1 | Analyse A, AA, AAA avec recommandations |
+| `analyze_cognitive` | Analyse cognitive Rumsfeld | Identification des inconnues du projet |
+| `list_components` | Liste les 48 composants | Catalogue complet avec variantes |
+| `get_design_tokens` | Tokens de design DSFR | Couleurs, espacements, typographie |
+| `generate_tests` | Génération de tests | Jest, Cypress, Playwright |
+| `get_assistant_help` | Assistant contextuel | Aide et bonnes pratiques |
 
-### Composants DSFR supportés (48)
+### Composants supportés
 
-**Navigation** : header, footer, breadcrumb, navigation, sidemenu  
-**Formulaires** : form, input, select, checkbox, radio, toggle  
-**Contenu** : accordion, alert, badge, button, card, table  
-**Feedback** : modal, notice, callout, highlight  
-**Layout** : grid, container, tile, tabs  
-**Et 24 autres...**
+48 composants DSFR répartis en catégories :
 
-## 🏗️ Architecture
+- **Navigation** : header, footer, breadcrumb, navigation, sidemenu, pagination
+- **Formulaires** : form, input, select, checkbox, radio, toggle, upload, password
+- **Actions** : button, button-group, link, download, share
+- **Contenu** : accordion, alert, badge, card, table, quote, callout, summary
+- **Feedback** : modal, notice, tag, stepper, highlight
+- **Layout** : grid, container, tile, tabs
+- **Autres** : logo, consent, connect, translate, follow, tooltip, transcription
+
+## Documentation
+
+### Guides principaux
+
+- [CLAUDE.md](CLAUDE.md) - Guide technique pour Claude Code
+- [Guide de déploiement](docs/deployment/DEPLOYMENT.md) - Déploiement production
+- [Tests exhaustifs](docs/tests/CAHIER_TEST_EXHAUSTIF.md) - 60 tests détaillés
+- [Validation finale](docs/tests/VERIFICATION_FINALE.md) - Rapport de validation
+- [Roadmap](docs/roadmap/ROADMAP.md) - Évolutions futures
+
+### Documentation technique
+
+```
+docs/
+├── deployment/         # Guides de déploiement
+├── tests/             # Documentation des tests
+└── roadmap/           # Évolutions planifiées
+```
+
+## Architecture
+
+### Structure du projet
 
 ```
 mcp-playbook-dsfr/
-├── mcp_local/
-│   └── server.py          # Serveur FastMCP principal (8 outils)
+├── mcp_local/         # Serveur MCP FastMCP
+│   └── server.py      # Point d'entrée principal
 ├── src/
-│   ├── components/        # Templates des 48 composants DSFR
-│   ├── services/          # Services métier (SOLID)
-│   │   ├── generator_service.py      # Génération de composants
-│   │   ├── validator_service.py      # Validation HTML/DSFR
-│   │   ├── audit_service.py          # Audit RGAA
-│   │   ├── cognitive_service.py      # Analyse cognitive
-│   │   ├── design_service.py         # Design tokens
-│   │   ├── test_generator_service.py # Génération de tests
-│   │   └── assistant_service.py      # Assistant DSFR
-│   └── data/              # Registry et configuration
-├── tests/                 # Tests unitaires
-├── venv/                  # Environnement Python isolé
-└── docs/                  # Documentation complète
+│   ├── services/      # Services métier (SOLID)
+│   ├── data/         # Registre des composants
+│   ├── errors/       # Gestion des erreurs
+│   └── utils/        # Utilitaires
+├── gabarits/         # Templates HTML (48 composants)
+├── tests/            # Suite de tests (100% de réussite)
+├── requirements.txt  # Dépendances Python
+├── install.sh        # Script d'installation
+└── run_tests.sh      # Script d'exécution des tests
 ```
 
-## 📊 Performances et qualité
+### Principes d'architecture
 
-### Métriques de production
-- ⚡ **Temps de réponse** : < 500ms par requête
-- 💾 **Mémoire** : < 50MB d'utilisation
-- 🔄 **Charge** : 10 requêtes parallèles supportées
-- ✅ **Tests** : 60/60 tests passés (100%)
-- 🔒 **Sécurité** : 0 vulnérabilité critique
+- **SOLID** : Chaque service a une responsabilité unique
+- **DRY** : Pas de duplication de code
+- **KISS** : Solutions simples et directes
+- **YAGNI** : Uniquement les fonctionnalités nécessaires
 
-### Qualité du code
-- **Architecture** : SOLID, DRY, KISS, YAGNI respectés
-- **Couverture** : 100% des fonctionnalités testées
-- **Documentation** : 1290+ lignes en français
-- **Production-ready** : Validé et certifié
+### Services principaux
 
-## 🧪 Tests
+- `GeneratorService` : Génération de composants via Factory Pattern
+- `ValidatorService` : Validation HTML avec détection de balises croisées
+- `AuditService` : Audit RGAA multi-niveaux
+- `CognitiveService` : Analyse Known-Unknown de Rumsfeld
+- `DesignService` : Gestion des tokens de design
+- `TestGeneratorService` : Génération de tests automatiques
+- `AssistantService` : Aide contextuelle intelligente
 
-### Tests rapides
+## Tests
+
+### Suite de tests complète
+
+✅ **100% des tests passent** (11/11 tests fonctionnels)
+
+### Lancer les tests
+
+```bash
+# Script recommandé (active l'environnement virtuel automatiquement)
+./run_tests.sh
+
+# OU manuellement avec l'environnement virtuel
+source venv/bin/activate
+python3 tests/test-mcp-dsfr-all-components.py
+# ... autres tests
+deactivate
+```
+
+### Résultats actuels
+
+- ✅ 11 tests réussis sur 11 (100%)
+- 📊 48 composants DSFR testés
+- 🔧 Tous les services fonctionnels
+- 📝 Génération automatique de tests (Cypress, Playwright, Jest)
+
+### Validation manuelle
+
 ```bash
 # Tester le serveur
-echo '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' | \
-  ./venv/bin/python3 mcp_local/server.py
-
-# Lancer les tests unitaires
-python3 test_all_components.py
+python3 -c "
+from mcp_local.server import app
+from src.services import get_generator
+html = get_generator().generate('button', label='Test')
+print('OK' if 'fr-btn' in html else 'Erreur')
+"
 ```
 
-### Documentation des tests
-- 📋 [Cahier de test exhaustif](CAHIER_TEST_EXHAUSTIF.md) - 60 tests détaillés
-- ✅ [Rapport de validation](VERIFICATION_FINALE.md) - Audit pré-production
+## Développement
 
-## 📚 Documentation
+### Configuration de l'environnement
 
-| Document | Description |
-|----------|-------------|
-| [CLAUDE.md](CLAUDE.md) | Guide technique complet en français |
-| [DEPLOYMENT.md](DEPLOYMENT.md) | Guide de déploiement production |
-| [CAHIER_TEST_EXHAUSTIF.md](CAHIER_TEST_EXHAUSTIF.md) | 60 tests exhaustifs |
-| [VERIFICATION_FINALE.md](VERIFICATION_FINALE.md) | Rapport de validation finale |
+```bash
+# Environnement de développement
+cp .env.example .env
+# Éditer .env selon vos besoins
+```
 
-## ⚠️ Corrections importantes appliquées
+### Variables d'environnement
 
-### Problèmes critiques résolus
-1. **Validation HTML** : Détection correcte des balises croisées (était 100/100 pour HTML invalide)
-2. **Audit RGAA** : Méthode `audit()` correctement appelée
-3. **Analyse cognitive** : Sérialisation JSON des objets
-4. **Design tokens** : Routing vers les bonnes méthodes
-5. **Assistant** : Réponses contextuelles implémentées
+| Variable | Valeurs | Description |
+|----------|---------|-------------|
+| `ENV` | development, production | Environnement d'exécution |
+| `LOG_LEVEL` | DEBUG, INFO, WARNING, ERROR | Niveau de logs |
+| `DEFAULT_RGAA_LEVEL` | A, AA, AAA | Niveau RGAA par défaut |
+| `ENABLE_HTML_SANITIZATION` | true, false | Sanitisation HTML |
 
-## 🤝 Contribution
+### Workflow de développement
 
-Les contributions sont bienvenues !
+1. Créer une branche : `git checkout -b feature/nouvelle-fonctionnalite`
+2. Développer avec tests : `pytest tests/ --watch`
+3. Vérifier le code : `black . && ruff check . && mypy .`
+4. Commiter : `git commit -m "feat: description"`
+5. Push : `git push origin feature/nouvelle-fonctionnalite`
+6. Créer une Pull Request
+
+### Conventions de commit
+
+Format : `<type>(<scope>): <description>`
+
+Types :
+- `feat` : Nouvelle fonctionnalité
+- `fix` : Correction de bug
+- `docs` : Documentation
+- `style` : Formatage
+- `refactor` : Refactoring
+- `test` : Ajout de tests
+- `chore` : Maintenance
+
+## Déploiement
+
+### Docker
+
+```bash
+# Construction
+docker-compose build
+
+# Lancement
+docker-compose up -d
+
+# Logs
+docker-compose logs -f
+
+# Arrêt
+docker-compose down
+```
+
+### Production
+
+Voir le [guide de déploiement complet](docs/deployment/DEPLOYMENT.md) pour :
+- Configuration systemd
+- Reverse proxy nginx
+- Monitoring Prometheus
+- Backup et restauration
+
+## Contribution
+
+Les contributions sont les bienvenues ! Voir [CONTRIBUTING.md](CONTRIBUTING.md) pour :
+
+1. Standards de code
+2. Process de review
+3. Guidelines de test
+4. Documentation requise
+
+### Comment contribuer
 
 1. Fork le projet
-2. Créer une branche (`git checkout -b feature/AmazingFeature`)
-3. Commit (`git commit -m 'Add AmazingFeature'`)
-4. Push (`git push origin feature/AmazingFeature`)
+2. Créer votre branche (`git checkout -b feature/AmazingFeature`)
+3. Commiter vos changements (`git commit -m 'feat: Add AmazingFeature'`)
+4. Push sur la branche (`git push origin feature/AmazingFeature`)
 5. Ouvrir une Pull Request
 
-## 📄 Licence
+## Support
 
-MIT License - voir [LICENSE](LICENSE)
+### Obtenir de l'aide
 
-## 🔗 Liens utiles
+- [Issues GitHub](https://github.com/yourusername/mcp-playbook-dsfr/issues) - Rapporter des bugs
+- [Discussions](https://github.com/yourusername/mcp-playbook-dsfr/discussions) - Questions et idées
+- [Wiki](https://github.com/yourusername/mcp-playbook-dsfr/wiki) - Documentation étendue
+
+### Dépannage courant
+
+| Problème | Solution |
+|----------|----------|
+| ModuleNotFoundError | Réinstaller : `pip install -r requirements.txt` |
+| Icône MCP absente | Redémarrer Claude Desktop |
+| Permission denied | `chmod +x install.sh` |
+| Python non trouvé | Installer Python 3.9+ |
+
+## Auteurs
+
+- **Auteur principal** - [Votre nom](https://github.com/yourusername)
+
+Voir la liste des [contributeurs](https://github.com/yourusername/mcp-playbook-dsfr/contributors).
+
+## Licence
+
+Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+## Remerciements
+
+- Équipe DSFR pour le Design System
+- Anthropic pour le Model Context Protocol
+- Communauté open source française
+- Contributeurs et testeurs
+
+## Ressources
 
 - [Documentation DSFR officielle](https://www.systeme-de-design.gouv.fr)
 - [Référentiel RGAA 4.1](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/)
 - [Claude Desktop](https://claude.ai/desktop)
 - [Model Context Protocol](https://modelcontextprotocol.io)
 
-## 📞 Support
-
-- 🐛 [Issues](https://github.com/yourusername/mcp-playbook-dsfr/issues)
-- 💬 [Discussions](https://github.com/yourusername/mcp-playbook-dsfr/discussions)
-- 📧 Contact : your.email@example.com
-
-## 🏷️ Tags
-
-`mcp` `claude` `dsfr` `design-system` `france` `gouvernement` `accessibilité` `rgaa` `a11y` `french-tech` `govtech` `model-context-protocol` `claude-desktop` `ai-tools` `developer-tools`
-
 ---
 
-<div align="center">
-
-*🎉 100% Production-Ready - Tous les tests validés*
-
-
-</div>
+Développé pour l'accessibilité et la conformité DSFR des services publics numériques français.

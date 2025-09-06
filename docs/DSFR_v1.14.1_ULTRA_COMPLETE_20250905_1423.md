@@ -1,14 +1,14 @@
-# 🇫🇷 DSFR v1.14.1 - DOCUMENTATION ULTRA COMPLÈTE
+# DSFR v1.14.1 - DOCUMENTATION ULTRA COMPLÈTE
 
 *Généré le 05/09/2025 14:23*
 
-## 📊 SOURCES COMBINÉES
+## SOURCES COMBINÉES
 
 1. **GitHub** : Code source complet (SCSS, JS, Templates)
 2. **Storybook** : Documentation interactive
 3. **NPM** : Package officiel @gouvfr/dsfr
 
-## 📦 INSTALLATION
+## INSTALLATION
 
 ```bash
 # NPM
@@ -21,62 +21,62 @@ npm install @gouvfr/dsfr@1.14.1
 
 ---
 
-# 🎨 COMPOSANTS COMPLETS (52)
+# COMPOSANTS COMPLETS (52)
 
 
-## 🧭 Navigation
+## Navigation
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 HEADER
+## HEADER
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-header`
 - **Dossier GitHub** : `/src/dsfr/component/header/`
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
 
 <style>
-    @media (min-width: 62em) {
-        .relative-sample\@lg {
-            position: relative;
-        }
-    }
+ @media (min-width: 62em) {
+ .relative-sample\@lg {
+ position: relative;
+ }
+ }
 </style>
 
-<%- sample('Header minimal', './sample/header.ejs', {header: { logo:{ title: 'Intitulé<br>officiel'}, navigation: 'min' }}, true, './layout');  %>
+<%- sample('Header minimal', './sample/header.ejs', {header: { logo:{ title: 'Intitulé<br>officiel'}, navigation: 'min' }}, true, './layout'); %>
 
-<%- sample('Header sans navigation', './sample/header.ejs', {header: { logo:{ title: 'Intitulé<br>officiel'}, service: true }}, true, './layout');  %>
+<%- sample('Header sans navigation', './sample/header.ejs', {header: { logo:{ title: 'Intitulé<br>officiel'}, service: true }}, true, './layout'); %>
 
-<%- sample('Header sans navigation avec un seul raccourci', './sample/header.ejs', {header: { logo:{ title: 'Intitulé<br>officiel'}, links: { buttons: [{ url: '[url - à modifier]', label: 'Espace particulier', markup: 'a', classes: [`${prefix}-btn--account`]}] }, service: true}}, true, './layout');  %>
+<%- sample('Header sans navigation avec un seul raccourci', './sample/header.ejs', {header: { logo:{ title: 'Intitulé<br>officiel'}, links: { buttons: [{ url: '[url - à modifier]', label: 'Espace particulier', markup: 'a', classes: [`${prefix}-btn--account`]}] }, service: true}}, true, './layout'); %>
 
 <%- sample('Header sans n
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/header)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/header)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 FOOTER
+## FOOTER
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-footer`
 - **Dossier GitHub** : `/src/dsfr/component/footer/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-pied-de-page-footer--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -97,25 +97,25 @@ npm install @gouvfr/dsfr@1.14.1
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/footer)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-pied-de-page-footer--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/footer)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 NAVIGATION
+## NAVIGATION
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-navigation`
 - **Dossier GitHub** : `/src/dsfr/component/navigation/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-navigation-navigation--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -125,25 +125,25 @@ npm install @gouvfr/dsfr@1.14.1
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/navigation)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-navigation-navigation--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/navigation)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 BREADCRUMB
+## BREADCRUMB
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-breadcrumb`
 - **Dossier GitHub** : `/src/dsfr/component/breadcrumb/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-fil-d-ariane-breadcrumb--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -152,23 +152,23 @@ npm install @gouvfr/dsfr@1.14.1
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/breadcrumb)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-fil-d-ariane-breadcrumb--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/breadcrumb)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 SIDEMENU
+## SIDEMENU
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-sidemenu`
 - **Dossier GitHub** : `/src/dsfr/component/sidemenu/`
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -186,69 +186,69 @@ npm install @gouvfr/dsfr@1.14.1
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/sidemenu)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/sidemenu)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 SKIPLINK
+## SKIPLINK
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-skiplink`
 - **Dossier GitHub** : `/src/dsfr/component/skiplink/`
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
 
 <div class="<%= prefix %>-container">
-  <div class="<%= prefix %>-grid-row <%= prefix %>-grid-row--center" >
-    <div class="<%= prefix %>-col-md-8 <%= prefix %>-col-12" id="content">
-      <%- sample('Liens d’évitement', './sample/skiplinks.ejs', {}, true, './layout'); %>
-      <% for (let i = 0; i < 10; i++) { %>
-      <p><%- lorem() %></p>
-      <% } %>
-    </div>
-  </div>
+ <div class="<%= prefix %>-grid-row <%= prefix %>-grid-row--center" >
+ <div class="<%= prefix %>-col-md-8 <%= prefix %>-col-12" id="content">
+ <%- sample('Liens d’évitement', './sample/skiplinks.ejs', {}, true, './layout'); %>
+ <% for (let i = 0; i < 10; i++) { %>
+ <p><%- lorem() %></p>
+ <% } %>
+ </div>
+ </div>
 </div>
 
 <%- include('../../footer/example/sample/footer-minimal.ejs', { footer: {id: 'footer' }}); %>
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/skiplink)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/skiplink)
 
 
-## 📝 Formulaires
+## Formulaires
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 INPUT
+## INPUT
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-input`
 - **Dossier GitHub** : `/src/dsfr/component/input/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-champ-de-saisie-input--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
 
 <%
-  const dateSubtitle = 'Préférez l\'utilisation du modèle de bloc de <a href="../../../pattern/date/">Date unique</a>';
-  const passwordSubtitle = 'Préférez l\'utilisation du composant <a href="../../password/">Mot de passe</a>';
+ const dateSubtitle = 'Préférez l\'utilisation du modèle de bloc de <a href="../../../pattern/date/">Date unique</a>';
+ const passwordSubtitle = 'Préférez l\'utilisation du composant <a href="../../password/">Mot de passe</a>';
 %>
 
 <%- sample(getText('sample.text', 'input'), './sample/input-text.ejs', {input: { id:'text-input-text'}}, true); %>
@@ -263,23 +263,23 @@ npm install @gouvfr/dsfr@1.14.1
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/input)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-champ-de-saisie-input--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/input)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 SELECT
+## SELECT
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-select`
 - **Dossier GitHub** : `/src/dsfr/component/select/`
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -298,22 +298,22 @@ npm install @gouvfr/dsfr@1.14.1
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/select)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/select)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 CHECKBOX
+## CHECKBOX
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-checkbox`
 - **Dossier GitHub** : `/src/dsfr/component/checkbox/`
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -332,24 +332,24 @@ npm install @gouvfr/dsfr@1.14.1
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/checkbox)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/checkbox)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 RADIO
+## RADIO
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-radio`
 - **Dossier GitHub** : `/src/dsfr/component/radio/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-boutons-radio-radio--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -368,25 +368,25 @@ npm install @gouvfr/dsfr@1.14.1
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/radio)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-boutons-radio-radio--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/radio)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 TOGGLE
+## TOGGLE
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-toggle`
 - **Dossier GitHub** : `/src/dsfr/component/toggle/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-interrupteur-toggle--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -405,25 +405,25 @@ npm install @gouvfr/dsfr@1.14.1
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/toggle)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-interrupteur-toggle--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/toggle)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 SEARCH
+## SEARCH
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-search`
 - **Dossier GitHub** : `/src/dsfr/component/search/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-barre-de-recherche-search--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -434,25 +434,25 @@ npm install @gouvfr/dsfr@1.14.1
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/search)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-barre-de-recherche-search--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/search)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 UPLOAD
+## UPLOAD
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-upload`
 - **Dossier GitHub** : `/src/dsfr/component/upload/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-ajout-de-fichier-upload--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -468,25 +468,25 @@ npm install @gouvfr/dsfr@1.14.1
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/upload)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-ajout-de-fichier-upload--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/upload)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 RANGE
+## RANGE
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-range`
 - **Dossier GitHub** : `/src/dsfr/component/range/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-curseur-range--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -505,25 +505,25 @@ npm install @gouvfr/dsfr@1.14.1
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/range)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-curseur-range--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/range)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 PASSWORD
+## PASSWORD
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-password`
 - **Dossier GitHub** : `/src/dsfr/component/password/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-mot-de-passe-password--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -538,51 +538,51 @@ npm install @gouvfr/dsfr@1.14.1
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/password)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-mot-de-passe-password--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/password)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 FORM
+## FORM
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-form`
 - **Dossier GitHub** : `/src/dsfr/component/form/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-formulaire-form--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <script>
-  function preventSubmit(e) {
-    e.preventDefault();
-    return false;
-  }
+ function preventSubmit(e) {
+ e.preventDefault();
+ return false;
+ }
 </script>
 
 <form onsubmit="return preventSubmit(event)">
 
 <% const sample = getSample(include); %>
 
-<%- sample('Ensemble de champs de saisie', '../../input/example/sample/inputs', { inputs: { id:'text' }}, true);  %>
+<%- sample('Ensemble de champs de saisie', '../../input/example/sample/inputs', { inputs: { id:'text' }}, true); %>
 
-<%- sample('Ensemble de boutons radio', '../../radio/example/sample/radios', { radios: { id:'radio' }}, true);  %>
+<%- sample('Ensemble de boutons radio', '../../radio/example/sample/radios', { radios: { id:'radio' }}, true); %>
 
-<%- sample('Ensemble de cases à cocher', '../../checkbox/example/sample/checkboxes', { checkboxes: { id:'checkbox' }}, true);  %>
+<%- sample('Ensemble de cases à cocher', '../../checkbox/example/sample/checkboxes', { checkboxes: { id:'checkbox' }}, true); %>
 
-<%- sample('Ensemble de boutons radio, en ligne', '../../radio/example/sample/radios', { radios: { id:'radio-inline', inline:true }}, true);  %>
+<%- sample('Ensemble de boutons radio, en ligne', '../../radio/example/sample/radios', { radios: { id:'radio-inline', inline:true }}, true); %>
 
 <%- sample('Ensemble de cases à cocher, en ligne', '../../checkbox/example/sample/checkboxes', { checkbo
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/form)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-formulaire-form--docs)
@@ -592,18 +592,18 @@ npm install @gouvfr/dsfr@1.14.1
 ## 🔘 Boutons et Actions
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 BUTTON
+## BUTTON
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-button`
 - **Dossier GitHub** : `/src/dsfr/component/button/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-bouton-button--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -625,25 +625,25 @@ npm install @gouvfr/dsfr@1.14.1
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/button)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-bouton-button--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/button)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 LINK
+## LINK
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-link`
 - **Dossier GitHub** : `/src/dsfr/component/link/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-lien-link--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -666,57 +666,57 @@ npm install @gouvfr/dsfr@1.14.1
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/link)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-lien-link--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/link)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 DOWNLOAD
+## DOWNLOAD
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-download`
 - **Dossier GitHub** : `/src/dsfr/component/download/`
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <%- section('Nouvelles versions', null, 0) %>
 
 <ul>
-  <li>
-    <a href="../card/download/"><%- getText('subdir.download', 'card') %></a>
-  </li>
-  <li>
-    <a href="../link/download/"><%- getText('subdir.download', 'link') %></a>
-  </li>
+ <li>
+ <a href="../card/download/"><%- getText('subdir.download', 'card') %></a>
+ </li>
+ <li>
+ <a href="../link/download/"><%- getText('subdir.download', 'link') %></a>
+ </li>
 </ul>
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/download)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/download)
 
 
-## 📊 Affichage
+## Affichage
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 ACCORDION
+## ACCORDION
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-accordion`
 - **Dossier GitHub** : `/src/dsfr/component/accordion/`
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include, 888); %>
@@ -733,63 +733,63 @@ npm install @gouvfr/dsfr@1.14.1
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/accordion)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/accordion)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 ALERT
+## ALERT
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-alert`
 - **Dossier GitHub** : `/src/dsfr/component/alert/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-alerte-alert--docs)
 
-### 📄 EXEMPLE (layout-dynamic.ejs)
+### EXEMPLE (layout-dynamic.ejs)
 
 ```html
 <% eval(include('../../../core/index.ejs')); %>
 
 <% if (locals.title !== undefined && locals.title.length) { %>
-  <h4><%= title %></h4>
-  <% } %>
-  <div class="<%= prefix %>-mb-6v" >
-    <button type="button" class="fr-btn" id="button-add" onclick="const component = document.createElement('div'); component.className = 'fr-my-8v'; component.innerHTML = decodeURIComponent('<%- encodeURIComponent(component) %>'); this.after(component);">Bouton d'ajout</button>
+ <h4><%= title %></h4>
+ <% } %>
+ <div class="<%= prefix %>-mb-6v" >
+ <button type="button" class="fr-btn" id="button-add" onclick="const component = document.createElement('div'); component.className = 'fr-my-8v'; component.innerHTML = decodeURIComponent('<%- encodeURIComponent(component) %>'); this.after(component);">Bouton d'ajout</button>
 
 </div>
-  <% if (locals.snippet !== undefined) { %>
-  <div class="<%= prefix %>-mb-12v" >
-      <%- snippet %>
-  </div>
-  <% } %>
+ <% if (locals.snippet !== undefined) { %>
+ <div class="<%= prefix %>-mb-12v" >
+ <%- snippet %>
+ </div>
+ <% } %>
 
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/alert)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-alerte-alert--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/alert)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 BADGE
+## BADGE
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-badge`
 - **Dossier GitHub** : `/src/dsfr/component/badge/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-badge-badge--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -806,25 +806,25 @@ npm install @gouvfr/dsfr@1.14.1
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/badge)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-badge-badge--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/badge)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 CALLOUT
+## CALLOUT
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-callout`
 - **Dossier GitHub** : `/src/dsfr/component/callout/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-mise-en-avant-callout--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <%
@@ -846,125 +846,125 @@ let icon = 'info-line';
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/callout)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-mise-en-avant-callout--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/callout)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 CARD
+## CARD
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-card`
 - **Dossier GitHub** : `/src/dsfr/component/card/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-carte-card--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
 
 <%
-  const elements = [
-    {
-      title: 'Tailles',
-      path: 'sample-sizes'
-    },
-    {
-      title: 'Icône',
-      path: 'sample-icon'
-    },
-    {
-      title: 'Variations',
-      path: 'sample-variations'
-    },
-    {
-      title: 'Markup button',
-      path: 'sample-button'
-    },
-    {
-      title: 'Sans image',
-      path: 'sample-no-img'
-    },
-    {
-      title: 'Image et ratio',
-      path: 'sample-img'
-    },
-    {
-      title: 'En-tête',
-      path: 'sample-header'
-    },
-    {
-      title: 'Contenu',
-      path: 'sample-content'
-    },
-    {
-      title: 'Sans lien',
-      path: 'sample-no-link'
-    },
-    {
-      title: 'Sans lien étendu',
-      path: 'sample-enlarge'
-    },
-    {
-      title: 'Desactivée',
-      path: 'sample-di
+ const elements = [
+ {
+ title: 'Tailles',
+ path: 'sample-sizes'
+ },
+ {
+ title: 'Icône',
+ path: 'sample-icon'
+ },
+ {
+ title: 'Variations',
+ path: 'sample-variations'
+ },
+ {
+ title: 'Markup button',
+ path: 'sample-button'
+ },
+ {
+ title: 'Sans image',
+ path: 'sample-no-img'
+ },
+ {
+ title: 'Image et ratio',
+ path: 'sample-img'
+ },
+ {
+ title: 'En-tête',
+ path: 'sample-header'
+ },
+ {
+ title: 'Contenu',
+ path: 'sample-content'
+ },
+ {
+ title: 'Sans lien',
+ path: 'sample-no-link'
+ },
+ {
+ title: 'Sans lien étendu',
+ path: 'sample-enlarge'
+ },
+ {
+ title: 'Desactivée',
+ path: 'sample-di
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/card)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-carte-card--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/card)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 MODAL
+## MODAL
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-modal`
 - **Dossier GitHub** : `/src/dsfr/component/modal/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-modale-modal--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <%
 const sample = getSample(include);
 
 let dataText = {
-    title: 'Titre de la modale',
-    icon: 'arrow-right-line',
-    body: include('sample/body/text')
+ title: 'Titre de la modale',
+ icon: 'arrow-right-line',
+ body: include('sample/body/text')
 }
 
 let dataForm = {
-    title: 'Titre de la modale',
-    icon: 'arrow-right-line',
-    body: include('sample/body/form')
+ title: 'Titre de la modale',
+ icon: 'arrow-right-line',
+ body: include('sample/body/form')
 }
 
 let dataFooterButtons = {
-    title: 'Titre de la modale',
-    icon: 'arrow-right-line',
-    body: include('sample/body/text', { text: { paragraphs: 6 } }),
-    footer: include('../example/sample/footer/buttons')
+ title: 'Titre de la modale',
+ icon: 'arrow-right-line',
+ body: include('sample/body/text', { text: { paragraphs: 6 } }),
+ footer: include('../example/sample/footer/buttons')
 }
 
 let dataTable = {
-    title: 'Titre de la modale',
-    icon: 'arrow-right-line',
-    body: include('sample/body/table'),
-    footer: include('../example/sample/footer/buttons')
+ title: 'Titre de la modale',
+ icon: 'arrow-right-line',
+ body: include('sample/body/table'),
+ footer: include('../example/sample/footer/buttons')
 }
 %>
 
@@ -974,25 +974,25 @@ let dataTable = {
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/modal)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-modale-modal--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/modal)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 TABLE
+## TABLE
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-table`
 - **Dossier GitHub** : `/src/dsfr/component/table/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-tableau-table--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 
@@ -1000,46 +1000,46 @@ let dataTable = {
 const sample = getSample(include);
 const cellMultilineData = JSON.parse(include('./data/data-lorem.json.ejs'));
 cellMultilineData.tbodies[0][1][1] = {
-  content: `<b>${lorem(null, 200)}</b>`,
-  attributes: {
-    class: `${prefix}-cell--multiline`
-  }
+ content: `<b>${lorem(null, 200)}</b>`,
+ attributes: {
+ class: `${prefix}-cell--multiline`
+ }
 };
 const complexData = JSON.parse(include('./data/data-complex.json.ejs'));
 %>
 
 <%-
-  sample(getText('sample.default', 'table'), './sample/table-simple', {table: {table: {id: 'table-md', caption: getText('data.caption.default', 'table')}}}, true);
+ sample(getText('sample.default', 'table'), './sample/table-simple', {table: {table: {id: 'table-md', caption: getText('data.caption.default', 'table')}}}, true);
 %>
 
 <%-
-  sample(getText('sample.sm', 'table'), './sample/table-simple', {table: {size: 'sm', table: {id: 'table-sm', caption: getText('data.caption.default', 'table')}}}, true);
+ sample(getText('sample.sm', 'table'), './sample/table-simple', {table: {size: 'sm', table: {id: 'table-sm', caption: getText('data.caption.default', 'table')}}}, true);
 %>
 
 <%-
-  sample(getText('sample.lg', 'table'), './sample/table-simple', {table: {size: 'lg', table: {id: 'table-lg', 
+ sample(getText('sample.lg', 'table'), './sample/table-simple', {table: {size: 'lg', table: {id: 'table-lg', 
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/table)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-tableau-table--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/table)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 TAB
+## TAB
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-tab`
 - **Dossier GitHub** : `/src/dsfr/component/tab/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-onglets-tabs--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include, 44719); %>
@@ -1056,25 +1056,25 @@ const complexData = JSON.parse(include('./data/data-complex.json.ejs'));
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/tab)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-onglets-tabs--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/tab)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 TAG
+## TAG
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-tag`
 - **Dossier GitHub** : `/src/dsfr/component/tag/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-tag-tag--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -1091,135 +1091,135 @@ const complexData = JSON.parse(include('./data/data-complex.json.ejs'));
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/tag)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-tag-tag--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/tag)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 TILE
+## TILE
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-tile`
 - **Dossier GitHub** : `/src/dsfr/component/tile/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-tuile-tile--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
 
 <%
-  const elements = [
-    {
-      title: 'Tailles',
-      path: 'sample-sizes'
-    },
-    {
-      title: 'Sans image',
-      path: 'sample-no-img'
-    },
-    {
-      title: 'Contenu',
-      path: 'sample-content'
-    },
-    {
-      title: 'Variantes',
-      path: 'sample-variations'
-    },
-    {
-      title: 'Markup button',
-      path: 'sample-button'
-    },
-    {
-      title: 'Sans lien',
-      path: 'sample-no-link'
-    },
-    {
-      title: 'Sans lien étendu',
-      path: 'sample-enlarge'
-    },
-    {
-      title: 'Désactivée',
-      path: 'sample-disabled'
-    },
-    {
-      title: 'Icône',
-      path: 'sample-icon'
-    },
-    {
-      title: 'Tuile horizontale',
-      path: 'sample-horizontal'
-    },
-    {
-      title: 'Grille de tuiles vert
+ const elements = [
+ {
+ title: 'Tailles',
+ path: 'sample-sizes'
+ },
+ {
+ title: 'Sans image',
+ path: 'sample-no-img'
+ },
+ {
+ title: 'Contenu',
+ path: 'sample-content'
+ },
+ {
+ title: 'Variantes',
+ path: 'sample-variations'
+ },
+ {
+ title: 'Markup button',
+ path: 'sample-button'
+ },
+ {
+ title: 'Sans lien',
+ path: 'sample-no-link'
+ },
+ {
+ title: 'Sans lien étendu',
+ path: 'sample-enlarge'
+ },
+ {
+ title: 'Désactivée',
+ path: 'sample-disabled'
+ },
+ {
+ title: 'Icône',
+ path: 'sample-icon'
+ },
+ {
+ title: 'Tuile horizontale',
+ path: 'sample-horizontal'
+ },
+ {
+ title: 'Grille de tuiles vert
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/tile)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-tuile-tile--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/tile)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 TOOLTIP
+## TOOLTIP
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-tooltip`
 - **Dossier GitHub** : `/src/dsfr/component/tooltip/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-infobulle-tooltip--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
 
-<%- sample({title: getText('sample', 'tooltip'), subtitle: getText('sample.hover', 'tooltip')}, './sample/tooltip-hover.ejs', {}, true);  %>
+<%- sample({title: getText('sample', 'tooltip'), subtitle: getText('sample.hover', 'tooltip')}, './sample/tooltip-hover.ejs', {}, true); %>
 
-<%- sample({title: getText('sample.tooltip', 'tooltip'), subtitle: getText('sample.click', 'tooltip')}, './sample/tooltip-button.ejs', {}, true);  %>
+<%- sample({title: getText('sample.tooltip', 'tooltip'), subtitle: getText('sample.click', 'tooltip')}, './sample/tooltip-button.ejs', {}, true); %>
 
-<%- sample(getText('sample.grid.left', 'tooltip'), './sample/tooltip-grid.ejs', {}, true);  %>
+<%- sample(getText('sample.grid.left', 'tooltip'), './sample/tooltip-grid.ejs', {}, true); %>
 
-<%- sample(getText('sample.grid.right', 'tooltip'), './sample/tooltip-grid.ejs', {tooltip: {position: 'right'}}, true);  %>
+<%- sample(getText('sample.grid.right', 'tooltip'), './sample/tooltip-grid.ejs', {tooltip: {position: 'right'}}, true); %>
 
-<%- sample(getText('sample.list', 'tooltip'), './sample/tooltip-list.ejs', {}, true);  %>
+<%- sample(getText('sample.list', 'tooltip'), './sample/tooltip-list.ejs', {}, true); %>
 
-<%- sample(getText('sample.table', 'tooltip'), './sample/tooltip-table.ejs', {}, true);  %>
+<%- sample(getText('sample.table', 'tooltip'), './sample/tooltip-table.ejs', {}, true); %>
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/tooltip)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-infobulle-tooltip--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/tooltip)
 
 
-## 📄 Contenu
+## Contenu
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 CONTENT
+## CONTENT
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-content`
 - **Dossier GitHub** : `/src/dsfr/component/content/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-gestionnaire-de-contenu-content--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include, 666); %>
@@ -1242,25 +1242,25 @@ const complexData = JSON.parse(include('./data/data-complex.json.ejs'));
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/content)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-gestionnaire-de-contenu-content--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/content)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 HIGHLIGHT
+## HIGHLIGHT
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-highlight`
 - **Dossier GitHub** : `/src/dsfr/component/highlight/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-mise-en-exergue-highlight--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -1276,25 +1276,25 @@ const complexData = JSON.parse(include('./data/data-complex.json.ejs'));
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/highlight)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-mise-en-exergue-highlight--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/highlight)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 QUOTE
+## QUOTE
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-quote`
 - **Dossier GitHub** : `/src/dsfr/component/quote/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-citation-quote--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <%
@@ -1311,34 +1311,34 @@ const sample = getSample(include);
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/quote)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-citation-quote--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/quote)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 SUMMARY
+## SUMMARY
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-summary`
 - **Dossier GitHub** : `/src/dsfr/component/summary/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-sommaire-summary--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
 
 <%
 const getContent = (id) => {
-    return `<div id="anchor-${id}">
-        <h2>Contenu ${id}</h2>
-    <p>${lorem()}</p>
+ return `<div id="anchor-${id}">
+ <h2>Contenu ${id}</h2>
+ <p>${lorem()}</p>
 </div>`;
 }
 
@@ -1347,15 +1347,15 @@ let data = {list:[]};
 let content = '';
 
 for (let i = 0; i < links.length; i++) {
-    let id = i + 1
-    content += getContent(id);
+ let id = i + 1
+ content += getContent(id);
 
-    if (links[i]) {
-        for (let j = 0; j < links[i]; j++) {
-            id = `${i + 1}.${j + 1}`;
-            content += getContent(id);
-        }
-    }
+ if (links[i]) {
+ for (let j = 0; j < links[i]; j++) {
+ id = `${i + 1}.${j + 1}`;
+ content += getContent(id);
+ }
+ }
 }
 
 %>
@@ -1366,112 +1366,112 @@ for (let i = 0; i < links.length; i++) {
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/summary)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-sommaire-summary--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/summary)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 TRANSCRIPTION
+## TRANSCRIPTION
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-transcription`
 - **Dossier GitHub** : `/src/dsfr/component/transcription/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-transcription-transcription--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include, 234); %>
 
-<%- sample(getText('sample', 'transcription'), './sample/transcription-default.ejs', {}, true);  %>
+<%- sample(getText('sample', 'transcription'), './sample/transcription-default.ejs', {}, true); %>
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/transcription)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-transcription-transcription--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/transcription)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 NOTICE
+## NOTICE
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-notice`
 - **Dossier GitHub** : `/src/dsfr/component/notice/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-bandeau-d-information-importante-notice--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
 
 <%
-  const elements = [
-    {
-      title: 'Contenu',
-      path: 'sample-content'
-    },
-    {
-      title: 'Bandeaux génériques',
-      path: 'sample-generic'
-    },
-    {
-      title: 'Bandeaux météo',
-      path: 'sample-meteo'
-    },
-    {
-      title: 'Bandeaux d\'alertes',
-      path: 'sample-alert'
-    },
-    {
-      title: 'Mise en situation',
-      path: 'sample-header'
-    },
-  ];
+ const elements = [
+ {
+ title: 'Contenu',
+ path: 'sample-content'
+ },
+ {
+ title: 'Bandeaux génériques',
+ path: 'sample-generic'
+ },
+ {
+ title: 'Bandeaux météo',
+ path: 'sample-meteo'
+ },
+ {
+ title: 'Bandeaux d\'alertes',
+ path: 'sample-alert'
+ },
+ {
+ title: 'Mise en situation',
+ path: 'sample-header'
+ },
+ ];
 
-  const accordions = [];
+ const accordions = [];
 
-  for (let element of elements) { %>
-    <%- include(`./sample/${element.path}`); %>
-    <br><br><br><br>
-  <%  }
+ for (let element of elements) { %>
+ <%- include(`./sample/${element.path}`); %>
+ <br><br><br><br>
+ <% }
 %>
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/notice)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-bandeau-d-information-importante-notice--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/notice)
 
 
-## 🔧 Utilitaires
+## Utilitaires
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 CONSENT
+## CONSENT
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-consent`
 - **Dossier GitHub** : `/src/dsfr/component/consent/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-gestionnaire-de-consentement-consent--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include, 123); %>
@@ -1486,23 +1486,23 @@ for (let i = 0; i < links.length; i++) {
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/consent)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-gestionnaire-de-consentement-consent--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/consent)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 DISPLAY
+## DISPLAY
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-display`
 - **Dossier GitHub** : `/src/dsfr/component/display/`
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <%
@@ -1513,53 +1513,53 @@ attrModal['aria-controls'] = prefix + '-theme-modal';
 attrModal[`data-${prefix}-opened`] = false;
 
 const links = {
-  buttons: [
-    {
-      label: 'Paramètres d\'affichage',
-      classes: [`${prefix}-btn--display`],
-      attributes: {...attrModal},
-      markup: 'button'
-    }
-  ]
+ buttons: [
+ {
+ label: 'Paramètres d\'affichage',
+ classes: [`${prefix}-btn--display`],
+ attributes: {...attrModal},
+ markup: 'button'
+ }
+ ]
 };
 
 let dataModal = {
-  id: prefix + "-theme-modal",
-  title: 'Paramètres d’affichage',
-  body: include('../../display/example/sample/body'),
-  size: "sm"
+ id: prefix + "-theme-modal",
+ title: 'Paramètres d’affichage',
+ body: include('../../display/example/sample/body'),
+ size: "sm"
 }
 
 let dataFooter = {
-    id: uniqueId('footer'),
-    brand: {
-      logo: {
-          title: 'république<br>française',
-      },
-    },
-    content: {
-      desc: lorem(),
-      links: [
-        {label: 'info.gouv.fr', href: 'https://info.gouv.fr', blank: true, attributes: { title: getBlankTitle('i
+ id: uniqueId('footer'),
+ brand: {
+ logo: {
+ title: 'république<br>française',
+ },
+ },
+ content: {
+ desc: lorem(),
+ links: [
+ {label: 'info.gouv.fr', href: 'https://info.gouv.fr', blank: true, attributes: { title: getBlankTitle('i
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/display)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/display)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 FOLLOW
+## FOLLOW
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-follow`
 - **Dossier GitHub** : `/src/dsfr/component/follow/`
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -1567,19 +1567,19 @@ let dataFooter = {
 <%- section('Réseaux sociaux seuls', 'Les icones réseaux sociaux disponibles pour ce composant sont définies dans :', 0, true); %>
 
 <div class="fr-container">
-    <%
-    const accordion = {
-        label: 'src/component/follow/style/_setting.scss',
-        id: uniqueId('snippet'),
-        content: '<pre class=" language-scss"><code>' + include('../style/_setting.scss') + '</code></pre>'
-    };
-    %>
-    <div class="<%= prefix %>-mb-4v" >
-        <%- include(root + 'src/dsfr/component/accordion/template/ejs/accordion', {accordion: accordion}); %>
-    </div>
+ <%
+ const accordion = {
+ label: 'src/component/follow/style/_setting.scss',
+ id: uniqueId('snippet'),
+ content: '<pre class=" language-scss"><code>' + include('../style/_setting.scss') + '</code></pre>'
+ };
+ %>
+ <div class="<%= prefix %>-mb-4v" >
+ <%- include(root + 'src/dsfr/component/accordion/template/ejs/accordion', {accordion: accordion}); %>
+ </div>
 
 
-    <%- section(null, 'Il est aussi possible d\'appliquer une classe utilitaire sur un bouton pour utiliser une icone du dsfr (ex: "fr-icon-rss-line")', 0); %>
+ <%- section(null, 'Il est aussi possible d\'appliquer une classe utilitaire sur un bouton pour utiliser une icone du dsfr (ex: "fr-icon-rss-line")', 0); %>
 
 </div>
 
@@ -1587,24 +1587,24 @@ let dataFooter = {
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/follow)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/follow)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 PAGINATION
+## PAGINATION
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-pagination`
 - **Dossier GitHub** : `/src/dsfr/component/pagination/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-pagination-pagination--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -1626,25 +1626,25 @@ let dataFooter = {
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/pagination)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-pagination-pagination--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/pagination)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 SHARE
+## SHARE
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-share`
 - **Dossier GitHub** : `/src/dsfr/component/share/`
 
 📖 [Documentation interactive](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-partage-share--docs)
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
@@ -1657,35 +1657,35 @@ let dataFooter = {
 
 <%
 const accordion = {
-    label: 'src/component/share/style/_setting.scss',
-    id: uniqueId('snippet'),
-    content: '<pre class=" language-scss"><code>' + include('../style/_setting.scss') + '</code></pre>'
+ label: 'src/component/share/style/_setting.scss',
+ id: uniqueId('snippet'),
+ content: '<pre class=" language-scss"><code>' + include('../style/_setting.scss') + '</code></pre>'
 };
 %>
 <div class="<%= prefix %>-mb-4v" >
-    <%- include(root + 'src/dsfr/component/accordion/template/ejs/accordion', {accordion: accordion}); %>
+ <%- include(root + 'src/dsfr/component/accordion/template/ejs/accordion', {accordion: accordion}); %>
 </div>
 <%- section(null, 'Il est
 ...
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/share)
 - [Storybook](https://www.systeme-de-design.gouv.fr/v1.14/storybook/?path=/docs/composants-partage-share--docs)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/share)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 STEPPER
+## STEPPER
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-stepper`
 - **Dossier GitHub** : `/src/dsfr/component/stepper/`
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <%
@@ -1700,45 +1700,45 @@ const sample = getSample(include);
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/stepper)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/stepper)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
-## 🔹 TRANSLATE
+## TRANSLATE
 
-### 📋 INFORMATIONS GÉNÉRALES
+### INFORMATIONS GÉNÉRALES
 
 - **Classe CSS** : `fr-translate`
 - **Dossier GitHub** : `/src/dsfr/component/translate/`
 
-### 📄 EXEMPLE (index.ejs)
+### EXEMPLE (index.ejs)
 
 ```html
 <% const sample = getSample(include); %>
 
-<%- sample(getText('sample', 'translate'), './sample/translate-default.ejs', {}, true);  %>
+<%- sample(getText('sample', 'translate'), './sample/translate-default.ejs', {}, true); %>
 
-<%- sample(getText('sample.no-outline', 'translate'), './sample/translate-default.ejs', {translate: {button: {kind:4}}}, true);  %>
+<%- sample(getText('sample.no-outline', 'translate'), './sample/translate-default.ejs', {translate: {button: {kind:4}}}, true); %>
 
-<%- sample(getText('sample.column', 'translate'), './sample/translate-big.ejs', {translate: {col: 3}}, true);  %>
+<%- sample(getText('sample.column', 'translate'), './sample/translate-big.ejs', {translate: {col: 3}}, true); %>
 
 ```
 
-### 🔗 LIENS
+### LIENS
 
 - [GitHub](https://github.com/GouvernementFR/dsfr/tree/main/src/dsfr/component/translate)
 - [Site officiel](https://www.systeme-de-design.gouv.fr/elements-d-interface/translate)
 
 
-# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# 
 
 # 📚 RESSOURCES COMPLÈTES
 
-## 🔗 Liens officiels
+## Liens officiels
 
 - **Site web** : https://www.systeme-de-design.gouv.fr/
 - **GitHub** : https://github.com/GouvernementFR/dsfr

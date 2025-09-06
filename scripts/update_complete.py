@@ -437,12 +437,13 @@ npm install @gouvfr/dsfr@{data['version']}
         # 1. Vérifier la version NPM
         print("\n📦 Vérification version NPM...")
         try:
-            result = subprocess.run(
-                ["npm", "view", "@gouvfr/dsfr", "version"],
-                capture_output=True, text=True, check=True
-            )
-            npm_version = result.stdout.strip()
-            print(f"   Version NPM : {npm_version}")
+            import requests
+            response = requests.get("https://registry.npmjs.org/@gouvfr/dsfr/latest", timeout=10)
+            if response.status_code == 200:
+                npm_version = response.json()["version"]
+                print(f"   Version NPM : {npm_version}")
+            else:
+                raise Exception("API NPM indisponible")
         except:
             npm_version = "1.14.1"
             print(f"   Version par défaut : {npm_version}")

@@ -29,7 +29,7 @@ fi
 PYTHON_VERSION=$(python3 --version | cut -d' ' -f2)
 echo -e "${GREEN}✅ Python $PYTHON_VERSION détecté${NC}"
 
-# 2. Créer l'environnement virtuel
+# 2. Créer l'environnement virtuel et les dossiers nécessaires
 echo ""
 echo -e "${YELLOW}📦 Création de l'environnement virtuel...${NC}"
 if [ ! -d "venv" ]; then
@@ -38,6 +38,10 @@ if [ ! -d "venv" ]; then
 else
     echo -e "${GREEN}✅ Environnement virtuel existant${NC}"
 fi
+
+# Créer les dossiers qui seront gitignorés
+mkdir -p cache logs tests/html_outputs
+echo -e "${GREEN}✅ Dossiers cache/, logs/ et tests/html_outputs/ créés${NC}"
 
 # 3. Activer l'environnement
 echo ""
@@ -70,12 +74,38 @@ except ImportError as e:
 # 6. Tester le serveur
 echo ""
 echo -e "${YELLOW}🚀 Test du serveur MCP...${NC}"
-echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"capabilities":{}}}' | \
-    python3 mcp_local/server.py 2>/dev/null | \
-    grep -q "mcp-playbook-dsfr" && echo -e "${GREEN}✅ Serveur MCP fonctionnel${NC}" || \
-    echo -e "${RED}❌ Erreur serveur${NC}"
+python3 -c "
+import sys
+sys.path.insert(0, '.')
+try:
+    from mcp_local.server import app
+    from src.services import get_generator
+    # Test basique
+    html = get_generator().generate('button', label='Test')
+    if 'fr-btn' in html:
+        print('✅ Serveur MCP fonctionnel')
+    else:
+        print('❌ Erreur: génération incorrecte')
+        sys.exit(1)
+except Exception as e:
+    print(f'❌ Erreur serveur: {e}')
+    sys.exit(1)
+"
 
-# 7. Configuration Claude Desktop
+# 7. Créer un fichier .env exemple (optionnel)
+if [ ! -f ".env" ]; then
+    cat > .env.example <<EOF
+# Configuration environnement MCP DSFR
+ENV=development
+LOG_LEVEL=INFO
+DEFAULT_RGAA_LEVEL=AA
+ENABLE_HTML_SANITIZATION=true
+EOF
+    echo -e "${GREEN}✅ Fichier .env.example créé${NC}"
+    echo -e "${YELLOW}   Copiez .env.example vers .env pour personnaliser${NC}"
+fi
+
+# 8. Configuration Claude Desktop
 echo ""
 echo -e "${BLUE}================================================${NC}"
 echo -e "${BLUE}   Configuration Claude Desktop${NC}"
@@ -97,7 +127,9 @@ cat <<EOF
       "env": {
         "PYTHONPATH": "$(pwd)",
         "ENV": "production",
-        "LOG_LEVEL": "INFO"
+        "LOG_LEVEL": "INFO",
+        "DEFAULT_RGAA_LEVEL": "AA",
+        "ENABLE_HTML_SANITIZATION": "true"
       }
     }
   }

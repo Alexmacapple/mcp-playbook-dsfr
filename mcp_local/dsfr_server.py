@@ -13,8 +13,8 @@ from typing import Any, Dict, List, Optional
 # Ajouter le chemin parent pour les imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from mcp import Server
-from mcp.server import stdio_server
+from mcp.server import Server
+from mcp.server.stdio import stdio_server
 from mcp.types import (
     Tool,
     TextContent
@@ -1032,16 +1032,16 @@ class DSFRMCPServer:
         message += "\n**📝 Instructions:**\n"
         if framework == TestFramework.CYPRESS:
             message += "1. Sauvegarder dans `cypress/e2e/{component}.cy.js`\n"
-            message += "2. Installer Cypress : `npm install --save-dev cypress`\n"
-            message += "3. Lancer les tests : `npx cypress open`\n"
+            message += "2. Installer Cypress : `pip install pytest-playwright` ou utiliser npm si nécessaire\n"
+            message += "3. Alternative Python recommandée : `pytest tests/` avec Playwright\n"
         elif framework == TestFramework.PLAYWRIGHT:
-            message += "1. Sauvegarder dans `tests/{component}.spec.js`\n"
-            message += "2. Installer Playwright : `npm install --save-dev @playwright/test`\n"
-            message += "3. Lancer les tests : `npx playwright test`\n"
+            message += "1. Sauvegarder dans `tests/{component}.spec.py`\n"
+            message += "2. Installer Playwright Python : `pip install playwright pytest-playwright`\n"
+            message += "3. Lancer les tests : `pytest tests/{component}.spec.py`\n"
         elif framework == TestFramework.JEST:
-            message += "1. Sauvegarder dans `__tests__/{component}.test.js`\n"
-            message += "2. Installer Jest : `npm install --save-dev jest @testing-library/react`\n"
-            message += "3. Lancer les tests : `npm test`\n"
+            message += "1. Alternative Python : Utiliser `pytest` avec BeautifulSoup\n"
+            message += "2. Installer : `pip install pytest beautifulsoup4 lxml`\n"
+            message += "3. Lancer les tests : `pytest tests/` pour les tests Python\n"
         
         message += "\n💡 **Tip:** Adaptez les sélecteurs et assertions selon votre implémentation."
         

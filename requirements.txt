@@ -9,6 +9,7 @@ lxml>=4.9.0                  # XML/HTML parser for BeautifulSoup
 # Performance
 ujson>=5.0.0                # Fast JSON parsing
 aiofiles>=23.0.0            # Async file operations
+requests>=2.31.0            # HTTP client for API calls
 
 # Security & Validation
 bleach>=6.0.0               # HTML sanitization

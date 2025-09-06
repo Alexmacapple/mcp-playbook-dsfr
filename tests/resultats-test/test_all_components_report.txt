@@ -1,0 +1,23 @@
+Test Page Complète - Tous les Composants DSFR
+==================================================
+Date: 2025-09-06 11:52:33
+Version: 2.0
+
+STATISTIQUES:
+------------------------------
+  - Composants: 48
+  - Variantes: 131
+  - Version DSFR: 1.14.1
+
+RESULTATS DE GENERATION:
+------------------------------
+  - Composants traités: 47/47
+  - Variantes traitées: 130
+  - Fichier HTML: /Users/alex/Desktop/mcp-playbook-dsfr/tests/html_outputs/test_all_components.html
+  - Taille HTML: 108607 caractères
+
+AUCUNE ERREUR DETECTEE
+
+==================================================
+STATUT: PAGE DE TEST GENEREE AVEC SUCCES
+==================================================

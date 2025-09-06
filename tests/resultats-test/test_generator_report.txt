@@ -1,0 +1,53 @@
+Test du Générateur DSFR (Factory Pattern)
+==================================================
+Date: 2025-09-06 11:52:33
+Version: 2.0
+
+1. TEST GENERATION SIMPLE:
+------------------------------
+   Button: 45 caractères
+      Contient 'Valider': True
+   [OK] Button généré
+   [ERREUR] Alert mal généré
+
+2. TEST AVEC VARIANTES:
+------------------------------
+   button/primary: 44 caractères
+   button/secondary: 73 caractères
+   alert/warning: 122 caractères
+   card/horizontal: 555 caractères
+   [OK] Variantes fonctionnelles
+
+3. TEST OPTIONS AVANCEES:
+------------------------------
+   Button avec icône: OK
+   Input avec erreur: OK (required présent)
+
+4. TEST SYSTEME DE HOOKS:
+------------------------------
+   Composants trackés: ['button', 'alert']
+   [OK] Hooks fonctionnels
+
+5. TEST OVERRIDE CUSTOM:
+------------------------------
+   [OK] Override fonctionne
+
+6. TEST GESTION D'ERREURS:
+------------------------------
+   [OK] Erreur correctement levée
+
+7. TEST PERFORMANCE (CACHE):
+------------------------------
+   Sans cache: 0.01ms
+   Avec cache: 0.00ms
+   Cache efficace: 1.8x plus rapide
+   [OK] Cache fonctionnel
+
+8. TEST FACTORY PATTERN:
+------------------------------
+   [OK] Factory Pattern implémenté (pas de switch/case)
+
+==================================================
+RESULTATS: 9/10 tests passés (90%)
+STATUT: GENERATEUR PARTIELLEMENT FONCTIONNEL
+==================================================

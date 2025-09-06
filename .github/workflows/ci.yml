@@ -176,9 +176,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Get version from package.json
+    - name: Get version from project
       id: version
-      run: echo "::set-output name=version::$(cat package.json | grep version | head -1 | awk -F':' '{print $2}' | sed 's/[",]//g' | tr -d ' ')"
+      run: echo "::set-output name=version::2.0.0"
     
     - name: Create tag
       if: github.event_name == 'push'

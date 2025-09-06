@@ -49,6 +49,9 @@ cache/
 .DS_Store
 Thumbs.db
 
+# Outputs de test HTML
+tests/html_outputs/
+
 # Node modules (si vous utilisez npm)
 node_modules/
 
@@ -66,3 +69,31 @@ Icon
 ._*
 .Spotlight-V100
 .Trashes
+
+# Python
+*.py[cod]
+*$py.class
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Testing outputs
+*.html
+!gabarits/**/*.html
+test_*.html
+
+# Documentation builds
+docs/_build/
+docs/.doctrees/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Ruff
+.ruff_cache/

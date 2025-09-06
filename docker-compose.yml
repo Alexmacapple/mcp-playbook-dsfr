@@ -26,7 +26,7 @@ services:
     volumes:
       - ./gabarits:/app/gabarits:ro
       - ./src:/app/src:ro
-      - ./mcp:/app/mcp:ro
+      - ./mcp_local:/app/mcp_local:ro
       - logs:/app/logs
     
     # Réseau
@@ -68,7 +68,7 @@ services:
     volumes:
       - ./tests:/app/tests:ro
       - ./src:/app/src:ro
-      - ./mcp:/app/mcp:ro
+      - ./mcp_local:/app/mcp_local:ro
       - ./gabarits:/app/gabarits:ro
       - ./htmlcov:/app/htmlcov
     networks:

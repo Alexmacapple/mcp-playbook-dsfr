@@ -1,19 +1,19 @@
-# 🚀 Guide de Déploiement Production - MCP DSFR
+# Guide de Déploiement Production - MCP DSFR
 
-## 📋 Prérequis
+## Prérequis
 
 - Python 3.9+ ou Docker
 - 512MB RAM minimum
 - 1GB espace disque
 - Accès réseau pour Claude Desktop
 
-## 🐳 Déploiement avec Docker (Recommandé)
+## Déploiement avec Docker (Recommandé)
 
 ### 1. Build de l'image
 
 ```bash
 # Clone du repository
-git clone https://github.com/your-org/mcp-playbook-dsfr.git
+git clone https://github.com/yourusername/mcp-playbook-dsfr.git
 cd mcp-playbook-dsfr
 
 # Build de l'image
@@ -37,11 +37,9 @@ Variables importantes pour production :
 ```env
 ENV=production
 LOG_LEVEL=WARNING
+DEFAULT_RGAA_LEVEL=AA
 ENABLE_HTML_SANITIZATION=true
-RATE_LIMIT_PER_MINUTE=30
-ENABLE_METRICS=true
 DEBUG=false
-PRETTY_LOGS=false
 ```
 
 ### 3. Lancement
@@ -56,9 +54,10 @@ docker run -d \
   --restart unless-stopped \
   -e ENV=production \
   -e LOG_LEVEL=WARNING \
+  -e DEFAULT_RGAA_LEVEL=AA \
+  -e ENABLE_HTML_SANITIZATION=true \
   -v $(pwd)/gabarits:/app/gabarits:ro \
-  -v logs:/app/logs \
-  -p 9090:9090 \
+  -v $(pwd)/logs:/app/logs \
   mcp-playbook-dsfr:latest
 ```
 
@@ -69,13 +68,13 @@ docker run -d \
 docker logs mcp-dsfr
 
 # Santé
-docker exec mcp-dsfr python3 -c "from mcp.server import DSFRMCPServer; print('✅ OK')"
+docker exec mcp-dsfr python3 -c "from mcp_local.server import app; print('OK')"
 
-# Métriques (si activées)
-curl http://localhost:9090/metrics
+# Test de fonctionnement
+python3 -c "from src.services import get_generator; print('Test OK')"
 ```
 
-## 🖥️ Déploiement sans Docker
+## Déploiement sans Docker
 
 ### 1. Installation système
 
@@ -116,8 +115,10 @@ Group=mcp
 WorkingDirectory=/opt/mcp-playbook-dsfr
 Environment="ENV=production"
 Environment="LOG_LEVEL=WARNING"
+Environment="DEFAULT_RGAA_LEVEL=AA"
+Environment="ENABLE_HTML_SANITIZATION=true"
 Environment="PATH=/opt/mcp-playbook-dsfr/venv/bin"
-ExecStart=/opt/mcp-playbook-dsfr/venv/bin/python3 /opt/mcp-playbook-dsfr/mcp/server.py
+ExecStart=/opt/mcp-playbook-dsfr/venv/bin/python3 /opt/mcp-playbook-dsfr/mcp_local/server.py
 Restart=always
 RestartSec=10
 
@@ -139,7 +140,7 @@ sudo systemctl enable mcp-dsfr
 sudo systemctl status mcp-dsfr
 ```
 
-## 🔒 Sécurité Production
+## Sécurité Production
 
 ### 1. Utilisateur dédié
 
@@ -180,15 +181,17 @@ server {
     limit_req_zone $binary_remote_addr zone=mcp:10m rate=10r/s;
     limit_req zone=mcp burst=20 nodelay;
     
-    location /metrics {
-        proxy_pass http://localhost:9090;
-        allow 10.0.0.0/8;  # Réseau interne uniquement
-        deny all;
+    location / {
+        proxy_pass http://localhost:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
 ```
 
-## 📊 Monitoring
+## Monitoring
 
 ### 1. Health Check
 
@@ -197,14 +200,20 @@ server {
 cat > /opt/mcp-playbook-dsfr/health_check.sh << 'EOF'
 #!/bin/bash
 python3 -c "
-from mcp.server import DSFRMCPServer
+from mcp_local.server import app
+from src.services import get_generator
 import sys
 try:
-    server = DSFRMCPServer()
-    print('HEALTHY')
-    sys.exit(0)
-except:
-    print('UNHEALTHY')
+    generator = get_generator()
+    html = generator.generate('button', label='Test')
+    if 'fr-btn' in html:
+        print('HEALTHY')
+        sys.exit(0)
+    else:
+        print('UNHEALTHY')
+        sys.exit(1)
+except Exception as e:
+    print(f'UNHEALTHY: {e}')
     sys.exit(1)
 "
 EOF
@@ -214,16 +223,16 @@ chmod +x /opt/mcp-playbook-dsfr/health_check.sh
 
 ### 2. Prometheus Metrics
 
-Si `ENABLE_METRICS=true`, les métriques sont disponibles sur :
-```
-http://localhost:9090/metrics
+Les logs sont disponibles dans `/opt/mcp-playbook-dsfr/logs/` ou via :
+```bash
+docker logs mcp-dsfr
 ```
 
-Métriques exposées :
-- `mcp_requests_total` : Nombre total de requêtes
-- `mcp_request_duration_seconds` : Durée des requêtes
-- `mcp_errors_total` : Nombre d'erreurs
-- `mcp_rgaa_audits_total` : Audits RGAA effectués
+Informations loggées :
+- Requêtes de génération de composants
+- Validations HTML/CSS
+- Audits RGAA effectués
+- Erreurs et exceptions
 
 ### 3. Logs
 
@@ -238,7 +247,7 @@ docker logs -f mcp-dsfr
 cat logs/mcp.log | jq '.level == "ERROR"'
 ```
 
-## 🔄 Mise à jour
+## Mise à jour
 
 ### Avec Docker
 
@@ -269,7 +278,7 @@ pip install -r requirements.txt
 sudo systemctl restart mcp-dsfr
 ```
 
-## 🆘 Troubleshooting
+## Troubleshooting
 
 ### Problème : Service ne démarre pas
 
@@ -280,7 +289,7 @@ journalctl -u mcp-dsfr -n 50
 # Tester manuellement
 cd /opt/mcp-playbook-dsfr
 source venv/bin/activate
-python3 mcp/server.py
+python3 mcp_local/server.py
 ```
 
 ### Problème : Erreurs de dépendances
@@ -303,16 +312,55 @@ docker stats mcp-dsfr
 # Ou ajuster MAX_CACHE_SIZE dans .env
 ```
 
-## 📞 Support
+## Support
 
 En cas de problème :
 1. Consulter les logs : `docker logs mcp-dsfr`
-2. Vérifier la configuration : `docker exec mcp-dsfr python3 -c "from mcp.config import MCPConfig; print(MCPConfig.to_dict())"`
-3. Ouvrir une issue sur GitHub avec les logs
+2. Vérifier la configuration : `docker exec mcp-dsfr python3 -c "from src.services import get_generator; print('Config OK')"`
+3. Vérifier les tests : ./run_tests.sh
+4. Ouvrir une issue sur GitHub avec les logs
 
-## ✅ Checklist Production
+## Tests de validation
 
-- [ ] Variables d'environnement configurées
+### Exécution de la suite de tests
+
+```bash
+# Exécuter tous les tests (100% doivent passer)
+./run_tests.sh
+
+# Vérifier les rapports
+ls -la tests/resultats-test/
+```
+
+### Tests de production spécifiques
+
+```bash
+# Test de génération de composant
+python3 -c "
+from src.services import get_generator
+gen = get_generator()
+html = gen.generate('button', label='Test Prod')
+assert 'fr-btn' in html
+print('Test génération: OK')
+"
+
+# Test de validation
+python3 -c "
+from src.services import get_validator
+val = get_validator()
+result = val.validate('<button class=\"fr-btn\">Test</button>', 'button')
+assert result['valid']
+print('Test validation: OK')
+"
+
+# Test complet des 48 composants
+python3 tests/test-mcp-dsfr-all-components.py
+```
+
+## Checklist Production
+
+- [ ] Variables d'environnement configurées (ENV, LOG_LEVEL, DEFAULT_RGAA_LEVEL, ENABLE_HTML_SANITIZATION)
+- [ ] Suite de tests exécutée avec succès (100% de réussite)
 - [ ] HTTPS activé (reverse proxy)
 - [ ] Rate limiting configuré
 - [ ] Monitoring en place

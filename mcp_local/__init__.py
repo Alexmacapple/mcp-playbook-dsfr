@@ -20,6 +20,7 @@ __version__ = "2.0.0"
 __author__ = "MCP DSFR Team"
 
 # Exports principaux pour utilisation simple (KISS)
-from .dsfr_server import DSFRMCPServer
+# from .dsfr_server import DSFRMCPServer  # Commenté car utilise une ancienne API
+from .server import app
 
-__all__ = ['DSFRMCPServer']
+__all__ = ['app']

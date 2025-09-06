@@ -78,13 +78,14 @@ class DSFRDocUpdater:
         self.current_version = "1.14"
         
     def check_npm_version(self) -> str:
-        """Vérifie la dernière version sur NPM"""
+        """Vérifie la dernière version via API NPM"""
         try:
-            result = subprocess.run(
-                ["npm", "view", "@gouvfr/dsfr", "version"],
-                capture_output=True, text=True, check=True
-            )
-            return result.stdout.strip()
+            import requests
+            response = requests.get("https://registry.npmjs.org/@gouvfr/dsfr/latest", timeout=10)
+            if response.status_code == 200:
+                return response.json()["version"]
+            else:
+                raise Exception("API NPM indisponible")
         except:
             return self.current_version
     
@@ -160,17 +161,9 @@ class DSFRDocUpdater:
         
         npm_data = {}
         
-        # Vérifier si le package est installé
+        # Récupérer les informations du package via API
         try:
-            # Récupérer le chemin du package
-            result = subprocess.run(
-                ["npm", "list", "@gouvfr/dsfr", "--json"],
-                capture_output=True, text=True, check=True
-            )
-            
-            package_info = json.loads(result.stdout)
-            
-            # Extraire les métadonnées
+            # Extraire les métadonnées depuis l'API NPM
             npm_data["version"] = self.check_npm_version()
             npm_data["installed"] = True
             
@@ -178,7 +171,8 @@ class DSFRDocUpdater:
             
         except:
             npm_data["installed"] = False
-            print("  ⚠️  Package NPM non installé")
+            npm_data["version"] = self.current_version
+            print("  ⚠️  Impossible de récupérer les infos NPM")
         
         return npm_data
     
