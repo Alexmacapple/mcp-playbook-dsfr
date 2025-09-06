@@ -282,8 +282,9 @@ Peux-tu le convertir en DSFR tout en gardant la même fonctionnalité ?
 - [Référentiel RGAA 4.1](https://www.numerique.gouv.fr/publications/rgaa-accessibilite/)
 
 ### Commandes utiles
-- Vérifier la version DSFR : `python3 check_dsfr_version.py`
+- Vérifier la version DSFR : `python3 tools/check_dsfr_version.py`
 - Lancer les tests : `./run_tests.sh`
+- Tests de non-régression : `python3 tests/test_non_regression.py`
 - Voir tous les gabarits : `ls gabarits/`
 
 ### En cas de problème

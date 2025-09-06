@@ -1,6 +1,6 @@
 Test Page Complète - Tous les Composants DSFR
 ==================================================
-Date: 2025-09-06 11:52:33
+Date: 2025-09-06 13:14:57
 Version: 2.0
 
 STATISTIQUES:

@@ -14,11 +14,6 @@ requests>=2.31.0            # HTTP client for API calls
 # Security & Validation
 bleach>=6.0.0               # HTML sanitization
 python-dotenv>=1.0.0        # Environment variables
-pydantic>=2.0.0             # Data validation
-
-# Logging & Monitoring
-structlog>=23.0.0           # Structured logging
-python-json-logger>=2.0.0   # JSON log formatting
 
 # Development & Testing
 pytest>=7.0.0               # Testing framework

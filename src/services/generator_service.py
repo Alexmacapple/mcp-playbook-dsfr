@@ -30,8 +30,6 @@ class GeneratorService:
         """Initialise le service avec le registre de composants."""
         self.registry = get_registry()
         self._generators = self._init_generators()
-        self._hooks = {'before': [], 'after': []}
-        self._overrides = {}
     
     def _init_generators(self) -> Dict[str, Callable]:
         """
@@ -80,25 +78,14 @@ class GeneratorService:
             available = self.registry.list_components()
             raise ComponentNotFoundError(component, available)
         
-        # Hooks before generation
-        for hook in self._hooks['before']:
-            hook(component, kwargs)
-        
-        # Utiliser un override si défini
-        if component in self._overrides:
-            generator = self._overrides[component]
         # Utiliser le générateur spécifique ou le défaut
-        elif component in self._generators:
+        if component in self._generators:
             generator = self._generators[component]
         else:
             generator = self._generators['__default__']
         
         # Générer le HTML
         html = generator(component, **kwargs)
-        
-        # Hooks after generation
-        for hook in self._hooks['after']:
-            html = hook(component, html, kwargs) or html
         
         return html
     
@@ -388,30 +375,6 @@ class GeneratorService:
         img_html = f'<img src="{image}" alt="" class="fr-responsive-img">'
         return html.replace('<div class="fr-card__body">', 
                            f'<div class="fr-card__img">{img_html}</div>\n<div class="fr-card__body">')
-    
-    # Système de hooks et overrides (O de SOLID)
-    
-    def add_hook(self, event: str, callback: Callable) -> None:
-        """
-        Ajoute un hook sur un événement.
-        
-        Args:
-            event: 'before' ou 'after' generation
-            callback: Fonction à appeler
-        """
-        if event in self._hooks:
-            self._hooks[event].append(callback)
-    
-    def register_override(self, component: str, generator: Callable) -> None:
-        """
-        Enregistre un générateur custom pour un composant.
-        Open/Closed Principle : Extension sans modification.
-        
-        Args:
-            component: Nom du composant
-            generator: Fonction de génération custom
-        """
-        self._overrides[component] = generator
     
     @lru_cache(maxsize=256)
     def get_component_info(self, component: str) -> Dict[str, Any]:

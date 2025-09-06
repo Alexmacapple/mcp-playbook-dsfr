@@ -1,17 +1,12 @@
 """
-Module de sécurité pour MCP DSFR.
-Validation, sanitization et protection contre les attaques.
+Module de sécurité simplifié pour MCP DSFR.
+Validation et sanitization des entrées HTML.
 """
 
 import re
 import html
 from typing import Dict, Any, Optional, List
-from dataclasses import dataclass
-from datetime import datetime, timedelta
 import bleach
-from pydantic import BaseModel, Field, validator
-import hashlib
-import secrets
 
 
 class SecurityConfig:
@@ -44,90 +39,71 @@ class SecurityConfig:
     # Tailles maximales
     MAX_HTML_SIZE = 1_000_000  # 1MB
     MAX_STRING_LENGTH = 10_000
-    MAX_ARRAY_SIZE = 1000
-    
-    # Rate limiting
-    RATE_LIMIT_WINDOW = 60  # secondes
-    RATE_LIMIT_MAX_REQUESTS = 60
 
-
-@dataclass
-class RateLimitEntry:
-    """Entrée de rate limiting."""
-    count: int
-    window_start: datetime
-    
 
 class InputValidator:
     """
     Validateur d'entrées pour prévenir les injections.
-    Utilise Pydantic pour validation stricte.
+    Version simplifiée sans Pydantic.
     """
     
-    class ComponentRequest(BaseModel):
-        """Modèle pour requête de génération de composant."""
-        component: str = Field(..., min_length=1, max_length=50, regex=r'^[a-z_]+$')
-        variant: Optional[str] = Field(None, max_length=50, regex=r'^[a-z_-]+$')
-        options: Optional[Dict[str, Any]] = Field(default_factory=dict)
-        
-        @validator('options')
-        def validate_options(cls, v):
-            """Valide les options."""
-            if len(str(v)) > SecurityConfig.MAX_STRING_LENGTH:
-                raise ValueError("Options trop volumineuses")
-            return v
-    
-    class HTMLInput(BaseModel):
-        """Modèle pour HTML à valider."""
-        html: str = Field(..., min_length=1, max_length=SecurityConfig.MAX_HTML_SIZE)
-        component_type: Optional[str] = Field(None, max_length=50)
-        
-        @validator('html')
-        def validate_html_safety(cls, v):
-            """Vérifie la sécurité basique du HTML."""
-            # Détection de scripts malveillants
-            dangerous_patterns = [
-                r'<script[^>]*>.*?</script>',
-                r'javascript:',
-                r'on\w+\s*=',  # Event handlers
-                r'data:text/html',
-                r'vbscript:',
-                r'<iframe',
-                r'<object',
-                r'<embed'
-            ]
-            
-            for pattern in dangerous_patterns:
-                if re.search(pattern, v, re.IGNORECASE):
-                    raise ValueError(f"HTML contient du contenu potentiellement dangereux: {pattern}")
-            
-            return v
-    
-    @classmethod
-    def validate_component_request(cls, data: Dict[str, Any]) -> Dict[str, Any]:
+    @staticmethod
+    def validate_component_name(component: str) -> str:
         """
-        Valide une requête de génération de composant.
+        Valide un nom de composant.
         
         Args:
-            data: Données à valider
+            component: Nom du composant
             
         Returns:
-            Données validées et nettoyées
+            Nom validé
             
         Raises:
-            ValueError: Si validation échoue
+            ValueError: Si nom invalide
         """
-        request = cls.ComponentRequest(**data)
-        return request.dict()
+        if not component:
+            raise ValueError("Component name is required")
+        
+        if len(component) > 50:
+            raise ValueError("Component name too long")
+        
+        if not re.match(r'^[a-z_]+$', component):
+            raise ValueError("Invalid component name format")
+        
+        return component
     
-    @classmethod
-    def validate_html_input(cls, html: str, component_type: Optional[str] = None) -> str:
+    @staticmethod
+    def validate_variant(variant: Optional[str]) -> Optional[str]:
         """
-        Valide et nettoie du HTML.
+        Valide une variante de composant.
+        
+        Args:
+            variant: Nom de la variante
+            
+        Returns:
+            Variante validée ou None
+            
+        Raises:
+            ValueError: Si variante invalide
+        """
+        if not variant:
+            return None
+        
+        if len(variant) > 50:
+            raise ValueError("Variant name too long")
+        
+        if not re.match(r'^[a-z_-]+$', variant):
+            raise ValueError("Invalid variant format")
+        
+        return variant
+    
+    @staticmethod
+    def validate_html_input(html: str) -> str:
+        """
+        Valide du HTML pour sécurité basique.
         
         Args:
             html: HTML à valider
-            component_type: Type de composant optionnel
             
         Returns:
             HTML validé
@@ -135,8 +111,26 @@ class InputValidator:
         Raises:
             ValueError: Si HTML dangereux
         """
-        input_model = cls.HTMLInput(html=html, component_type=component_type)
-        return input_model.html
+        if not html:
+            raise ValueError("HTML content is required")
+        
+        if len(html) > SecurityConfig.MAX_HTML_SIZE:
+            raise ValueError("HTML content too large")
+        
+        # Détection de patterns dangereux
+        dangerous_patterns = [
+            r'<script[^>]*>.*?</script>',
+            r'javascript:',
+            r'on\w+\s*=',  # Event handlers
+            r'data:text/html',
+            r'vbscript:'
+        ]
+        
+        for pattern in dangerous_patterns:
+            if re.search(pattern, html, re.IGNORECASE):
+                raise ValueError(f"HTML contains potentially dangerous content")
+        
+        return html
 
 
 class HTMLSanitizer:
@@ -146,65 +140,33 @@ class HTMLSanitizer:
     """
     
     @staticmethod
-    def sanitize(html_content: str, 
-                 preserve_dsfr: bool = True,
-                 custom_allowed_tags: Optional[List[str]] = None) -> str:
+    def sanitize(html_content: str, preserve_dsfr: bool = True) -> str:
         """
         Nettoie le HTML en préservant les structures DSFR.
         
         Args:
             html_content: HTML à nettoyer
             preserve_dsfr: Préserver les classes fr-*
-            custom_allowed_tags: Tags additionnels autorisés
             
         Returns:
             HTML nettoyé et sécurisé
         """
-        # Tags autorisés
-        allowed_tags = SecurityConfig.ALLOWED_TAGS.copy()
-        if custom_allowed_tags:
-            allowed_tags.extend(custom_allowed_tags)
+        # Nettoyer avec Bleach
+        cleaned = bleach.clean(
+            html_content,
+            tags=SecurityConfig.ALLOWED_TAGS,
+            attributes=SecurityConfig.ALLOWED_ATTRIBUTES,
+            strip=True,
+            strip_comments=True
+        )
         
-        # Attributs autorisés
-        allowed_attributes = SecurityConfig.ALLOWED_ATTRIBUTES.copy()
-        
-        # Préserver les classes DSFR
+        # Préserver les classes DSFR si demandé
         if preserve_dsfr:
-            def filter_dsfr_classes(tag, name, value):
-                """Filtre pour préserver les classes DSFR."""
-                if name == 'class':
-                    # Garder seulement les classes fr-*
-                    classes = value.split()
-                    dsfr_classes = [c for c in classes if c.startswith('fr-')]
-                    return ' '.join(dsfr_classes) if dsfr_classes else None
-                return value
-            
-            # Nettoyer avec Bleach
-            cleaned = bleach.clean(
-                html_content,
-                tags=allowed_tags,
-                attributes=allowed_attributes,
-                strip=True,
-                strip_comments=True
-            )
-            
-            # Appliquer le filtre DSFR
-            # Note: Bleach ne supporte pas directement les filtres custom,
-            # donc on fait un post-processing
-            if preserve_dsfr:
-                # Garder seulement les classes fr-*
-                cleaned = re.sub(
-                    r'class="([^"]*)"',
-                    lambda m: f'class="{" ".join([c for c in m.group(1).split() if c.startswith("fr-")])}"',
-                    cleaned
-                )
-        else:
-            cleaned = bleach.clean(
-                html_content,
-                tags=allowed_tags,
-                attributes=allowed_attributes,
-                strip=True,
-                strip_comments=True
+            # Garder seulement les classes fr-*
+            cleaned = re.sub(
+                r'class="([^"]*)"',
+                lambda m: f'class="{" ".join([c for c in m.group(1).split() if c.startswith("fr-")])}"',
+                cleaned
             )
         
         return cleaned
@@ -223,133 +185,14 @@ class HTMLSanitizer:
         return html.escape(content, quote=True)
 
 
-class RateLimiter:
-    """
-    Rate limiter simple pour prévenir les abus.
-    """
-    
-    def __init__(self, 
-                 max_requests: int = SecurityConfig.RATE_LIMIT_MAX_REQUESTS,
-                 window_seconds: int = SecurityConfig.RATE_LIMIT_WINDOW):
-        """
-        Initialise le rate limiter.
-        
-        Args:
-            max_requests: Nombre max de requêtes par fenêtre
-            window_seconds: Taille de la fenêtre en secondes
-        """
-        self.max_requests = max_requests
-        self.window_seconds = window_seconds
-        self.clients: Dict[str, RateLimitEntry] = {}
-    
-    def check_rate_limit(self, client_id: str) -> bool:
-        """
-        Vérifie si le client a dépassé la limite.
-        
-        Args:
-            client_id: Identifiant du client
-            
-        Returns:
-            True si dans les limites, False sinon
-        """
-        now = datetime.now()
-        
-        if client_id not in self.clients:
-            self.clients[client_id] = RateLimitEntry(count=1, window_start=now)
-            return True
-        
-        entry = self.clients[client_id]
-        
-        # Vérifier si nouvelle fenêtre
-        if (now - entry.window_start).total_seconds() > self.window_seconds:
-            entry.count = 1
-            entry.window_start = now
-            return True
-        
-        # Incrémenter et vérifier limite
-        entry.count += 1
-        return entry.count <= self.max_requests
-    
-    def get_client_id(self, request_data: Dict[str, Any]) -> str:
-        """
-        Génère un ID client depuis les données de requête.
-        
-        Args:
-            request_data: Données de la requête
-            
-        Returns:
-            ID client hashé
-        """
-        # Créer un hash depuis les données pertinentes
-        # En production, utiliser IP + User-Agent + Session
-        data_str = str(request_data)
-        return hashlib.sha256(data_str.encode()).hexdigest()[:16]
-
-
-class CSRFProtection:
-    """
-    Protection CSRF pour formulaires.
-    """
-    
-    @staticmethod
-    def generate_token() -> str:
-        """
-        Génère un token CSRF sécurisé.
-        
-        Returns:
-            Token CSRF
-        """
-        return secrets.token_urlsafe(32)
-    
-    @staticmethod
-    def validate_token(token: str, expected: str) -> bool:
-        """
-        Valide un token CSRF.
-        
-        Args:
-            token: Token reçu
-            expected: Token attendu
-            
-        Returns:
-            True si valide
-        """
-        return secrets.compare_digest(token, expected)
-    
-    @staticmethod
-    def add_csrf_field(html: str, token: str) -> str:
-        """
-        Ajoute un champ CSRF à un formulaire HTML.
-        
-        Args:
-            html: HTML du formulaire
-            token: Token CSRF
-            
-        Returns:
-            HTML avec champ CSRF
-        """
-        csrf_field = f'<input type="hidden" name="csrf_token" value="{token}">'
-        
-        # Insérer après <form>
-        return re.sub(
-            r'(<form[^>]*>)',
-            rf'\1\n{csrf_field}',
-            html,
-            count=1
-        )
-
-
-# Instance globale du rate limiter
-rate_limiter = RateLimiter()
-
 # Fonctions utilitaires exportées
-def validate_and_sanitize_html(html: str, 
-                              component_type: Optional[str] = None) -> str:
+def validate_and_sanitize_html(html: str, preserve_dsfr: bool = True) -> str:
     """
     Valide et nettoie du HTML en une seule opération.
     
     Args:
         html: HTML à traiter
-        component_type: Type de composant
+        preserve_dsfr: Préserver les classes DSFR
         
     Returns:
         HTML validé et nettoyé
@@ -358,33 +201,43 @@ def validate_and_sanitize_html(html: str,
         ValueError: Si HTML invalide ou dangereux
     """
     # Valider
-    validated = InputValidator.validate_html_input(html, component_type)
+    validated = InputValidator.validate_html_input(html)
     
     # Sanitizer
-    sanitized = HTMLSanitizer.sanitize(validated, preserve_dsfr=True)
+    sanitized = HTMLSanitizer.sanitize(validated, preserve_dsfr)
     
     return sanitized
 
 
-def check_request_safety(request_data: Dict[str, Any], 
-                         client_id: Optional[str] = None) -> bool:
+def validate_component_request(component: str, 
+                              variant: Optional[str] = None,
+                              options: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     """
-    Vérifie la sécurité globale d'une requête.
+    Valide une requête de génération de composant.
     
     Args:
-        request_data: Données de la requête
-        client_id: ID du client (optionnel)
+        component: Nom du composant
+        variant: Variante optionnelle
+        options: Options du composant
         
     Returns:
-        True si requête sûre
+        Données validées
+        
+    Raises:
+        ValueError: Si données invalides
     """
-    # Rate limiting
-    if client_id:
-        if not rate_limiter.check_rate_limit(client_id):
-            return False
+    # Valider le nom du composant
+    component = InputValidator.validate_component_name(component)
     
-    # Taille de requête
-    if len(str(request_data)) > SecurityConfig.MAX_STRING_LENGTH * 10:
-        return False
+    # Valider la variante si présente
+    variant = InputValidator.validate_variant(variant)
     
-    return True
+    # Valider les options (limite de taille)
+    if options and len(str(options)) > SecurityConfig.MAX_STRING_LENGTH:
+        raise ValueError("Options too large")
+    
+    return {
+        'component': component,
+        'variant': variant,
+        'options': options or {}
+    }

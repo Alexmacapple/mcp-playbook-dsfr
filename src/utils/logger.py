@@ -1,16 +1,12 @@
 """
-Système de logging centralisé pour MCP DSFR.
-Utilise structlog pour des logs structurés et traçables.
+Système de logging simplifié pour MCP DSFR.
+Utilise le logging Python standard (principe KISS).
 """
 
 import sys
 import logging
-from pathlib import Path
-from typing import Any, Dict, Optional
-import structlog
-from structlog.stdlib import LoggerFactory
-from pythonjsonlogger import jsonlogger
 import os
+from typing import Dict, Any, Optional
 
 
 class DSFRLogger:
@@ -35,58 +31,31 @@ class DSFRLogger:
             self._configured = True
     
     def configure(self):
-        """Configure structlog avec les bonnes options."""
+        """Configure le logging Python standard."""
         # Niveau de log selon l'environnement
         log_level = os.getenv('LOG_LEVEL', 'INFO').upper()
         
-        # Format de log selon l'environnement
+        # Format selon l'environnement
         is_production = os.getenv('ENV', 'development') == 'production'
         
-        # Configuration du handler
+        # Format simple et clair
         if is_production:
-            # JSON en production pour parsing facile
-            handler = logging.StreamHandler(sys.stdout)
-            formatter = jsonlogger.JsonFormatter(
-                fmt='%(timestamp)s %(level)s %(name)s %(message)s',
-                rename_fields={'timestamp': '@timestamp'}
-            )
-            handler.setFormatter(formatter)
+            log_format = '%(asctime)s - %(levelname)s - %(name)s - %(message)s'
         else:
-            # Format lisible en dev
-            handler = logging.StreamHandler(sys.stdout)
-            handler.setFormatter(
-                logging.Formatter(
-                    '%(asctime)s [%(levelname)s] %(name)s - %(message)s'
-                )
-            )
+            log_format = '%(asctime)s [%(levelname)8s] %(name)s - %(message)s'
         
-        # Configuration root logger
-        logging.root.handlers = [handler]
-        logging.root.setLevel(getattr(logging, log_level))
-        
-        # Configuration structlog
-        structlog.configure(
-            processors=[
-                structlog.stdlib.filter_by_level,
-                structlog.stdlib.add_logger_name,
-                structlog.stdlib.add_log_level,
-                structlog.stdlib.PositionalArgumentsFormatter(),
-                structlog.processors.TimeStamper(fmt="iso"),
-                structlog.processors.StackInfoRenderer(),
-                structlog.processors.format_exc_info,
-                structlog.processors.UnicodeDecoder(),
-                structlog.processors.dict_tracebacks,
-                structlog.dev.ConsoleRenderer() if not is_production else structlog.processors.JSONRenderer(),
-            ],
-            context_class=dict,
-            logger_factory=LoggerFactory(),
-            cache_logger_on_first_use=True,
+        # Configuration du logger
+        logging.basicConfig(
+            level=getattr(logging, log_level),
+            format=log_format,
+            datefmt='%Y-%m-%d %H:%M:%S',
+            stream=sys.stdout
         )
         
         # Logger par défaut
-        self.logger = structlog.get_logger('mcp.dsfr')
+        self.logger = logging.getLogger('mcp.dsfr')
         
-    def get_logger(self, name: str = 'mcp.dsfr') -> structlog.BoundLogger:
+    def get_logger(self, name: str = 'mcp.dsfr') -> logging.Logger:
         """
         Retourne un logger avec le nom spécifié.
         
@@ -96,7 +65,7 @@ class DSFRLogger:
         Returns:
             Logger configuré
         """
-        return structlog.get_logger(name)
+        return logging.getLogger(name)
     
     def log_mcp_call(self, tool: str, params: Dict[str, Any], duration_ms: float = 0):
         """
@@ -108,11 +77,7 @@ class DSFRLogger:
             duration_ms: Durée d'exécution en ms
         """
         self.logger.info(
-            "mcp_call",
-            tool=tool,
-            params=params,
-            duration_ms=duration_ms,
-            event_type="mcp_call"
+            f"MCP call: {tool} | Duration: {duration_ms:.2f}ms | Params: {params}"
         )
     
     def log_error(self, error: Exception, context: Optional[Dict[str, Any]] = None):
@@ -124,11 +89,7 @@ class DSFRLogger:
             context: Contexte additionnel
         """
         self.logger.error(
-            "error_occurred",
-            error_type=type(error).__name__,
-            error_message=str(error),
-            context=context or {},
-            event_type="error",
+            f"Error: {type(error).__name__}: {str(error)} | Context: {context or {}}",
             exc_info=True
         )
     
@@ -147,12 +108,7 @@ class DSFRLogger:
             issues: Nombre de problèmes trouvés
         """
         self.logger.info(
-            "rgaa_audit",
-            component=component,
-            rgaa_level=rgaa_level,
-            score=score,
-            issues=issues,
-            event_type="audit"
+            f"RGAA Audit: {component} | Level: {rgaa_level} | Score: {score:.1f}% | Issues: {issues}"
         )
     
     def log_performance(self, 
@@ -167,13 +123,14 @@ class DSFRLogger:
             duration_ms: Durée en millisecondes
             metadata: Métadonnées additionnelles
         """
-        self.logger.info(
-            "performance",
-            operation=operation,
-            duration_ms=duration_ms,
-            metadata=metadata or {},
-            event_type="performance"
-        )
+        if duration_ms > 1000:  # Log seulement les opérations lentes
+            self.logger.warning(
+                f"Slow operation: {operation} took {duration_ms:.2f}ms | {metadata or {}}"
+            )
+        elif self.logger.isEnabledFor(logging.DEBUG):
+            self.logger.debug(
+                f"Performance: {operation} took {duration_ms:.2f}ms"
+            )
 
 
 # Instance singleton globale

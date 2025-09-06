@@ -183,10 +183,13 @@ mcp-playbook-dsfr/
 ├── docs/             # Documentation
 │   ├── deployment/   # Guide de déploiement
 │   └── roadmap/      # Feuille de route
-├── check_dsfr_version.py  # Script de vérification des mises à jour
+├── tools/             # Outils de maintenance
+│   └── check_dsfr_version.py  # Vérification des mises à jour DSFR
 ├── requirements.txt  # Dépendances Python
 ├── install.sh        # Script d'installation
-└── run_tests.sh      # Script d'exécution des tests
+├── run_tests.sh      # Script d'exécution des tests
+└── tests/
+    └── test_non_regression.py  # Tests de non-régression après modifications
 ```
 
 ### Principes d'architecture
