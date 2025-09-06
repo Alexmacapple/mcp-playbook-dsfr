@@ -125,14 +125,14 @@ Une fois installé, utilisez ces commandes dans Claude Desktop :
 
 | Outil | Description | Usage |
 |-------|-------------|-------|
-| `generate_component` | Génère des composants DSFR | Création de boutons, formulaires, cartes, etc. |
-| `validate_html` | Valide la conformité HTML/DSFR | Vérification structure et classes CSS |
-| `audit_accessibility` | Audit RGAA 4.1 | Analyse A, AA, AAA avec recommandations |
-| `analyze_cognitive` | Analyse cognitive Rumsfeld | Identification des inconnues du projet |
-| `list_components` | Liste les 48 composants | Catalogue complet avec variantes |
-| `get_design_tokens` | Tokens de design DSFR | Couleurs, espacements, typographie |
-| `generate_tests` | Génération de tests | Jest, Cypress, Playwright |
-| `get_assistant_help` | Assistant contextuel | Aide et bonnes pratiques |
+| `generer_composant` | Génère des composants DSFR | Création de boutons, formulaires, cartes, etc. |
+| `valider_html` | Valide la conformité HTML/DSFR | Vérification structure et classes CSS |
+| `audit_accessibilite` | Audit RGAA 4.1 | Analyse A, AA, AAA avec recommandations |
+| `analyser_cognitif` | Analyse cognitive Rumsfeld | Identification des inconnues du projet |
+| `lister_composants` | Liste les 48 composants | Catalogue complet avec variantes |
+| `obtenir_tokens_design` | Tokens de design DSFR | Couleurs, espacements, typographie |
+| `generer_tests` | Génération de tests | Jest, Cypress, Playwright |
+| `obtenir_aide_assistant` | Assistant contextuel | Aide et bonnes pratiques |
 
 ### Composants supportés
 
@@ -150,10 +150,9 @@ Une fois installé, utilisez ces commandes dans Claude Desktop :
 
 ### Guides principaux
 
+- **[Guide Utilisateur](docs/GUIDE_UTILISATEUR.md)** - Comment utiliser les outils MCP dans Claude
 - [CLAUDE.md](CLAUDE.md) - Guide technique pour Claude Code
 - [Guide de déploiement](docs/deployment/DEPLOYMENT.md) - Déploiement production
-- [Tests exhaustifs](docs/tests/CAHIER_TEST_EXHAUSTIF.md) - 60 tests détaillés
-- [Validation finale](docs/tests/VERIFICATION_FINALE.md) - Rapport de validation
 - [Roadmap](docs/roadmap/ROADMAP.md) - Évolutions futures
 
 ### Documentation technique
@@ -211,7 +210,7 @@ mcp-playbook-dsfr/
 
 ### Suite de tests complète
 
-✅ **100% des tests passent** (11/11 tests fonctionnels)
+**100% des tests passent** (11/11 tests fonctionnels)
 
 ### Lancer les tests
 
@@ -228,10 +227,10 @@ deactivate
 
 ### Résultats actuels
 
-- ✅ 11 tests réussis sur 11 (100%)
-- 📊 48 composants DSFR testés
-- 🔧 Tous les services fonctionnels
-- 📝 Génération automatique de tests (Cypress, Playwright, Jest)
+- 11 tests réussis sur 11 (100%)
+- 48 composants DSFR testés
+- Tous les services fonctionnels
+- Génération automatique de tests (Cypress, Playwright, Jest)
 
 ### Validation manuelle
 
