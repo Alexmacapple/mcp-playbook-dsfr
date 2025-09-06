@@ -36,7 +36,7 @@ registry = get_registry()
 
 
 @app.tool()
-def generate_component(component: str, variant: str = None, options: dict = None) -> str:
+def generer_composant(component: str, variant: str = None, options: dict = None) -> str:
     """
     Génère un composant DSFR.
     
@@ -65,7 +65,7 @@ def generate_component(component: str, variant: str = None, options: dict = None
 
 
 @app.tool()
-def list_components() -> str:
+def lister_composants() -> str:
     """
     Liste tous les composants DSFR disponibles.
     
@@ -91,7 +91,7 @@ def list_components() -> str:
 
 
 @app.tool()
-def validate_html(html: str) -> str:
+def valider_html(html: str) -> str:
     """
     Valide du HTML selon les standards DSFR et RGAA.
     
@@ -109,7 +109,7 @@ def validate_html(html: str) -> str:
 
 
 @app.tool()
-def audit_accessibility(html: str, level: str = "AA") -> str:
+def audit_accessibilite(html: str, level: str = "AA") -> str:
     """
     Effectue un audit d'accessibilité RGAA.
     
@@ -157,7 +157,7 @@ def audit_accessibility(html: str, level: str = "AA") -> str:
 
 
 @app.tool()
-def analyze_cognitive(description: str) -> str:
+def analyser_cognitif(description: str) -> str:
     """
     Analyse cognitive selon la matrice de Rumsfeld.
     
@@ -199,7 +199,7 @@ def analyze_cognitive(description: str) -> str:
 
 
 @app.tool()
-def get_design_tokens(category: str = None) -> str:
+def obtenir_tokens_design(category: str = None) -> str:
     """
     Récupère les design tokens DSFR.
     
@@ -234,7 +234,7 @@ def get_design_tokens(category: str = None) -> str:
 
 
 @app.tool()
-def generate_tests(component: str, test_type: str = "unit") -> str:
+def generer_tests(component: str, test_type: str = "unit") -> str:
     """
     Génère des tests pour un composant.
     
@@ -268,7 +268,7 @@ def generate_tests(component: str, test_type: str = "unit") -> str:
 
 
 @app.tool()
-def get_assistant_help(query: str) -> str:
+def obtenir_aide_assistant(query: str) -> str:
     """
     Obtient de l'aide de l'assistant DSFR.
     
