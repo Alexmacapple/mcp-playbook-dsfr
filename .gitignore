@@ -1,26 +1,68 @@
+# Python environments
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+*.egg-info/
+dist/
+build/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Pytest and coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.cover
+.hypothesis/
+
+# Logs
+*.log
+mcp.log
+error.log
+access.log
+
+# Configurations personnelles
+.env
+.env.local
+.env.*.local
+config/personal.md
+
+# Configurations locales Claude Desktop (chemins absolus)
+claude_desktop_config.json
+
 # Cache
 cache/
+.cache/
 
 # Fichiers temporaires
 *.tmp
 *.swp
+*.bak
+*.backup
+*~
 .DS_Store
-
-# Configurations personnelles
-.env
-config/personal.md
-
-# Logs
-*.log
+Thumbs.db
 
 # Node modules (si vous utilisez npm)
 node_modules/
 
-# Python
-__pycache__/
-*.pyc
-.venv/
-
 # IDE
 .vscode/
 .idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
