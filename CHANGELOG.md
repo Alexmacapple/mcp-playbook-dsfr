@@ -5,7 +5,45 @@ Tous les changements notables de ce projet sont documentés dans ce fichier.
 Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/),
 et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.1] - 2025-09-06
+## [2.0.2] - 2025-01-06
+
+### Modifié
+- **Optimisation pour production :**
+  - Simplification du logging (suppression structlog/pythonjsonlogger)
+  - Allègement du module security (suppression CSRF, RateLimiter et pydantic)
+  - Nettoyage des hooks inutilisés dans GeneratorService
+  - Réduction des dépendances de 43 à 7 packages essentiels
+- **Réorganisation des fichiers :**
+  - `test_non_regression.py` → `/tests/`
+  - `check_dsfr_version.py` → `/tools/`
+  - Simplification requirements : 2 fichiers au lieu de 3
+- **Docker optimisé :**
+  - Suppression des variables d'environnement obsolètes
+  - Suppression de `version: '3.8'` (déprécié)
+  - Commentaire des ports (MCP utilise stdio)
+- **Scripts mis à jour :**
+  - `install.sh` : Suppression vérification pydantic, ajout bleach
+  - `run_tests.sh` : Support du test_non_regression.py (13 tests total)
+- **Documentation :**
+  - Mise à jour `README.md` : 13 tests, structure clarifiée
+  - Mise à jour `CLAUDE.md` : Architecture optimisée, performances documentées
+  - Ajout `.env.example` : Variables d'environnement documentées
+
+### Supprimé
+- `requirements-prod.txt` (redondant avec requirements.txt)
+- Dépendances : pydantic, structlog, pythonjsonlogger
+- Variables Docker : RATE_LIMIT_PER_MINUTE, ENABLE_METRICS, DEBUG, PRETTY_LOGS
+- Hooks et overrides dans GeneratorService
+- Scripts de maintenance obsolètes : 160KB archivés dans `/archive/`
+- Fichiers serveur MCP obsolètes : server_final.py, server_mcp_correct.py, etc.
+- config.py dans mcp_local (non utilisé)
+
+### Performance
+- Génération de composants : >1.5M ops/sec
+- Taille dépendances : -3MB
+- Temps de démarrage : <1 seconde
+
+## [2.0.1] - 2025-01-06
 
 ### Ajouté
 - Script `run_tests.sh` pour exécuter automatiquement tous les tests
@@ -46,9 +84,9 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Détection STATUT dans plusieurs tests pour le script d'exécution
 
 ### Résultats
-- **11/11 tests passent** (100% de réussite)
+- **13/13 tests passent** (100% de réussite)
 - **48 composants DSFR** testés et fonctionnels
-- **130/131 variantes** validées
+- **131/131 variantes** validées
 - **Tous les services MCP** opérationnels
 
 ## [2.0.0] - 2025-01-06

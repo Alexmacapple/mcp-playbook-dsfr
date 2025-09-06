@@ -68,9 +68,9 @@ Exemples de comportements inacceptables :
 
 2. **Vérifier l'installation**
    
-   Après avoir suivi les étapes d'installation, vérifiez que :
+   Après avoir suivi les étapes d'installation avec `./install.sh`, vérifiez que :
    - L'environnement virtuel est créé (`venv/` existe)
-   - Les dépendances sont installées (`pip list` montre mcp, beautifulsoup4, etc.)
+   - Les 7 dépendances de production sont installées (mcp, beautifulsoup4, lxml, bleach, typing-extensions, python-dotenv, requests)
    - Le serveur MCP fonctionne (`python3 -c "from mcp_local.server import app"`)
    - La configuration Claude Desktop est générée par install.sh
 
@@ -85,8 +85,8 @@ Exemples de comportements inacceptables :
    ```bash
    python3 -m venv venv
    source venv/bin/activate
-   pip install -r requirements.txt
-   pip install -r requirements-dev.txt  # Outils de développement
+   pip install -r requirements.txt      # 7 dépendances production
+   pip install -r requirements-dev.txt  # Outils de développement (pytest, black, ruff, mypy)
    ```
 
 4. **Faire vos modifications**
@@ -96,10 +96,10 @@ Exemples de comportements inacceptables :
 
 5. **Tester vos changements**
    ```bash
-   # Lancer tous les tests
-   pytest tests/
+   # Lancer tous les tests (13 tests)
+   ./run_tests.sh
    
-   # Vérifier la couverture
+   # OU avec pytest pour la couverture
    pytest tests/ --cov=src --cov-report=html
    
    # Vérifier le style
@@ -140,12 +140,14 @@ mcp-playbook-dsfr/
 
 ```bash
 # Installation des dépendances de dev
-pip install black ruff mypy pytest pytest-cov
+pip install -r requirements-dev.txt
+# Contient : pytest, black, ruff, mypy, pytest-cov, pytest-watch
 
 # Variables d'environnement pour dev
 export ENV=development
 export LOG_LEVEL=DEBUG
-export DEBUG=true
+export DEFAULT_RGAA_LEVEL=AA
+export ENABLE_HTML_SANITIZATION=true
 ```
 
 ### Commandes utiles
@@ -270,13 +272,10 @@ def generate_component(
 
 ```
 tests/
-├── unit/              # Tests unitaires
-│   ├── test_generator.py
-│   └── test_validator.py
-├── integration/       # Tests d'intégration
-│   └── test_mcp_integration.py
-└── fixtures/          # Données de test
-    └── components.json
+├── test-mcp-dsfr-*.py        # 12 tests fonctionnels
+├── test_non_regression.py    # Test de non-régression
+├── resultats-test/           # Rapports de tests
+└── html_outputs/             # Pages HTML générées
 ```
 
 ### Écrire des tests
@@ -347,7 +346,7 @@ pytest --cov=src --cov-report=html
 Maintenir `CHANGELOG.md` à jour :
 
 ```markdown
-## [2.1.0] - 2024-01-15
+## [2.0.3] - 2025-01-15
 
 ### Added
 - Nouveau composant X
@@ -365,7 +364,7 @@ Maintenir `CHANGELOG.md` à jour :
 ### Avant de soumettre
 
 - [ ] Le code suit les standards du projet
-- [ ] Les tests passent (`pytest tests/`)
+- [ ] Les tests passent (`./run_tests.sh` - 13 tests)
 - [ ] La couverture est maintenue (>80%)
 - [ ] Le code est formaté (`black .`)
 - [ ] Le linting passe (`ruff check .`)
@@ -432,7 +431,7 @@ Ce qui se passe réellement
 ## Environnement
 - OS: [ex: macOS 14.0]
 - Python: [ex: 3.11.5]
-- Version MCP DSFR: [ex: 2.0.0]
+- Version MCP DSFR: [ex: 2.0.2]
 - Claude Desktop: [ex: 1.0.0]
 
 ## Logs

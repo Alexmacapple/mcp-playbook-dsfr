@@ -52,8 +52,8 @@ USER mcp
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD python3 -c "import sys; sys.path.insert(0, '/app'); from mcp_local.server import app; print('OK')" || exit 1
 
-# Expose MCP port (for monitoring if needed)
-EXPOSE 9090
+# MCP communique via stdio, pas de port à exposer
+# EXPOSE 9090
 
 # Run the MCP server
 CMD ["python3", "mcp_local/server.py"]

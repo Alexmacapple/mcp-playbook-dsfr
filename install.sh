@@ -22,7 +22,7 @@ echo ""
 echo -e "${YELLOW}📋 Vérification de Python...${NC}"
 if ! command -v python3 &> /dev/null; then
     echo -e "${RED}❌ Python 3 n'est pas installé${NC}"
-    echo "Installez Python 3.13+ depuis https://python.org"
+    echo "Installez Python 3.9+ depuis https://python.org"
     exit 1
 fi
 
@@ -62,10 +62,10 @@ import sys
 try:
     import mcp
     import bs4
-    import pydantic
+    import bleach
     print('✅ MCP SDK installé')
     print('✅ BeautifulSoup4 installé')
-    print('✅ Pydantic installé')
+    print('✅ Bleach installé')
 except ImportError as e:
     print(f'❌ Erreur: {e}')
     sys.exit(1)
@@ -92,16 +92,28 @@ except Exception as e:
     sys.exit(1)
 "
 
-# 7. Créer un fichier .env exemple (optionnel)
-if [ ! -f ".env" ]; then
+# 7. Créer un fichier .env exemple si nécessaire
+if [ ! -f ".env.example" ]; then
     cat > .env.example <<EOF
-# Configuration environnement MCP DSFR
-ENV=development
+# Configuration MCP DSFR Server
+# Copier ce fichier vers .env et ajuster les valeurs
+
+# Environnement (development, production)
+ENV=production
+
+# Niveau de log (DEBUG, INFO, WARNING, ERROR)
 LOG_LEVEL=INFO
+
+# Niveau RGAA par défaut (A, AA, AAA)
 DEFAULT_RGAA_LEVEL=AA
+
+# Activer la sanitization HTML (true, false)
 ENABLE_HTML_SANITIZATION=true
 EOF
     echo -e "${GREEN}✅ Fichier .env.example créé${NC}"
+fi
+
+if [ ! -f ".env" ]; then
     echo -e "${YELLOW}   Copiez .env.example vers .env pour personnaliser${NC}"
 fi
 

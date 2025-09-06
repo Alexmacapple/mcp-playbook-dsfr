@@ -8,6 +8,8 @@
 
 Serveur Model Context Protocol intégrant le Design System de l'État français (DSFR) dans Claude Desktop. Génération, validation et audit de composants DSFR conformes RGAA 4.1.
 
+**Optimisé pour la production** : 7 dépendances essentielles, performances >1.5M ops/sec, logging simplifié.
+
 ## Table des matières
 
 - [Installation](#installation)
@@ -25,7 +27,7 @@ Serveur Model Context Protocol intégrant le Design System de l'État français 
 - Python 3.9 ou supérieur
 - Claude Desktop installé
 - macOS, Linux ou Windows
-- 200MB d'espace disque
+- 100MB d'espace disque (7 dépendances production)
 
 ## Installation
 
@@ -40,7 +42,7 @@ cd mcp-playbook-dsfr
 Le script d'installation :
 1. Vérifie la version Python
 2. Crée l'environnement virtuel
-3. Installe les dépendances (incluant beautifulsoup4)
+3. Installe les dépendances de production (7 packages essentiels)
 4. Teste le serveur
 5. Génère la configuration Claude Desktop
 
@@ -51,7 +53,7 @@ Le script d'installation :
 ./run_tests.sh
 ```
 
-Le script run_tests.sh active l'environnement virtuel et exécute les 12 tests de validation.
+Le script run_tests.sh active l'environnement virtuel et exécute les 13 tests de validation (incluant test_non_regression.py).
 
 ### Installation manuelle
 
@@ -64,8 +66,11 @@ cd mcp-playbook-dsfr
 python3 -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 
-# Installer les dépendances
+# Installer les dépendances de production
 pip install -r requirements.txt
+
+# OU pour le développement (inclut tests et outils)
+pip install -r requirements-dev.txt
 
 # Tester l'installation
 python3 -c "from mcp_local.server import app; print('Installation réussie')"
@@ -185,11 +190,10 @@ mcp-playbook-dsfr/
 │   └── roadmap/      # Feuille de route
 ├── tools/             # Outils de maintenance
 │   └── check_dsfr_version.py  # Vérification des mises à jour DSFR
-├── requirements.txt  # Dépendances Python
+├── requirements.txt  # Dépendances production (7 packages)
+├── requirements-dev.txt  # Dépendances développement
 ├── install.sh        # Script d'installation
-├── run_tests.sh      # Script d'exécution des tests
-└── tests/
-    └── test_non_regression.py  # Tests de non-régression après modifications
+└── run_tests.sh      # Script d'exécution des tests
 ```
 
 ### Principes d'architecture
@@ -213,7 +217,7 @@ mcp-playbook-dsfr/
 
 ### Suite de tests complète
 
-**100% des tests passent** (11/11 tests fonctionnels)
+**100% des tests passent** (13/13 tests fonctionnels)
 
 ### Lancer les tests
 
@@ -230,10 +234,19 @@ deactivate
 
 ### Résultats actuels
 
-- 11 tests réussis sur 11 (100%)
+- 13 tests réussis sur 13 (100%)
 - 48 composants DSFR testés
 - Tous les services fonctionnels
 - Génération automatique de tests (Cypress, Playwright, Jest)
+
+### Test de non-régression
+
+```bash
+# Test rapide après modifications
+python3 tests/test_non_regression.py
+```
+
+Vérifie : imports, services, sécurité, performance (>1.5M ops/sec)
 
 ### Validation manuelle
 

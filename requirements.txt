@@ -1,25 +1,15 @@
-# Dependencies for DSFR MCP Server - Production Ready
+# MCP DSFR Server Dependencies
+# 
+# Installation production : pip install -r requirements.txt
+# Installation développement : pip install -r requirements-dev.txt
 
-# Core dependencies
-mcp>=0.1.0                    # MCP SDK for Claude integration
-typing-extensions>=4.0.0      # Type hints backport
-beautifulsoup4>=4.12.0       # HTML parsing for audit service
-lxml>=4.9.0                  # XML/HTML parser for BeautifulSoup
+# ========== REQUIRED (7 packages) ==========
+# Ces dépendances sont OBLIGATOIRES pour faire fonctionner le serveur
 
-# Performance
-ujson>=5.0.0                # Fast JSON parsing
-aiofiles>=23.0.0            # Async file operations
-requests>=2.31.0            # HTTP client for API calls
-
-# Security & Validation
-bleach>=6.0.0               # HTML sanitization
-python-dotenv>=1.0.0        # Environment variables
-
-# Development & Testing
-pytest>=7.0.0               # Testing framework
-pytest-asyncio>=0.21.0      # Async test support
-pytest-cov>=4.0.0           # Coverage reports
-pytest-mock>=3.10.0         # Mocking support
-black>=22.0.0               # Code formatting
-mypy>=0.950                 # Type checking
-ruff>=0.1.0                 # Fast linter
+mcp>=0.1.0                    # Model Context Protocol SDK
+beautifulsoup4>=4.12.0        # HTML parsing pour l'audit RGAA
+lxml>=4.9.0                   # Parser XML/HTML pour BeautifulSoup
+bleach>=6.0.0                 # Sanitization HTML sécurisée
+typing-extensions>=4.0.0      # Compatibilité types Python 3.8+
+python-dotenv>=1.0.0          # Variables d'environnement
+requests>=2.31.0              # Client HTTP (outil check_dsfr_version)

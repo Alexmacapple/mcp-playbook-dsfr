@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   mcp-dsfr:
     build:
@@ -11,16 +9,11 @@ services:
     
     # Variables d'environnement
     environment:
-      - ENV=${ENV:-development}
+      - ENV=${ENV:-production}
       - LOG_LEVEL=${LOG_LEVEL:-INFO}
       - DEFAULT_RGAA_LEVEL=${DEFAULT_RGAA_LEVEL:-AA}
       - ENABLE_HTML_SANITIZATION=${ENABLE_HTML_SANITIZATION:-true}
-      - MAX_CACHE_SIZE=${MAX_CACHE_SIZE:-256}
-      - RATE_LIMIT_PER_MINUTE=${RATE_LIMIT_PER_MINUTE:-60}
-      - ENABLE_METRICS=${ENABLE_METRICS:-false}
-      - METRICS_PORT=${METRICS_PORT:-9090}
-      - DEBUG=${DEBUG:-false}
-      - PRETTY_LOGS=${PRETTY_LOGS:-true}
+      - PYTHONPATH=/app
     
     # Volumes pour persistence
     volumes:
@@ -43,9 +36,9 @@ services:
           cpus: '0.5'
           memory: 256M
     
-    # Ports (optionnel pour métriques)
-    ports:
-      - "${METRICS_PORT:-9090}:9090"
+    # Ports - Commenté car MCP n'expose pas de port HTTP
+    # ports:
+    #   - "9090:9090"
     
     # Logging
     logging:

@@ -50,6 +50,12 @@ mkdir -p tests/html_outputs
 
 # Compter les tests
 TOTAL_TESTS=$(ls tests/test-mcp-dsfr-*.py 2>/dev/null | wc -l | tr -d ' ')
+
+# Ajouter le test de non-régression s'il existe
+if [ -f "tests/test_non_regression.py" ]; then
+    TOTAL_TESTS=$((TOTAL_TESTS + 1))
+fi
+
 echo ""
 echo -e "${BLUE}📊 $TOTAL_TESTS tests trouvés${NC}"
 echo ""
@@ -62,6 +68,7 @@ SKIPPED=0
 echo -e "${YELLOW}🧪 Exécution des tests...${NC}"
 echo "----------------------------------------"
 
+# Tests standards test-mcp-dsfr-*.py
 for test_file in tests/test-mcp-dsfr-*.py; do
     if [ -f "$test_file" ]; then
         TEST_NAME=$(basename "$test_file" .py)
@@ -84,6 +91,18 @@ for test_file in tests/test-mcp-dsfr-*.py; do
         fi
     fi
 done
+
+# Test de non-régression
+if [ -f "tests/test_non_regression.py" ]; then
+    echo -ne "  test_non_regression ... "
+    if python3 tests/test_non_regression.py > /dev/null 2>&1; then
+        echo -e "${GREEN}✅ PASS${NC}"
+        PASSED=$((PASSED + 1))
+    else
+        echo -e "${RED}❌ FAIL${NC}"
+        FAILED=$((FAILED + 1))
+    fi
+fi
 
 echo "----------------------------------------"
 echo ""
