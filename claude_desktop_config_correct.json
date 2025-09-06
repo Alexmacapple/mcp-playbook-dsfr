@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "mcp-playbook-dsfr": {
+      "command": "/Users/alex/Desktop/mcp-playbook-dsfr/venv/bin/python3",
+      "args": ["/Users/alex/Desktop/mcp-playbook-dsfr/mcp_local/dsfr_server_simple.py"],
+      "env": {
+        "PYTHONPATH": "/Users/alex/Desktop/mcp-playbook-dsfr",
+        "ENV": "production",
+        "LOG_LEVEL": "INFO"
+      }
+    }
+  }
+}

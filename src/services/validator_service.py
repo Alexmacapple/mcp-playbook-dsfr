@@ -70,19 +70,76 @@ class ValidatorService:
         }
     
     def _validate_html_structure(self, html: str) -> List[str]:
-        """Valide la structure HTML basique."""
+        """Valide la structure HTML basique avec vérification d'imbrication."""
         errors = []
         
-        # Vérifier les balises fermées
-        open_tags = re.findall(r'<([a-z]+)[^>]*>', html, re.IGNORECASE)
-        close_tags = re.findall(r'</([a-z]+)>', html, re.IGNORECASE)
+        # Stack pour vérifier l'imbrication correcte
+        tag_stack = []
         
-        # Ignorer les balises auto-fermantes
-        self_closing = ['img', 'input', 'br', 'hr', 'meta', 'link']
-        open_tags = [t for t in open_tags if t.lower() not in self_closing]
+        # Pattern pour trouver toutes les balises (ouverture et fermeture)
+        tag_pattern = r'<(/?)([a-zA-Z]+)[^>]*>'
         
-        if len(open_tags) != len(close_tags):
-            errors.append("Balises non équilibrées")
+        # Balises auto-fermantes qui n'ont pas besoin de fermeture
+        self_closing = {'img', 'input', 'br', 'hr', 'meta', 'link', 'area', 'base', 'col', 'embed', 'source', 'track', 'wbr'}
+        
+        position = 0
+        for match in re.finditer(tag_pattern, html):
+            is_closing = match.group(1) == '/'
+            tag_name = match.group(2).lower()
+            tag_position = match.start()
+            
+            # Ignorer les balises auto-fermantes
+            if tag_name in self_closing:
+                continue
+                
+            if not is_closing:
+                # Balise ouvrante : l'ajouter à la pile
+                tag_stack.append((tag_name, tag_position))
+            else:
+                # Balise fermante : vérifier qu'elle correspond
+                if not tag_stack:
+                    errors.append(f"Balise fermante </{ tag_name}> sans balise ouvrante correspondante à la position {tag_position}")
+                elif tag_stack[-1][0] != tag_name:
+                    # Erreur d'imbrication - balises croisées
+                    expected = tag_stack[-1][0]
+                    errors.append(f"Erreur d'imbrication : balise </{ tag_name}> trouvée alors que </{ expected}> était attendue (balises croisées)")
+                    # Essayer de trouver la balise correspondante dans la pile
+                    found = False
+                    for i in range(len(tag_stack) - 1, -1, -1):
+                        if tag_stack[i][0] == tag_name:
+                            # Toutes les balises après celle-ci sont mal fermées
+                            for j in range(i + 1, len(tag_stack)):
+                                errors.append(f"Balise <{tag_stack[j][0]}> non fermée correctement (fermée après </{ tag_name}>)")
+                            # Retirer toutes les balises jusqu'à celle-ci
+                            tag_stack = tag_stack[:i]
+                            found = True
+                            break
+                    if not found:
+                        errors.append(f"Balise fermante </{ tag_name}> sans balise ouvrante correspondante")
+                else:
+                    # Correspondance correcte
+                    tag_stack.pop()
+        
+        # Vérifier les balises non fermées
+        for tag_name, position in tag_stack:
+            errors.append(f"Balise <{tag_name}> non fermée (ouverte à la position {position})")
+        
+        # Vérifier aussi avec BeautifulSoup si disponible pour une validation plus robuste
+        try:
+            from bs4 import BeautifulSoup, FeatureNotFound
+            try:
+                # Utiliser le parser le plus strict
+                soup = BeautifulSoup(html, 'html.parser')
+                # BeautifulSoup corrige silencieusement, donc on compare avec l'original
+                if str(soup) != html and html.strip() != str(soup).strip():
+                    # Si BeautifulSoup a dû corriger quelque chose, c'est qu'il y avait une erreur
+                    if not errors:  # Éviter les doublons
+                        errors.append("Structure HTML invalide détectée (corrections automatiques nécessaires)")
+            except FeatureNotFound:
+                pass
+        except ImportError:
+            # BeautifulSoup non disponible, utiliser seulement la validation regex
+            pass
         
         return errors
     

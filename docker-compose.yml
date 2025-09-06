@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  mcp-dsfr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mcp-playbook-dsfr:2.0.0
+    container_name: mcp-dsfr-server
+    restart: unless-stopped
+    
+    # Variables d'environnement
+    environment:
+      - ENV=${ENV:-development}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - DEFAULT_RGAA_LEVEL=${DEFAULT_RGAA_LEVEL:-AA}
+      - ENABLE_HTML_SANITIZATION=${ENABLE_HTML_SANITIZATION:-true}
+      - MAX_CACHE_SIZE=${MAX_CACHE_SIZE:-256}
+      - RATE_LIMIT_PER_MINUTE=${RATE_LIMIT_PER_MINUTE:-60}
+      - ENABLE_METRICS=${ENABLE_METRICS:-false}
+      - METRICS_PORT=${METRICS_PORT:-9090}
+      - DEBUG=${DEBUG:-false}
+      - PRETTY_LOGS=${PRETTY_LOGS:-true}
+    
+    # Volumes pour persistence
+    volumes:
+      - ./gabarits:/app/gabarits:ro
+      - ./src:/app/src:ro
+      - ./mcp:/app/mcp:ro
+      - logs:/app/logs
+    
+    # Réseau
+    networks:
+      - mcp-network
+    
+    # Ressources
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+    
+    # Ports (optionnel pour métriques)
+    ports:
+      - "${METRICS_PORT:-9090}:9090"
+    
+    # Logging
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+  
+  # Service de test (optionnel, pour développement)
+  test-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mcp-playbook-dsfr:2.0.0
+    container_name: mcp-dsfr-tests
+    command: pytest tests/ -v --cov=src --cov-report=html
+    environment:
+      - ENV=test
+      - LOG_LEVEL=DEBUG
+    volumes:
+      - ./tests:/app/tests:ro
+      - ./src:/app/src:ro
+      - ./mcp:/app/mcp:ro
+      - ./gabarits:/app/gabarits:ro
+      - ./htmlcov:/app/htmlcov
+    networks:
+      - mcp-network
+    profiles:
+      - test
+
+networks:
+  mcp-network:
+    driver: bridge
+
+volumes:
+  logs:
+    driver: local
