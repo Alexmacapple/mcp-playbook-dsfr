@@ -1,0 +1,79 @@
+# Fichiers à exclure de l'image Docker de production
+
+# Environnements Python locaux
+venv/
+env/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Outils de développement et maintenance
+tools/
+scripts/
+
+# Tests
+tests/html_outputs/
+tests/resultats-test/
+*.test.py
+*_test.py
+
+# Documentation de développement
+docs/roadmap/
+CONTRIBUTING.md
+CHANGELOG.md
+
+# Configurations locales
+.env.local
+.env.*.local
+claude_desktop_config.json
+.env.example
+
+# Git
+.git/
+.github/
+.gitignore
+.gitattributes
+
+# IDE et éditeurs
+.vscode/
+.idea/
+*.sublime-*
+.editorconfig
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+*~
+
+# Logs locaux
+*.log
+logs/
+
+# Cache
+cache/
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Scripts de build et maintenance
+clean_mcp_local.sh
+install.sh
+run_tests.sh
+
+# Node (si utilisé)
+node_modules/
+package*.json
+
+# Documentation builds
+docs/_build/
+docs/.doctrees/
+
+# Temporaires
+*.tmp
+*.temp
+/tmp/

@@ -1,8 +1,8 @@
 # Roadmap MCP DSFR
 
-## Version actuelle : 2.0.0
+## Version actuelle : 2.0.1
 
-## Réalisé
+## Réalisé (Janvier 2025)
 - [x] Architecture Clean Code (SOLID, DRY, KISS, YAGNI)
 - [x] 48 composants DSFR complets
 - [x] 8 outils MCP opérationnels
@@ -17,7 +17,11 @@
 - [x] Validation HTML avec détection de balises croisées
 - [x] Support Docker pour déploiement
 - [x] Documentation complète en français
-- [x] Tests exhaustifs (60 tests documentés)
+- [x] Tests exhaustifs (100% de réussite - 11 tests fonctionnels)
+- [x] Nettoyage du répertoire mcp_local pour production
+  - Suppression des fichiers serveur obsolètes
+  - Suppression de config.py (non utilisé - principe YAGNI)
+  - Conservation de 2 fichiers essentiels : server.py et __init__.py
 
 ## Prochaines étapes prioritaires
 

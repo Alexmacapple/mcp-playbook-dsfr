@@ -1234,7 +1234,7 @@ class DSFRCompleteLibraryBuilder:
     <div class="fr-container">
         <div class="fr-notice__body">
             <p class="fr-notice__title">
-                ⚠️ Site en maintenance
+                [ATTENTION] Site en maintenance
             </p>
         </div>
     </div>
@@ -1751,10 +1751,10 @@ class DSFRCompleteLibraryBuilder:
         # Créer le fichier JSON avec tous les snippets
         self.create_json_library()
         
-        print(f"\n✨ Bibliothèque COMPLÈTE créée dans '{self.output_dir}/'")
-        print(f"   ✅ {len(self.all_components)} composants")
-        print(f"   ✅ {total_variants} variantes au total")
-        print(f"   ✅ 100% HTML de production")
+        print(f"\n[INFO] Bibliothèque COMPLÈTE créée dans '{self.output_dir}/'")
+        print(f"   [OK] {len(self.all_components)} composants")
+        print(f"   [OK] {total_variants} variantes au total")
+        print(f"   [OK] 100% HTML de production")
     
     def create_complete_index(self):
         """Crée une page d'index pour naviguer dans TOUS les gabarits"""
@@ -1831,7 +1831,7 @@ class DSFRCompleteLibraryBuilder:
     
     <main id="main" role="main" class="fr-container fr-py-8w">
         <div class="fr-alert fr-alert--success">
-            <h3 class="fr-alert__title">✅ Bibliothèque 100% complète</h3>
+            <h3 class="fr-alert__title">[OK] Bibliothèque 100% complète</h3>
             <p>
                 Tous les 51 composants DSFR v1.14.1 sont disponibles en HTML pur, 
                 prêts à copier-coller dans vos projets. Aucun template EJS, que du HTML de production !
@@ -1862,9 +1862,9 @@ class DSFRCompleteLibraryBuilder:
         categories = {
             "🧭 Navigation": ["header", "footer", "navigation", "breadcrumb", "sidemenu", "skiplinks", "pagination"],
             "🔘 Boutons et liens": ["button", "button_group", "link", "back_to_top"],
-            "📝 Formulaires": ["input", "select", "checkbox", "radio", "toggle", "search", "upload", "password", "range", "form"],
-            "📊 Affichage": ["accordion", "alert", "badge", "callout", "card", "content", "highlight", "modal", "notice", "quote", "stepper", "summary", "table", "tabs", "tag", "tile", "tooltip", "transcription"],
-            "🔧 Autres": ["logo", "consent", "connect", "display", "download", "follow", "share", "translate", "version"]
+            "[DOC] Formulaires": ["input", "select", "checkbox", "radio", "toggle", "search", "upload", "password", "range", "form"],
+            "[STATS] Affichage": ["accordion", "alert", "badge", "callout", "card", "content", "highlight", "modal", "notice", "quote", "stepper", "summary", "table", "tabs", "tag", "tile", "tooltip", "transcription"],
+            "[OUTILS] Autres": ["logo", "consent", "connect", "display", "download", "follow", "share", "translate", "version"]
         }
         
         for category_name, component_list in categories.items():
@@ -1909,7 +1909,7 @@ class DSFRCompleteLibraryBuilder:
 """
         
         html += """
-        <h2>🚀 Utilisation</h2>
+        <h2>[START] Utilisation</h2>
         
         <div class="fr-highlight">
             <ol>
@@ -1933,15 +1933,15 @@ class DSFRCompleteLibraryBuilder:
 &lt;script type="module" src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.14.0/dist/dsfr.module.min.js"&gt;&lt;/script&gt;
 &lt;script nomodule src="https://cdn.jsdelivr.net/npm/@gouvfr/dsfr@1.14.0/dist/dsfr.nomodule.min.js"&gt;&lt;/script&gt;</code></pre>
         
-        <h2>✨ Caractéristiques</h2>
+        <h2>[INFO] Caractéristiques</h2>
         
         <ul class="fr-list">
-            <li>✅ <strong>100% des composants DSFR</strong> (les 51 composants officiels)</li>
-            <li>✅ <strong>HTML pur</strong> - Pas de templates EJS ou autre</li>
-            <li>✅ <strong>Production-ready</strong> - Copiez-collez directement</li>
-            <li>✅ <strong>Accessible RGAA</strong> - Tous les attributs ARIA inclus</li>
-            <li>✅ <strong>Responsive</strong> - Classes responsive incluses</li>
-            <li>✅ <strong>Documenté</strong> - Chaque fichier est commenté</li>
+            <li>[OK] <strong>100% des composants DSFR</strong> (les 51 composants officiels)</li>
+            <li>[OK] <strong>HTML pur</strong> - Pas de templates EJS ou autre</li>
+            <li>[OK] <strong>Production-ready</strong> - Copiez-collez directement</li>
+            <li>[OK] <strong>Accessible RGAA</strong> - Tous les attributs ARIA inclus</li>
+            <li>[OK] <strong>Responsive</strong> - Classes responsive incluses</li>
+            <li>[OK] <strong>Documenté</strong> - Chaque fichier est commenté</li>
         </ul>
     </main>
     
@@ -2004,7 +2004,7 @@ def main():
     builder = DSFRCompleteLibraryBuilder()
     builder.build_complete_library()
     
-    print("\n🎯 Bibliothèque COMPLÈTE DSFR prête !")
+    print("\n[CIBLE] Bibliothèque COMPLÈTE DSFR prête !")
     print("   Ouvrez 'gabarits/index.html' pour naviguer dans TOUS les templates")
     print("   100% des composants DSFR disponibles en HTML de production !")
 

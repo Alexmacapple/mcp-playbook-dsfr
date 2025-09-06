@@ -85,11 +85,11 @@ class DSFRCompleteUpdater:
                 ["git", "clone", "--depth", "1", self.repo_url, self.temp_dir],
                 capture_output=True, text=True, check=True
             )
-            print("   ✅ Dépôt cloné avec succès")
+            print("   [OK] Dépôt cloné avec succès")
             return True
             
         except subprocess.CalledProcessError as e:
-            print(f"   ❌ Erreur lors du clonage : {e}")
+            print(f"   [ERREUR] Erreur lors du clonage : {e}")
             return False
     
     def extract_from_github_local(self) -> Dict:
@@ -100,7 +100,7 @@ class DSFRCompleteUpdater:
         components_dir = os.path.join(self.temp_dir, "src/dsfr/component")
         
         if not os.path.exists(components_dir):
-            print("   ❌ Dossier des composants non trouvé")
+            print("   [ERREUR] Dossier des composants non trouvé")
             return components_data
         
         # Parcourir chaque composant
@@ -147,10 +147,10 @@ class DSFRCompleteUpdater:
                                         component_data["template"] = content
                                         
                         except Exception as e:
-                            print(f"      ⚠️  Erreur lecture {file}: {e}")
+                            print(f"      [ATTENTION]  Erreur lecture {file}: {e}")
                 
                 components_data[component_name] = component_data
-                print(f"   ✅ {component_name}")
+                print(f"   [OK] {component_name}")
         
         return components_data
     
@@ -181,7 +181,7 @@ class DSFRCompleteUpdater:
                 return data
                 
         except Exception as e:
-            print(f"      ⚠️  Pas de doc Storybook pour {component_name}")
+            print(f"      [ATTENTION]  Pas de doc Storybook pour {component_name}")
             return {}
     
     def parse_storybook_content(self, html: str) -> Dict:
@@ -211,7 +211,7 @@ class DSFRCompleteUpdater:
     
     def merge_all_data(self, github_data: Dict, npm_version: str) -> Dict:
         """Fusionne toutes les sources de données"""
-        print("\n🔄 Fusion des données...")
+        print("\n[MAJ] Fusion des données...")
         
         merged = {
             "version": npm_version,
@@ -241,9 +241,9 @@ class DSFRCompleteUpdater:
             storybook_data = self.extract_from_storybook(comp_name)
             if storybook_data:
                 component["storybook"] = storybook_data
-                print(" ✅")
+                print(" [OK]")
             else:
-                print(" ⚠️")
+                print(" [ATTENTION]")
             
             # Délai pour éviter le rate limiting
             time.sleep(0.3)
@@ -259,7 +259,7 @@ class DSFRCompleteUpdater:
 
 *Généré le {datetime.now().strftime('%d/%m/%Y %H:%M')}*
 
-## 📊 SOURCES COMBINÉES
+## [STATS] SOURCES COMBINÉES
 
 1. **GitHub** : Code source complet (SCSS, JS, Templates)
 2. **Storybook** : Documentation interactive
@@ -285,11 +285,11 @@ npm install @gouvfr/dsfr@{data['version']}
         # Organiser par catégories
         categories = {
             "🧭 Navigation": ["header", "footer", "navigation", "breadcrumb", "sidemenu", "skiplink"],
-            "📝 Formulaires": ["input", "select", "checkbox", "radio", "toggle", "search", "upload", "range", "password", "form"],
+            "[DOC] Formulaires": ["input", "select", "checkbox", "radio", "toggle", "search", "upload", "range", "password", "form"],
             "🔘 Boutons et Actions": ["button", "link", "download"],
-            "📊 Affichage": ["accordion", "alert", "badge", "callout", "card", "modal", "table", "tab", "tag", "tile", "tooltip"],
+            "[STATS] Affichage": ["accordion", "alert", "badge", "callout", "card", "modal", "table", "tab", "tag", "tile", "tooltip"],
             "📄 Contenu": ["content", "highlight", "quote", "summary", "transcription", "notice"],
-            "🔧 Utilitaires": ["consent", "display", "follow", "pagination", "share", "stepper", "translate"]
+            "[OUTILS] Utilitaires": ["consent", "display", "follow", "pagination", "share", "stepper", "translate"]
         }
         
         # Classer les composants
@@ -336,7 +336,7 @@ npm install @gouvfr/dsfr@{data['version']}
                         # Extraire les classes
                         classes = re.findall(r'\.fr-[a-z\-]+', scss)
                         if classes:
-                            md += f"\n### 📝 CLASSES CSS\n\n"
+                            md += f"\n### [DOC] CLASSES CSS\n\n"
                             for cls in list(set(classes))[:15]:
                                 md += f"- `{cls}`\n"
                     
@@ -431,7 +431,7 @@ npm install @gouvfr/dsfr@{data['version']}
     
     def update_complete(self):
         """Lance la mise à jour complète"""
-        print("🚀 MISE À JOUR COMPLÈTE DSFR\n")
+        print("[START] MISE À JOUR COMPLÈTE DSFR\n")
         print("=" * 50)
         
         # 1. Vérifier la version NPM
@@ -450,19 +450,19 @@ npm install @gouvfr/dsfr@{data['version']}
         
         # 2. Cloner le dépôt
         if not self.clone_repository():
-            print("❌ Impossible de cloner le dépôt")
+            print("[ERREUR] Impossible de cloner le dépôt")
             return None
         
         # 3. Extraire depuis GitHub local
         github_data = self.extract_from_github_local()
-        print(f"\n✅ {len(github_data)} composants extraits depuis GitHub")
+        print(f"\n[OK] {len(github_data)} composants extraits depuis GitHub")
         
         # 4. Fusionner avec Storybook
         print("\n📖 Ajout de la documentation Storybook...")
         merged_data = self.merge_all_data(github_data, npm_version)
         
         # 5. Générer la documentation ULTRA COMPLÈTE
-        print("\n📝 Génération de la documentation ULTRA COMPLÈTE...")
+        print("\n[DOC] Génération de la documentation ULTRA COMPLÈTE...")
         markdown = self.generate_ultra_complete_markdown(merged_data)
         
         # 6. Sauvegarder
@@ -474,7 +474,7 @@ npm install @gouvfr/dsfr@{data['version']}
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(markdown)
         
-        print(f"\n✅ Documentation sauvegardée : {filename}")
+        print(f"\n[OK] Documentation sauvegardée : {filename}")
         print(f"   Taille : {len(markdown) / 1024:.1f} KB")
         print(f"   Composants : {len(merged_data['components'])}")
         
@@ -501,12 +501,12 @@ npm install @gouvfr/dsfr@{data['version']}
             
             json.dump(json_data, f, indent=2, ensure_ascii=False)
         
-        print(f"✅ Métadonnées JSON : {json_filename}")
+        print(f"[OK] Métadonnées JSON : {json_filename}")
         
         # 7. Nettoyer
         if os.path.exists(self.temp_dir):
             shutil.rmtree(self.temp_dir)
-            print("✅ Fichiers temporaires nettoyés")
+            print("[OK] Fichiers temporaires nettoyés")
         
         return filename
 
@@ -523,19 +523,19 @@ def main():
         
         if filename:
             print("\n" + "=" * 50)
-            print("🎉 MISE À JOUR TERMINÉE AVEC SUCCÈS !")
+            print("[SUCCES] MISE À JOUR TERMINÉE AVEC SUCCÈS !")
             print(f"📄 Documentation : {filename}")
-            print("\n✨ La documentation contient :")
+            print("\n[INFO] La documentation contient :")
             print("   - Code source complet (SCSS, JS)")
             print("   - Templates HTML")
             print("   - Documentation Storybook")
             print("   - Exemples d'utilisation")
             print("   - Variables et API")
         else:
-            print("\n❌ Échec de la mise à jour")
+            print("\n[ERREUR] Échec de la mise à jour")
             
     except Exception as e:
-        print(f"\n❌ Erreur : {e}")
+        print(f"\n[ERREUR] Erreur : {e}")
         import traceback
         traceback.print_exc()
         return 1

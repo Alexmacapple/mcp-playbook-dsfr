@@ -507,7 +507,7 @@ class DSFRProductionBuilder:
                 with open(filepath, 'w', encoding='utf-8') as f:
                     f.write(clean_html)
                 
-                print(f"    ✅ {variant_name}")
+                print(f"    [OK] {variant_name}")
         
         # Créer un index HTML pour naviguer
         self.create_index()
@@ -515,7 +515,7 @@ class DSFRProductionBuilder:
         # Créer un fichier JSON avec tous les snippets
         self.create_json_library()
         
-        print(f"\n✨ Bibliothèque créée dans '{self.output_dir}/'")
+        print(f"\n[INFO] Bibliothèque créée dans '{self.output_dir}/'")
         print(f"   {len(self.production_templates)} composants")
         print(f"   {sum(len(v) for v in self.production_templates.values())} variantes")
     
@@ -740,7 +740,7 @@ def main():
     builder = DSFRProductionBuilder()
     builder.build_html_library()
     
-    print("\n🎯 Assistant DSFR de production prêt !")
+    print("\n[CIBLE] Assistant DSFR de production prêt !")
     print("   Ouvrez 'gabarits/index.html' pour naviguer dans les templates")
 
 if __name__ == "__main__":

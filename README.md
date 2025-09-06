@@ -172,7 +172,8 @@ docs/
 ```
 mcp-playbook-dsfr/
 ├── mcp_local/         # Serveur MCP FastMCP
-│   └── server.py      # Point d'entrée principal
+│   ├── server.py      # Point d'entrée principal
+│   └── __init__.py    # Module Python
 ├── src/
 │   ├── services/      # Services métier (SOLID)
 │   ├── data/         # Registre des composants
@@ -180,6 +181,11 @@ mcp-playbook-dsfr/
 │   └── utils/        # Utilitaires
 ├── gabarits/         # Templates HTML (48 composants)
 ├── tests/            # Suite de tests (100% de réussite)
+├── tools/            # Outils de développement (EXCLU en production)
+│   └── maintenance/  # Scripts de mise à jour DSFR
+├── docs/             # Documentation
+│   ├── deployment/   # Guide de déploiement
+│   └── roadmap/      # Feuille de route
 ├── requirements.txt  # Dépendances Python
 ├── install.sh        # Script d'installation
 └── run_tests.sh      # Script d'exécution des tests

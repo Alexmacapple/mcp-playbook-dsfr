@@ -116,11 +116,11 @@ class DSFRDocUpdater:
                 
                 return data
             else:
-                print(f"    ⚠️  Erreur {response.status_code} pour {component}")
+                print(f"    [ATTENTION]  Erreur {response.status_code} pour {component}")
                 return None
                 
         except Exception as e:
-            print(f"    ❌ Erreur pour {component}: {e}")
+            print(f"    [ERREUR] Erreur pour {component}: {e}")
             return None
     
     def parse_storybook_content(self, html: str) -> Dict:
@@ -167,18 +167,18 @@ class DSFRDocUpdater:
             npm_data["version"] = self.check_npm_version()
             npm_data["installed"] = True
             
-            print(f"  ✅ Version NPM : {npm_data['version']}")
+            print(f"  [OK] Version NPM : {npm_data['version']}")
             
         except:
             npm_data["installed"] = False
             npm_data["version"] = self.current_version
-            print("  ⚠️  Impossible de récupérer les infos NPM")
+            print("  [ATTENTION]  Impossible de récupérer les infos NPM")
         
         return npm_data
     
     def merge_data(self, storybook_data: List[Dict], npm_data: Dict) -> Dict:
         """Fusionne les données Storybook et NPM"""
-        print("\n🔄 Fusion des données...")
+        print("\n[MAJ] Fusion des données...")
         
         merged = {
             "version": npm_data.get("version", self.current_version),
@@ -199,19 +199,19 @@ class DSFRDocUpdater:
         if npm_data.get("installed"):
             merged["npm_metadata"] = npm_data
         
-        print(f"  ✅ {len(merged['components'])} composants fusionnés")
+        print(f"  [OK] {len(merged['components'])} composants fusionnés")
         
         return merged
     
     def generate_markdown(self, data: Dict) -> str:
         """Génère le fichier Markdown à partir des données"""
-        print("\n📝 Génération du Markdown...")
+        print("\n[DOC] Génération du Markdown...")
         
         md = f"""# 🇫🇷 DSFR v{data['version']} - Documentation Complète
 
 *Mise à jour : {datetime.now().strftime('%d/%m/%Y %H:%M')}*
 
-## 📊 Résumé
+## [STATS] Résumé
 
 - **Version** : {data['version']}
 - **Composants** : {len(data['components'])}
@@ -282,9 +282,9 @@ class DSFRDocUpdater:
                         if acc:
                             md += "**Accessibilité** :\n"
                             if acc.get('hasAria'):
-                                md += "- ✅ Support ARIA\n"
+                                md += "- [OK] Support ARIA\n"
                             if acc.get('rgaaCompliant'):
-                                md += "- ✅ Conforme RGAA\n"
+                                md += "- [OK] Conforme RGAA\n"
                             md += "\n"
                     
                     md += "---\n"
@@ -293,7 +293,7 @@ class DSFRDocUpdater:
     
     def update_documentation(self):
         """Lance la mise à jour complète de la documentation"""
-        print("🚀 Mise à jour de la documentation DSFR\n")
+        print("[START] Mise à jour de la documentation DSFR\n")
         print("=" * 50)
         
         # 1. Vérifier la version NPM
@@ -309,7 +309,7 @@ class DSFRDocUpdater:
             if data:
                 storybook_data.append(data)
         
-        print(f"\n✅ {len(storybook_data)} composants extraits depuis Storybook")
+        print(f"\n[OK] {len(storybook_data)} composants extraits depuis Storybook")
         
         # 3. Récupérer les données NPM
         npm_data = self.get_npm_data()
@@ -329,7 +329,7 @@ class DSFRDocUpdater:
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(markdown_content)
         
-        print(f"\n✅ Documentation mise à jour : {filename}")
+        print(f"\n[OK] Documentation mise à jour : {filename}")
         print(f"   Taille : {len(markdown_content) / 1024:.1f} KB")
         print(f"   Composants : {len(merged_data['components'])}")
         
@@ -338,7 +338,7 @@ class DSFRDocUpdater:
         with open(json_filename, 'w', encoding='utf-8') as f:
             json.dump(merged_data, f, indent=2, ensure_ascii=False)
         
-        print(f"✅ Données JSON sauvegardées : {json_filename}")
+        print(f"[OK] Données JSON sauvegardées : {json_filename}")
         
         return filename
 
@@ -353,13 +353,13 @@ def main():
         filename = updater.update_documentation()
         
         print("\n" + "=" * 50)
-        print("🎉 Mise à jour terminée avec succès !")
+        print("[SUCCES] Mise à jour terminée avec succès !")
         print(f"📄 Fichier généré : {filename}")
         print("\nPour utiliser la nouvelle documentation :")
         print(f"  ./dsfr-agent")
         
     except Exception as e:
-        print(f"\n❌ Erreur lors de la mise à jour : {e}")
+        print(f"\n[ERREUR] Erreur lors de la mise à jour : {e}")
         return 1
     
     return 0

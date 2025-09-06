@@ -54,7 +54,7 @@ class DSFRGitHubUpdater:
             return None
             
         except Exception as e:
-            print(f"    ❌ Erreur récupération {path}: {e}")
+            print(f"    [ERREUR] Erreur récupération {path}: {e}")
             return None
     
     def get_component_files(self, component: str) -> Dict:
@@ -110,7 +110,7 @@ class DSFRGitHubUpdater:
             time.sleep(0.5)
                 
         except Exception as e:
-            print(f"    ❌ Erreur pour {component}: {e}")
+            print(f"    [ERREUR] Erreur pour {component}: {e}")
         
         return component_data
     
@@ -205,7 +205,7 @@ class DSFRGitHubUpdater:
 *Généré automatiquement depuis : https://github.com/GouvernementFR/dsfr*
 *Date : {datetime.now().strftime('%d/%m/%Y %H:%M')}*
 
-## 📊 Résumé
+## [STATS] Résumé
 
 - **Version** : {version}
 - **Composants** : {len(components_data)}
@@ -250,7 +250,7 @@ npm install @gouvfr/dsfr@{version}
         # Générer le markdown par catégorie
         for category, components in categorized.items():
             if components:
-                md += f"\n### 📁 {category}\n\n"
+                md += f"\n### [DOSSIER] {category}\n\n"
                 
                 for comp in sorted(components, key=lambda x: x['name']):
                     md += f"""
@@ -287,11 +287,11 @@ npm install @gouvfr/dsfr@{version}
                         if acc:
                             md += "\n**Accessibilité** :\n"
                             if acc.get('aria'):
-                                md += "- ✅ Support ARIA\n"
+                                md += "- [OK] Support ARIA\n"
                             if acc.get('roles'):
-                                md += "- ✅ Rôles WAI-ARIA\n"
+                                md += "- [OK] Rôles WAI-ARIA\n"
                             if acc.get('rgaa_compliant'):
-                                md += "- ✅ Conforme RGAA\n"
+                                md += "- [OK] Conforme RGAA\n"
                     
                     # Lien GitHub
                     md += f"\n📄 [Voir sur GitHub](https://github.com/{self.repo}/tree/main/src/dsfr/component/{comp['name']})\n"
@@ -308,7 +308,7 @@ npm install @gouvfr/dsfr@{version}
 - **NPM** : https://www.npmjs.com/package/@gouvfr/dsfr
 - **Storybook** : https://www.systeme-de-design.gouv.fr/storybook/
 
-## 📝 Notes
+## [DOC] Notes
 
 Cette documentation a été générée automatiquement depuis le code source GitHub.
 Pour la documentation complète et les exemples interactifs, consultez le site officiel.
@@ -318,7 +318,7 @@ Pour la documentation complète et les exemples interactifs, consultez le site o
     
     def update_from_github(self):
         """Lance la mise à jour depuis GitHub"""
-        print("🚀 Mise à jour depuis GitHub\n")
+        print("[START] Mise à jour depuis GitHub\n")
         print("=" * 50)
         
         # 1. Récupérer la version
@@ -344,12 +344,12 @@ Pour la documentation complète et les exemples interactifs, consultez le site o
             all_components_data.append(component_info)
             
             if component_files['documentation']:
-                print(" ✅")
+                print(" [OK]")
             else:
-                print(" ⚠️  (pas de README)")
+                print(" [ATTENTION]  (pas de README)")
         
         # 3. Générer le Markdown
-        print("\n📝 Génération du document...")
+        print("\n[DOC] Génération du document...")
         markdown = self.generate_markdown(all_components_data, version)
         
         # 4. Sauvegarder
@@ -361,7 +361,7 @@ Pour la documentation complète et les exemples interactifs, consultez le site o
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(markdown)
         
-        print(f"\n✅ Documentation générée : {filename}")
+        print(f"\n[OK] Documentation générée : {filename}")
         print(f"   Taille : {len(markdown) / 1024:.1f} KB")
         print(f"   Composants : {len(all_components_data)}")
         
@@ -375,7 +375,7 @@ Pour la documentation complète et les exemples interactifs, consultez le site o
                 "components": all_components_data
             }, f, indent=2, ensure_ascii=False)
         
-        print(f"✅ Données JSON : {json_filename}")
+        print(f"[OK] Données JSON : {json_filename}")
         
         return filename
 
@@ -390,11 +390,11 @@ def main():
         filename = updater.update_from_github()
         
         print("\n" + "=" * 50)
-        print("🎉 Extraction terminée avec succès !")
+        print("[SUCCES] Extraction terminée avec succès !")
         print(f"📄 Documentation : {filename}")
         
     except Exception as e:
-        print(f"\n❌ Erreur : {e}")
+        print(f"\n[ERREUR] Erreur : {e}")
         return 1
     
     return 0
