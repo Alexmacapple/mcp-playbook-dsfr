@@ -33,13 +33,10 @@ et ce projet adhère au [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fichiers serveur obsolètes dans `mcp_local/` (server_final.py, server_mcp_correct.py, etc.)
 
 ### Réorganisé
-- **Scripts de maintenance** : Déplacés de `/scripts/` vers `/tools/maintenance/`
-  - `build_complete_library.py` : Génération de gabarits
-  - `build_html_library.py` : Génération alternative
-  - `update_complete.py` : Synchronisation complète DSFR
-  - `update_from_github.py` : Mise à jour depuis GitHub
-  - `update_from_storybook.py` : Mise à jour depuis Storybook
-- **Documentation** : Ajout de READMEs explicatifs dans `/tools/`
+- **Scripts de maintenance** : Archivés dans `/archive/old-maintenance-scripts-2025-01-06/`
+  - 160KB de scripts non utilisés archivés pour historique
+  - Remplacés par un simple `check_dsfr_version.py` (2KB)
+  - Application des principes YAGNI et KISS
 - `test-mcp-dsfr-blind-spots.py` : Supprimé car fonctionnalité redondante avec cognitive_analysis
 - Créé `test-mcp-dsfr-blind-spots-DEPRECATED.py` pour référence historique
 

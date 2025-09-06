@@ -9,9 +9,8 @@ __pycache__/
 *.pyo
 *.pyd
 
-# Outils de développement et maintenance
-tools/
-scripts/
+# Archives et scripts obsolètes
+archive/
 
 # Tests
 tests/html_outputs/

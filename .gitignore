@@ -52,8 +52,8 @@ Thumbs.db
 # Outputs de test HTML
 tests/html_outputs/
 
-# Outils de développement (non nécessaires en production)
-# tools/maintenance/  # Décommentez pour exclure en production
+# Archives (scripts obsolètes conservés pour historique)
+archive/
 
 # Node modules (si vous utilisez npm)
 node_modules/

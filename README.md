@@ -181,11 +181,10 @@ mcp-playbook-dsfr/
 │   └── utils/        # Utilitaires
 ├── gabarits/         # Templates HTML (48 composants)
 ├── tests/            # Suite de tests (100% de réussite)
-├── tools/            # Outils de développement (EXCLU en production)
-│   └── maintenance/  # Scripts de mise à jour DSFR
 ├── docs/             # Documentation
 │   ├── deployment/   # Guide de déploiement
 │   └── roadmap/      # Feuille de route
+├── check_dsfr_version.py  # Script de vérification des mises à jour
 ├── requirements.txt  # Dépendances Python
 ├── install.sh        # Script d'installation
 └── run_tests.sh      # Script d'exécution des tests
