@@ -182,9 +182,13 @@ Cette configuration a été validée et fonctionne le 2025-09-08 avec :
 - Python 3.x avec environnement virtuel
 - Serveur MCP Playbook DSFR en mode production
 
-## 🔗 Configuration Multi-MCP
+## 🔗 Configuration Multi-MCP Complète
 
-Pour utiliser DSFR et MariaDB simultanément, le fichier `.claude.json` doit contenir :
+### Configuration Globale Active
+
+**Fichier**: `/Users/alex/.claude.json`
+
+Configuration complète avec MariaDB et DSFR :
 
 ```json
 {
@@ -192,17 +196,105 @@ Pour utiliser DSFR et MariaDB simultanément, le fichier `.claude.json` doit con
     "mariadb": {
       "command": "node",
       "args": ["/Users/alex/Desktop/mcp-mariadb/mcp-server.js"],
-      "env": { /* ... */ }
+      "env": {
+        "NODE_ENV": "production",
+        "DB_HOST": "localhost",
+        "DB_PORT": "3306",
+        "DB_USER": "drupal_user",
+        "DB_PASSWORD": "Drupal@123456!",
+        "DB_NAME": "drupal_db",
+        "MCP_LOG_LEVEL": "info"
+      }
     },
     "dsfr": {
       "command": "/Users/alex/Desktop/mcp-playbook-dsfr/venv/bin/python3",
       "args": ["/Users/alex/Desktop/mcp-playbook-dsfr/mcp_local/server.py"],
-      "env": { /* ... */ }
+      "env": {
+        "PYTHONPATH": "/Users/alex/Desktop/mcp-playbook-dsfr",
+        "ENV": "production",
+        "LOG_LEVEL": "INFO",
+        "DEFAULT_RGAA_LEVEL": "AA",
+        "ENABLE_HTML_SANITIZATION": "true"
+      }
     }
   }
 }
 ```
 
+### Configuration Locale du Projet
+
+**Fichier**: `/Users/alex/Desktop/mcp-playbook-dsfr/.claude/mcp-config.json`
+
+Configuration spécifique au projet DSFR :
+
+```json
+{
+  "mcpServers": {
+    "dsfr": {
+      "command": "/Users/alex/Desktop/mcp-playbook-dsfr/venv/bin/python3",
+      "args": ["/Users/alex/Desktop/mcp-playbook-dsfr/mcp_local/server.py"],
+      "env": {
+        "PYTHONPATH": "/Users/alex/Desktop/mcp-playbook-dsfr",
+        "ENV": "production",
+        "LOG_LEVEL": "INFO",
+        "DEFAULT_RGAA_LEVEL": "AA",
+        "ENABLE_HTML_SANITIZATION": "true"
+      }
+    }
+  }
+}
+```
+
+## 🔍 État Actuel des Serveurs MCP
+
+### Serveurs Configurés et Opérationnels
+
+1. **DSFR** (mcp-playbook-dsfr)
+   - ✅ Configuré dans `.claude.json` global
+   - ✅ Configuré dans `.claude/mcp-config.json` local
+   - ✅ Environnement virtuel Python actif
+   - ✅ Serveur FastMCP fonctionnel
+   - ✅ 8 outils DSFR disponibles
+
+2. **MariaDB** (mcp-mariadb)
+   - ✅ Configuré dans `.claude.json` global
+   - ✅ Serveur Node.js fonctionnel
+   - ✅ Connexion à la base Drupal établie
+   - ✅ 4 outils MariaDB disponibles
+
+### Outils MCP Disponibles
+
+#### Outils DSFR (préfixe `mcp__dsfr__`)
+- `generer_composant` - Génère des composants DSFR
+- `lister_composants` - Liste tous les composants disponibles
+- `valider_html` - Valide le HTML selon DSFR/RGAA
+- `audit_accessibilite` - Audit d'accessibilité RGAA
+- `analyser_cognitif` - Analyse cognitive Rumsfeld
+- `obtenir_tokens_design` - Design tokens DSFR
+- `generer_tests` - Génère des tests automatisés
+- `obtenir_aide_assistant` - Assistant DSFR
+
+#### Outils MariaDB (préfixe `mcp__mariadb__`)
+- `query` - Requêtes en langage naturel
+- `schema` - Exploration du schéma
+- `analyze` - Analyse de santé/performance
+- `suggest` - Suggestions de questions
+
+### Vérification Rapide
+
+```bash
+# Vérifier DSFR
+cd /Users/alex/Desktop/mcp-playbook-dsfr
+./venv/bin/python3 mcp_local/server.py
+
+# Vérifier MariaDB
+cd /Users/alex/Desktop/mcp-mariadb
+node mcp-server.js
+
+# Dans Claude Code
+/mcp  # Doit afficher les deux serveurs connectés
+```
+
 ---
 
-*Document créé le 08/09/2025 - Configuration validée et opérationnelle*
+*Document mis à jour le 08/09/2025 - Configuration validée et opérationnelle avec deux serveurs MCP*
