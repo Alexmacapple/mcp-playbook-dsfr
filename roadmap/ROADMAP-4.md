@@ -84,6 +84,87 @@ Objectif: [======================] 100%
 
 ---
 
+## Risques et mitigations
+
+### Risques identifiés
+
+| Risque | Probabilité | Impact | Mitigation |
+|--------|-------------|---------|------------|
+| **Compatibilité FastMCP** | Élevée | Majeur | Plan B : implémenter via Tools standards |
+| **Performance Resources** | Moyenne | Moyen | Cache + pagination des gabarits |
+| **Syntaxe decorateurs** | Élevée | Majeur | Adapter selon API FastMCP réelle |
+| **Charge 137 gabarits** | Faible | Mineur | Lazy loading + optimisation mémoire |
+
+### Plan B : Si FastMCP ne supporte pas @resource/@prompt
+
+**Alternative 1 : Via Tools standards**
+```python
+@app.tool()
+def get_resource_gabarit(component: str, variant: str = "default") -> str:
+    """Tool alternatif pour accéder aux gabarits si Resources non supportées."""
+    # Même logique que @app.resource mais via @app.tool
+    return get_gabarit_content(component, variant)
+
+@app.tool()
+def get_prompt_template(prompt_name: str) -> str:
+    """Tool alternatif pour les prompts si Prompts non supportés."""
+    prompts = {
+        "formulaire_accessible": {...},
+        "tableau_responsive": {...}
+    }
+    return json.dumps(prompts.get(prompt_name))
+```
+
+**Alternative 2 : Extension FastMCP**
+- Forker FastMCP et ajouter le support Resources/Prompts
+- Contribuer au projet upstream
+- Utiliser une version patchée temporairement
+
+### Estimation impact performance
+
+| Métrique | Actuel | Avec Resources | Impact |
+|----------|---------|----------------|--------|
+| Mémoire serveur | ~50 MB | ~80 MB | +60% |
+| Temps démarrage | <1s | ~1.5s | +50% |
+| Latence requete | <10ms | <15ms | +50% |
+| Throughput | >1.5M ops/s | >1M ops/s | -33% |
+
+**Optimisations prévues :**
+- Cache LRU pour gabarits fréquents
+- Chargement lazy des gabarits
+- Compression gzip des réponses
+- Index en mémoire des métadonnées
+
+---
+
+## Dépendances requises
+
+### Versions minimales
+
+| Package | Version actuelle | Version requise | Changement nécessaire |
+|---------|------------------|-----------------|------------------------|
+| mcp | >=0.1.0 | >=0.1.0 | Non |
+| FastMCP | Non spécifié | >=1.0.0 | À vérifier/installer |
+| Python | 3.9+ | 3.9+ | Non |
+| pathlib | Built-in | Built-in | Non |
+
+### Vérification compatibilité
+
+```bash
+# Vérifier version FastMCP
+python3 -c "import mcp; print(mcp.__version__)"
+
+# Vérifier support decorateurs
+python3 -c "
+import inspect
+from mcp.server import FastMCP
+print('resource' in dir(FastMCP))  # Doit retourner True
+print('prompt' in dir(FastMCP))    # Doit retourner True
+"
+```
+
+---
+
 ## Actions à réaliser
 
 ### 1. Implémenter les Resources MCP (Gain : +4%)
@@ -187,6 +268,42 @@ async def get_component_metadata(component: str) -> str:
         return json.dumps({"error": f"Composant {component} non trouvé"})
     except Exception as e:
         return json.dumps({"error": str(e)})
+```
+
+### Exemples d'usage des Resources
+
+#### Client MCP utilisant les Resources
+
+```python
+# Client Python accédant aux gabarits
+import mcp_client
+
+client = mcp_client.connect("mcp-playbook-dsfr")
+
+# Récupérer un gabarit spécifique
+button_html = client.get_resource("gabarit://button/primary")
+print(button_html['content'])
+
+# Lister tous les gabarits
+all_gabarits = client.get_resource("list://gabarits")
+print(f"Total: {all_gabarits['count']} gabarits")
+for g in all_gabarits['gabarits'][:5]:
+    print(f"- {g['component']}/{g['variant']} ({g['size']} bytes)")
+
+# Récupérer métadonnées
+meta = client.get_resource("metadata://component/alert")
+print(f"Variantes alert: {meta['variants']}")
+```
+
+#### Intégration Claude Desktop
+
+```typescript
+// Claude Desktop accédant aux resources
+const resources = await mcp.listResources();
+// Affichage dans l'UI : "137 gabarits DSFR disponibles"
+
+const buttonTemplate = await mcp.getResource("gabarit://button/primary");
+// Utilisation directe du HTML dans la génération
 ```
 
 ### 2. Ajouter les Prompts MCP prédéfinis (Gain : +3%)
@@ -366,6 +483,50 @@ async def prompt_navigation_complexe() -> str:
         - Retour haptique sur touch
         - Zone de tap 44x44px minimum"""
     }
+```
+
+### Exemples d'usage des Prompts
+
+#### Cas d'usage formulaire accessible
+
+```python
+# Utilisateur sélectionne le prompt dans Claude
+prompt = client.get_prompt("formulaire_accessible")
+
+# Claude génère automatiquement :
+"""
+<form class="fr-form">
+  <p class="fr-hint-text">Les champs marqués * sont obligatoires</p>
+  
+  <div class="fr-input-group">
+    <label class="fr-label" for="email">
+      Email *
+    </label>
+    <input class="fr-input" type="email" id="email" 
+           required aria-required="true">
+    <p class="fr-error-text" role="alert" aria-live="polite">
+      Veuillez saisir une adresse email valide
+    </p>
+  </div>
+  
+  <button class="fr-btn" type="submit">
+    Valider
+  </button>
+</form>
+"""
+```
+
+#### Cas d'usage navigation complexe
+
+```python
+# Sélection prompt navigation
+prompt = client.get_prompt("navigation_complexe")
+
+# Génération automatique mega menu
+result = generate_from_prompt(prompt, {
+    "categories": ["Services", "Documentation", "Support"],
+    "mobile_first": true
+})
 ```
 
 ### 3. Créer SECURITY.md (Gain : +1%)
@@ -593,7 +754,7 @@ Avant de soumettre une PR :
 
 **MCP Playbook DSFR v2.1.0** : Premier serveur MCP français avec 100% de conformité, servant de référence pour l'écosystème MCP francophone.
 
-**Note importante** : Vérifier la compatibilité de FastMCP avec les décorateurs @app.resource() et @app.prompt(). Si non supportés, adapter la syntaxe ou utiliser une approche alternative compatible avec FastMCP.
+**Note importante** : La section "Risques et mitigations" détaille le plan B si FastMCP ne supporte pas les décorateurs @app.resource() et @app.prompt(). L'alternative via Tools standards garantit l'implémentation même en cas d'incompatibilité.
 
 ---
 
