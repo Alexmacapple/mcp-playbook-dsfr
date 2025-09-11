@@ -10,7 +10,7 @@ MCP Playbook DSFR est un serveur Model Context Protocol qui fournit des outils p
 
 - **Langue** : Toute la documentation et les commentaires sont en français
 - **Style** : Code professionnel sans émojis
-- **Architecture** : SOLID, DRY, KISS, YAGNI
+- **Architecture** : SOLID, DRY, KISS, YAGNI (voir [CONTRIBUTING.md#principes-darchitecture-et-de-développement](CONTRIBUTING.md#principes-darchitecture-et-de-développement))
 - **Production** : Code optimisé avec 7 dépendances essentielles seulement
 - **Performance** : >1.5M opérations/seconde pour la génération de composants
 
