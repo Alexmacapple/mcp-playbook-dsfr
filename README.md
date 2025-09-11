@@ -1,11 +1,13 @@
 # MCP DSFR
 
-[![Version](https://img.shields.io/badge/version-2.0.0-blue)](https://github.com/Alexmacapple/mcp-playbook-dsfr/releases)
+[![Version](https://img.shields.io/badge/version-2.1.0-blue)](https://github.com/Alexmacapple/mcp-playbook-dsfr/releases)
 [![Python](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-100%25_passing-brightgreen)](tests/resultats-test/RAPPORT_100_POURCENT.txt)
 [![DSFR](https://img.shields.io/badge/DSFR-v1.14-red)](https://www.systeme-de-design.gouv.fr)
 [![Tests CI](https://github.com/Alexmacapple/mcp-playbook-dsfr/workflows/Tests%20CI/badge.svg)](https://github.com/Alexmacapple/mcp-playbook-dsfr/actions)
+[![Security](https://img.shields.io/badge/security-policy-orange)](SECURITY.md)
+[![MCP](https://img.shields.io/badge/MCP-100%25-success)](roadmap/ROADMAP-4.md)
 
 Serveur Model Context Protocol intégrant le Design System de l'État français (DSFR) dans Claude Desktop. Génération, validation et audit de composants DSFR conformes RGAA 4.1.
 
@@ -139,6 +141,28 @@ Une fois installé, utilisez ces commandes dans Claude Desktop :
 | `obtenir_tokens_design` | Tokens de design DSFR | Couleurs, espacements, typographie |
 | `generer_tests` | Génération de tests | Jest, Cypress, Playwright |
 | `obtenir_aide_assistant` | Assistant contextuel | Aide et bonnes pratiques |
+
+### Resources MCP (Nouveau)
+
+Accès direct aux 137 gabarits HTML via le protocole MCP :
+
+| Resource | Description | Exemple d'usage |
+|----------|-------------|-----------------|
+| `gabarit://{component}/{variant}` | Récupère un gabarit HTML spécifique | `gabarit://button/primary` |
+| `list://gabarits` | Liste tous les gabarits disponibles | Retourne 137 gabarits organisés |
+| `metadata://component/{component}` | Métadonnées d'un composant | `metadata://component/alert` |
+
+### Prompts MCP (Nouveau)
+
+5 prompts prédéfinis pour les cas d'usage courants :
+
+| Prompt | Description | Cas d'usage |
+|--------|-------------|-------------|
+| `formulaire_accessible` | Formulaire RGAA niveau AA | Création de formulaires accessibles |
+| `tableau_responsive` | Tableau adaptatif et accessible | Tables de données responsives |
+| `page_complete` | Page DSFR avec tous les éléments | Structure complète de page |
+| `composant_carte` | Carte (card) avec image et contenu | Cartes de présentation |
+| `navigation_complexe` | Navigation multi-niveaux | Menus et navigation avancée |
 
 ### Composants supportés
 

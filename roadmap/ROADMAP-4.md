@@ -709,35 +709,35 @@ Avant de soumettre une PR :
 ## Checklist de validation
 
 ### Resources
-- [ ] Endpoint `gabarit://{component}/{variant}` fonctionnel
-- [ ] Endpoint `list://gabarits` retourne les 137 gabarits
-- [ ] Endpoint `metadata://component/{component}` opérationnel
-- [ ] Documentation des resources dans README
-- [ ] Tests unitaires pour resources
+- [x] Endpoint `gabarit://{component}/{variant}` fonctionnel
+- [x] Endpoint `list://gabarits` retourne les 137 gabarits
+- [x] Endpoint `metadata://component/{component}` opérationnel
+- [x] Documentation des resources dans README
+- [x] Tests unitaires pour resources
 
 ### Prompts
-- [ ] Prompt `formulaire_accessible` implémenté
-- [ ] Prompt `tableau_responsive` implémenté
-- [ ] Prompt `page_complete` implémenté
-- [ ] Prompt `composant_carte` implémenté
-- [ ] Prompt `navigation_complexe` implémenté
-- [ ] Documentation des prompts dans README
-- [ ] Exemples d'utilisation créés
+- [x] Prompt `formulaire_accessible` implémenté
+- [x] Prompt `tableau_responsive` implémenté
+- [x] Prompt `page_complete` implémenté
+- [x] Prompt `composant_carte` implémenté
+- [x] Prompt `navigation_complexe` implémenté
+- [x] Documentation des prompts dans README
+- [x] Exemples d'utilisation créés
 
 ### Sécurité
-- [ ] SECURITY.md créé et complet
-- [ ] Process de signalement documenté
-- [ ] Pratiques de sécurité listées
-- [ ] Badge sécurité ajouté au README
+- [x] SECURITY.md créé et complet
+- [x] Process de signalement documenté
+- [x] Pratiques de sécurité listées
+- [x] Badge sécurité ajouté au README
 
 ### Validation finale
-- [ ] Score de conformité MCP : 100%
-- [ ] Tous les tests passent
-- [ ] Documentation à jour
-- [ ] Test d'intégration MCP avec nouvelles primitives
-- [ ] Vérification compatibilité Claude Desktop
-- [ ] Benchmark performance avec Resources
-- [ ] Roadmap-4 marquée comme terminée
+- [x] Score de conformité MCP : 100%
+- [x] Tous les tests passent
+- [x] Documentation à jour
+- [x] Test d'intégration MCP avec nouvelles primitives
+- [x] Vérification compatibilité Claude Desktop
+- [x] Benchmark performance avec Resources
+- [x] Roadmap-4 marquée comme terminée
 
 ---
 

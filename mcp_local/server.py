@@ -387,6 +387,284 @@ Exemple :
         return f"Erreur: {str(e)}"
 
 
+# ============================================================================
+# RESOURCES MCP - Accès direct aux gabarits HTML
+# ============================================================================
+
+@app.resource("gabarit://{component}/{variant}")
+async def get_gabarit(component: str, variant: str = "default") -> str:
+    """
+    Récupère le gabarit HTML d'un composant DSFR.
+    
+    Args:
+        component: Nom du composant (button, alert, form, etc.)
+        variant: Variante du composant (default, primary, secondary, etc.)
+    
+    Returns:
+        Contenu HTML du gabarit
+    """
+    try:
+        # Chercher d'abord avec variante
+        gabarit_dir = Path(__file__).parent.parent / "gabarits" / component
+        gabarit_path = gabarit_dir / f"{variant}.html"
+        
+        # Si pas trouvé, chercher default.html ou {component}.html
+        if not gabarit_path.exists():
+            gabarit_path = gabarit_dir / "default.html"
+        if not gabarit_path.exists():
+            gabarit_path = gabarit_dir / f"{component}.html"
+            
+        if gabarit_path.exists():
+            with open(gabarit_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            return json.dumps({
+                "component": component,
+                "variant": variant,
+                "content": content,
+                "path": str(gabarit_path)
+            })
+        return json.dumps({
+            "error": f"Gabarit {component}/{variant} non trouvé",
+            "available": registry.list_components()
+        })
+    except Exception as e:
+        return json.dumps({"error": str(e)})
+
+
+@app.resource("list://gabarits")
+async def list_gabarits() -> str:
+    """
+    Liste tous les gabarits HTML disponibles.
+    
+    Returns:
+        JSON avec la liste des gabarits et métadonnées
+    """
+    gabarits_dir = Path(__file__).parent.parent / "gabarits"
+    gabarits = []
+    
+    # Parcourir récursivement tous les fichiers HTML
+    for f in gabarits_dir.glob("**/*.html"):
+        stat = f.stat()
+        # Extraire le chemin relatif component/variant
+        rel_path = f.relative_to(gabarits_dir)
+        component = rel_path.parts[0] if len(rel_path.parts) > 1 else "index"
+        variant = f.stem
+        
+        gabarits.append({
+            "component": component,
+            "variant": variant,
+            "file": str(rel_path),
+            "size": stat.st_size,
+            "modified": stat.st_mtime
+        })
+    
+    return json.dumps({
+        "gabarits": sorted(gabarits, key=lambda x: (x["component"], x["variant"])),
+        "count": len(gabarits),
+        "total_size": sum(g["size"] for g in gabarits),
+        "components": list(set(g["component"] for g in gabarits))
+    })
+
+
+@app.resource("metadata://component/{component}")
+async def get_component_metadata(component: str) -> str:
+    """
+    Récupère les métadonnées d'un composant depuis le registry.
+    
+    Args:
+        component: Nom du composant
+        
+    Returns:
+        JSON avec métadonnées complètes
+    """
+    try:
+        metadata = registry.get_component(component)
+        if metadata:
+            return json.dumps(metadata)
+        return json.dumps({"error": f"Composant {component} non trouvé"})
+    except Exception as e:
+        return json.dumps({"error": str(e)})
+
+
+# ============================================================================
+# PROMPTS MCP - Templates de demandes prédéfinies
+# ============================================================================
+
+@app.prompt("formulaire_accessible")
+async def prompt_formulaire_accessible() -> dict:
+    """Prompt pour créer un formulaire DSFR accessible niveau AA."""
+    return {
+        "name": "Formulaire accessible DSFR",
+        "description": "Génère un formulaire conforme RGAA niveau AA",
+        "prompt": """Crée un formulaire DSFR accessible avec :
+        
+        Accessibilité (RGAA 4.1 niveau AA) :
+        - Labels associés à chaque champ via attribut 'for'
+        - Messages d'erreur avec role="alert" et aria-live="polite"
+        - Champs obligatoires avec aria-required="true" et astérisque (*)
+        - Instructions en début de formulaire : "Les champs marqués * sont obligatoires"
+        - Structure fieldset/legend pour les groupes de champs liés
+        - Ordre de tabulation logique (pas de tabindex > 0)
+        
+        Classes DSFR à utiliser :
+        - fr-input-group : conteneur de champ
+        - fr-label : pour les labels
+        - fr-input : pour les champs de saisie
+        - fr-error-text : messages d'erreur
+        - fr-valid-text : messages de succès
+        - fr-btn : boutons d'action
+        
+        Validation :
+        - Côté client avec HTML5 (required, pattern, type)
+        - Messages d'erreur explicites et contextuels
+        - Indication visuelle des champs valides/invalides"""
+    }
+
+
+@app.prompt("tableau_responsive")
+async def prompt_tableau_responsive() -> dict:
+    """Prompt pour créer un tableau DSFR responsive et accessible."""
+    return {
+        "name": "Tableau responsive DSFR",
+        "description": "Génère un tableau accessible et adaptatif",
+        "prompt": """Crée un tableau DSFR responsive avec :
+        
+        Structure accessible :
+        - Balise <caption> descriptive du contenu
+        - En-têtes de colonnes avec <th scope="col">
+        - En-têtes de lignes avec <th scope="row"> si applicable
+        - Attribut summary pour décrire l'organisation (déprécié mais utile)
+        
+        Classes DSFR :
+        - fr-table : classe de base
+        - fr-table--responsive : adaptation mobile
+        - fr-table--bordered : bordures visibles
+        - fr-table--no-scroll : désactiver le scroll horizontal
+        
+        Fonctionnalités :
+        - Tri sur colonnes (attributs data-sort)
+        - Pagination si > 50 lignes
+        - Export CSV/Excel si données importantes
+        - Filtre/recherche si > 20 lignes
+        
+        Mobile :
+        - Transformation en cards sur petits écrans
+        - Priorité aux colonnes essentielles
+        - Scroll horizontal comme fallback"""
+    }
+
+
+@app.prompt("page_complete")
+async def prompt_page_complete() -> dict:
+    """Prompt pour créer une page DSFR complète."""
+    return {
+        "name": "Page complète DSFR",
+        "description": "Génère une page avec tous les éléments obligatoires",
+        "prompt": """Crée une page DSFR complète avec :
+        
+        Header (obligatoire) :
+        - Logo République Française
+        - Nom du service
+        - Navigation principale
+        - Recherche
+        - Accès direct (connexion, langues)
+        
+        Navigation :
+        - Fil d'Ariane (breadcrumb)
+        - Navigation latérale si nécessaire
+        - Navigation mobile (burger menu)
+        
+        Contenu principal :
+        - Titre h1 unique et descriptif
+        - Structure de titres logique (h1 > h2 > h3)
+        - Zones ARIA (main, nav, aside)
+        - Skip links ("Aller au contenu", "Aller au menu")
+        
+        Footer (obligatoire) :
+        - Liens obligatoires : Accessibilité, Mentions légales, Données personnelles
+        - Plan du site
+        - Contact
+        - Réseaux sociaux si applicable
+        
+        Accessibilité RGAA AA :
+        - Lang="fr" sur <html>
+        - Meta viewport pour mobile
+        - Contraste suffisant (4.5:1 minimum)
+        - Focus visible
+        - Alternative textuelle pour les images"""
+    }
+
+
+@app.prompt("composant_carte")
+async def prompt_composant_carte() -> dict:
+    """Prompt pour créer une carte DSFR."""
+    return {
+        "name": "Carte DSFR",
+        "description": "Génère une carte (card) avec image et contenu",
+        "prompt": """Crée une carte DSFR avec :
+        
+        Structure :
+        - Image (optionnelle) avec alt descriptif
+        - Titre cliquable (lien principal)
+        - Description courte
+        - Métadonnées (date, auteur, catégorie)
+        - Actions (lire plus, partager)
+        
+        Classes DSFR :
+        - fr-card : conteneur principal
+        - fr-card__img : image
+        - fr-card__body : contenu
+        - fr-card__title : titre
+        - fr-card__desc : description
+        - fr-card__detail : métadonnées
+        
+        Variantes :
+        - Horizontale : fr-card--horizontal
+        - Sans image : pas de fr-card__img
+        - Mise en avant : fr-card--lg
+        
+        Accessibilité :
+        - Un seul lien principal par carte
+        - Titre descriptif et unique
+        - Image décorative ou avec alt pertinent"""
+    }
+
+
+@app.prompt("navigation_complexe")
+async def prompt_navigation_complexe() -> dict:
+    """Prompt pour créer une navigation complexe DSFR."""
+    return {
+        "name": "Navigation complexe DSFR",
+        "description": "Génère un système de navigation multi-niveaux",
+        "prompt": """Crée une navigation DSFR complexe avec :
+        
+        Types de navigation :
+        - Menu principal (fr-nav)
+        - Mega menu pour catégories larges
+        - Navigation latérale (fr-sidemenu)
+        - Fil d'Ariane (fr-breadcrumb)
+        - Pagination (fr-pagination)
+        
+        Accessibilité navigation :
+        - Attributs ARIA : aria-current, aria-expanded
+        - Navigation au clavier (Tab, Entrée, Échap)
+        - Indicateur visuel de position
+        - Menu burger pour mobile
+        
+        Structure mega menu :
+        - Catégories principales
+        - Sous-catégories en colonnes
+        - Liens directs mis en avant
+        - Zone de contenu éditorial
+        
+        Mobile first :
+        - Menu burger avec overlay
+        - Navigation en accordéon
+        - Retour haptique sur touch
+        - Zone de tap 44x44px minimum"""
+    }
+
+
 if __name__ == "__main__":
     # Lancer le serveur
     app.run()
