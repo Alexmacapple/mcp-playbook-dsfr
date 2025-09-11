@@ -4,6 +4,8 @@ Implémente le Factory Pattern pour éviter les switch/case (O de SOLID).
 """
 
 import re
+import json
+from pathlib import Path
 from typing import Dict, Any, Optional, Callable, List
 from functools import lru_cache
 from src.data import get_registry
@@ -27,9 +29,27 @@ class GeneratorService:
     """
     
     def __init__(self):
-        """Initialise le service avec le registre de composants."""
+        """Initialise le service avec le registre de composants et la Knowledge Base."""
         self.registry = get_registry()
         self._generators = self._init_generators()
+        self.knowledge_base = self._load_knowledge_base()
+    
+    def _load_knowledge_base(self) -> Dict[str, Any]:
+        """
+        Charge la Knowledge Base V2 avec 775 variantes extraites.
+        
+        Returns:
+            Dictionnaire de la Knowledge Base ou vide si non trouvée
+        """
+        # Nouveau chemin dans src/data/knowledge_base/
+        kb_path = Path(__file__).parent.parent / 'data' / 'knowledge_base' / 'components.json'
+        if kb_path.exists():
+            try:
+                with open(kb_path, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+            except Exception as e:
+                print(f"[WARNING] Impossible de charger la Knowledge Base: {e}")
+        return {}
     
     def _init_generators(self) -> Dict[str, Callable]:
         """
@@ -55,6 +75,7 @@ class GeneratorService:
     def generate(self, component: str, **kwargs) -> str:
         """
         Génère le HTML d'un composant avec les options données.
+        Utilise la Knowledge Base V2 si disponible, sinon fallback sur le registre.
         
         Args:
             component: Nom du composant DSFR
@@ -73,10 +94,16 @@ class GeneratorService:
             ...                          label='Envoyer',
             ...                          icon='send')
         """
-        # Vérifier que le composant existe
+        # D'abord essayer avec la Knowledge Base V2
+        if self.knowledge_base and component in self.knowledge_base:
+            return self._generate_from_kb(component, **kwargs)
+        
+        # Fallback sur l'ancienne méthode
         if not self.registry.get_component(component):
             available = self.registry.list_components()
-            raise ComponentNotFoundError(component, available)
+            if self.knowledge_base:
+                available.extend(list(self.knowledge_base.keys()))
+            raise ComponentNotFoundError(component, list(set(available)))
         
         # Utiliser le générateur spécifique ou le défaut
         if component in self._generators:
@@ -376,19 +403,129 @@ class GeneratorService:
         return html.replace('<div class="fr-card__body">', 
                            f'<div class="fr-card__img">{img_html}</div>\n<div class="fr-card__body">')
     
+    def _generate_from_kb(self, component: str, **kwargs) -> str:
+        """
+        Génère un composant depuis la Knowledge Base V2.
+        
+        Args:
+            component: Nom du composant
+            **kwargs: Options (variant, label, etc.)
+            
+        Returns:
+            HTML généré depuis la KB
+        """
+        comp_data = self.knowledge_base[component]
+        variant = kwargs.get('variant')
+        
+        # Mapping des variantes simplifiées vers KB
+        variant_mapping = {
+            'primary': 'bouton_primaire.bouton_simple_1',
+            'secondary': 'bouton_secondaire.bouton_secondaire_9',
+            'tertiary': 'bouton_tertiaire.bouton_tertiaire_15',
+            'basic': list(comp_data['variants'].keys())[0] if comp_data['variants'] else None,
+            'info': 'alerte_information.alerte_information_1' if component == 'alert' else None,
+            'success': 'alerte_succes.alerte_succes_1' if component == 'alert' else None,
+            'error': 'alerte_erreur.alerte_erreur_1' if component == 'alert' else None,
+            'warning': 'alerte_attention.alerte_attention_1' if component == 'alert' else None
+        }
+        
+        # Si pas de variante spécifiée, prendre la première
+        if not variant:
+            if comp_data['variants']:
+                variant = list(comp_data['variants'].keys())[0]
+            else:
+                raise InvalidVariantError(component, 'none', 
+                                        list(comp_data['variants'].keys()))
+        
+        # Essayer le mapping si la variante n'existe pas directement
+        if variant not in comp_data['variants'] and variant in variant_mapping:
+            mapped_variant = variant_mapping[variant]
+            if mapped_variant and mapped_variant in comp_data['variants']:
+                variant = mapped_variant
+        
+        # Récupérer le HTML de la variante
+        if variant in comp_data['variants']:
+            html = comp_data['variants'][variant]['html']
+            
+            # Remplacements personnalisés
+            if 'label' in kwargs:
+                html = self._replace_placeholder(html, 'Libellé bouton', kwargs['label'])
+                html = self._replace_placeholder(html, 'Label bouton', kwargs['label'])
+                html = self._replace_placeholder(html, 'Bouton', kwargs['label'])
+                html = self._replace_placeholder(html, '[À MODIFIER', f'[{kwargs["label"]}')
+            
+            # Autres options
+            if 'icon' in kwargs:
+                html = self._add_icon_to_button(html, kwargs['icon'])
+            if 'size' in kwargs:
+                html = self._add_size_to_button(html, kwargs['size'])
+            if kwargs.get('disabled'):
+                html = self._add_disabled_to_button(html)
+            
+            return html
+        else:
+            # Essayer de trouver une correspondance partielle
+            search_term = variant.lower().replace('_', ' ').replace('-', ' ')
+            for kb_variant in comp_data['variants'].keys():
+                kb_clean = kb_variant.lower().replace('_', ' ').replace('.', ' ')
+                if search_term in kb_clean:
+                    return self._generate_from_kb(component, 
+                                                 variant=kb_variant, 
+                                                 **{k: v for k, v in kwargs.items() if k != 'variant'})
+            
+            # Dernière tentative : chercher par type (primaire, secondaire, etc.)
+            variant_types = {
+                'primary': 'primaire',
+                'secondary': 'secondaire',
+                'tertiary': 'tertiaire'
+            }
+            
+            if variant in variant_types:
+                search_fr = variant_types[variant]
+                for kb_variant in comp_data['variants'].keys():
+                    if search_fr in kb_variant.lower():
+                        return self._generate_from_kb(component, 
+                                                     variant=kb_variant, 
+                                                     **{k: v for k, v in kwargs.items() if k != 'variant'})
+            
+            raise InvalidVariantError(component, variant, 
+                                    list(comp_data['variants'].keys()))
+    
     @lru_cache(maxsize=256)
     def get_component_info(self, component: str) -> Dict[str, Any]:
         """
         Récupère les infos d'un composant (avec cache).
+        Combine Knowledge Base V2 et registre.
         
         Returns:
             Métadonnées et variantes du composant
         """
-        return {
+        info = {
             'name': component,
-            'variants': self.registry.list_variants(component),
-            'metadata': self.registry.get_metadata(component)
+            'variants': [],
+            'metadata': {}
         }
+        
+        # D'abord depuis la Knowledge Base
+        if self.knowledge_base and component in self.knowledge_base:
+            kb_comp = self.knowledge_base[component]
+            info['variants'] = list(kb_comp['variants'].keys())
+            info['metadata'] = kb_comp.get('metadata', {})
+            info['stats'] = kb_comp.get('stats', {})
+        
+        # Compléter avec le registre si disponible
+        if self.registry.get_component(component):
+            registry_variants = self.registry.list_variants(component)
+            registry_metadata = self.registry.get_metadata(component)
+            
+            # Fusionner les variantes (sans doublons)
+            info['variants'] = list(set(info['variants'] + registry_variants))
+            
+            # Fusionner les métadonnées
+            if registry_metadata:
+                info['metadata'].update(registry_metadata)
+        
+        return info
 
 
 # Singleton helper (KISS)
@@ -397,9 +534,10 @@ _generator_instance: Optional[GeneratorService] = None
 def get_generator() -> GeneratorService:
     """
     Récupère l'instance unique du générateur.
+    Intègre la Knowledge Base V2 avec 775 variantes.
     
     Returns:
-        Instance de GeneratorService
+        Instance de GeneratorService avec KB chargée
         
     Example:
         >>> generator = get_generator()
@@ -409,3 +547,13 @@ def get_generator() -> GeneratorService:
     if _generator_instance is None:
         _generator_instance = GeneratorService()
     return _generator_instance
+
+def list_kb_components() -> List[str]:
+    """
+    Liste tous les composants disponibles dans la Knowledge Base.
+    
+    Returns:
+        Liste des noms de composants
+    """
+    generator = get_generator()
+    return list(generator.knowledge_base.keys()) if generator.knowledge_base else []

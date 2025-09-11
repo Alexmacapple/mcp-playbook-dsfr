@@ -18,6 +18,7 @@ from src.services import (
     get_cognitive_service, get_design_service,
     get_audit_service, get_test_generator
 )
+from src.services.template_service import get_template_service
 from src.data import get_registry
 from src.errors.base import DSFRError
 
@@ -32,6 +33,7 @@ cognitive = get_cognitive_service()
 design = get_design_service()
 audit = get_audit_service()
 test_gen = get_test_generator()
+template = get_template_service()
 registry = get_registry()
 
 
@@ -263,6 +265,107 @@ def generer_tests(component: str, test_type: str = "unit") -> str:
                 framework=TestFramework.JEST if test_type == "unit" else TestFramework.CYPRESS
             )
         return tests
+    except Exception as e:
+        return f"Erreur: {str(e)}"
+
+
+@app.tool()
+def obtenir_fondamentaux(category: str = None) -> str:
+    """
+    R\u00e9cup\u00e8re les fondamentaux DSFR (grille, breakpoints, typographie).
+    
+    Args:
+        category: Cat\u00e9gorie sp\u00e9cifique (grid, typography, breakpoints, spacing)
+    
+    Returns:
+        JSON avec les fondamentaux demand\u00e9s
+    """
+    try:
+        foundations = design.get_foundations(category)
+        return json.dumps(foundations, indent=2, ensure_ascii=False)
+    except Exception as e:
+        return f"Erreur: {str(e)}"
+
+
+@app.tool()
+def obtenir_classes_css(type: str = None) -> str:
+    """
+    R\u00e9cup\u00e8re les classes CSS utilitaires DSFR.
+    
+    Args:
+        type: Type d'utilitaire (colors, spacing, typography, display, grid)
+    
+    Returns:
+        Liste des classes CSS disponibles
+    """
+    try:
+        utilities = design.get_css_utilities(type)
+        return json.dumps({
+            "type": type or "all",
+            "count": len(utilities),
+            "classes": utilities
+        }, indent=2, ensure_ascii=False)
+    except Exception as e:
+        return f"Erreur: {str(e)}"
+
+
+@app.tool()
+def obtenir_template_page(template_type: str, title: str = None, content: str = None) -> str:
+    """
+    G\u00e9n\u00e8re un template de page compl\u00e8te DSFR.
+    
+    Args:
+        template_type: Type de template (error_404, error_500, login, signup, basic)
+        title: Titre de la page (optionnel)
+        content: Contenu principal (optionnel)
+    
+    Returns:
+        HTML du template de page
+    """
+    try:
+        if template_type in ['error_404', 'error_500', 'login', 'signup']:
+            # Templates pr\u00e9d\u00e9finis
+            html = template.get_template(template_type)
+        else:
+            # Page personnalis\u00e9e
+            html = template.create_page(
+                title=title or "Page DSFR",
+                content=content or "<p>Contenu de la page</p>",
+                template=template_type
+            )
+        return html
+    except Exception as e:
+        return f"Erreur: {str(e)}"
+
+
+@app.tool()
+def rechercher_documentation(topic: str) -> str:
+    """
+    Recherche dans la documentation DSFR extraite.
+    
+    Args:
+        topic: Sujet \u00e0 rechercher (ex: grille, couleurs, accessibilit\u00e9)
+    
+    Returns:
+        R\u00e9sultats de recherche avec guidelines et exemples
+    """
+    try:
+        results = {
+            "topic": topic,
+            "guidelines": design.get_guidelines(topic),
+            "foundations": {},
+            "utilities": []
+        }
+        
+        # Rechercher dans les fondamentaux
+        if "grille" in topic.lower() or "grid" in topic.lower():
+            results["foundations"]["grid"] = design.get_foundations("grid")
+        if "typo" in topic.lower():
+            results["foundations"]["typography"] = design.get_foundations("typography_rules")
+        if "couleur" in topic.lower() or "color" in topic.lower():
+            results["utilities"] = design.get_css_utilities("colors")
+        
+        return json.dumps(results, indent=2, ensure_ascii=False)
     except Exception as e:
         return f"Erreur: {str(e)}"
 

@@ -1,0 +1,532 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "MCP DSFR API",
+    "version": "3.0.0",
+    "description": "API MCP pour le Syst\u00e8me de Design de l'\u00c9tat Fran\u00e7ais (DSFR v1.14.0)",
+    "contact": {
+      "name": "Support DSFR",
+      "url": "https://www.systeme-de-design.gouv.fr"
+    }
+  },
+  "servers": [
+    {
+      "url": "mcp://localhost",
+      "description": "Serveur MCP local via Claude Desktop"
+    }
+  ],
+  "paths": {
+    "/tools/generer_composant": {
+      "post": {
+        "summary": "G\u00e9n\u00e9rer un composant DSFR",
+        "description": "G\u00e9n\u00e8re le HTML d'un composant DSFR avec 775+ variantes disponibles depuis la Knowledge Base",
+        "operationId": "genererComposant",
+        "tags": ["Composants"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["component"],
+                "properties": {
+                  "component": {
+                    "type": "string",
+                    "description": "Nom du composant (button, alert, form, card, etc.)",
+                    "example": "button"
+                  },
+                  "variant": {
+                    "type": "string",
+                    "description": "Variante du composant (primary, secondary, etc.)",
+                    "example": "primary"
+                  },
+                  "options": {
+                    "type": "object",
+                    "description": "Options de personnalisation",
+                    "properties": {
+                      "label": {
+                        "type": "string",
+                        "example": "Valider"
+                      },
+                      "icon": {
+                        "type": "string",
+                        "example": "check"
+                      },
+                      "size": {
+                        "type": "string",
+                        "enum": ["sm", "md", "lg"],
+                        "example": "md"
+                      }
+                    }
+                  }
+                }
+              },
+              "examples": {
+                "bouton_simple": {
+                  "value": {
+                    "component": "button",
+                    "variant": "primary",
+                    "options": {
+                      "label": "Valider le formulaire"
+                    }
+                  }
+                },
+                "alerte_info": {
+                  "value": {
+                    "component": "alert",
+                    "variant": "info",
+                    "options": {
+                      "message": "Information importante",
+                      "closable": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "HTML du composant g\u00e9n\u00e9r\u00e9",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "<button type=\"button\" class=\"fr-btn\">Valider le formulaire</button>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tools/lister_composants": {
+      "get": {
+        "summary": "Lister tous les composants disponibles",
+        "description": "Retourne la liste des 105 composants disponibles (Registry + Knowledge Base)",
+        "operationId": "listerComposants",
+        "tags": ["Composants"],
+        "responses": {
+          "200": {
+            "description": "Liste des composants",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "components": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "total": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "example": {
+                  "components": ["accordion", "alert", "button", "card", "form"],
+                  "total": 105
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tools/valider_html": {
+      "post": {
+        "summary": "Valider du HTML selon les standards DSFR et RGAA",
+        "description": "Effectue une validation compl\u00e8te du HTML avec scoring RGAA",
+        "operationId": "validerHtml",
+        "tags": ["Validation"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["html"],
+                "properties": {
+                  "html": {
+                    "type": "string",
+                    "description": "HTML \u00e0 valider"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "R\u00e9sultats de validation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "valid": {
+                      "type": "boolean"
+                    },
+                    "score": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "errors": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tools/audit_accessibilite": {
+      "post": {
+        "summary": "Effectuer un audit d'accessibilit\u00e9 RGAA",
+        "description": "Audit complet selon les crit\u00e8res RGAA 4.1",
+        "operationId": "auditAccessibilite",
+        "tags": ["Accessibilit\u00e9"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["html"],
+                "properties": {
+                  "html": {
+                    "type": "string"
+                  },
+                  "level": {
+                    "type": "string",
+                    "enum": ["A", "AA", "AAA"],
+                    "default": "AA"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tools/obtenir_fondamentaux": {
+      "get": {
+        "summary": "R\u00e9cup\u00e9rer les fondamentaux DSFR",
+        "description": "Acc\u00e8s aux fondamentaux : grille, breakpoints, typographie extraits des 125 fiches documentation",
+        "operationId": "obtenirFondamentaux",
+        "tags": ["Design"],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Cat\u00e9gorie sp\u00e9cifique",
+            "schema": {
+              "type": "string",
+              "enum": ["grid", "typography", "breakpoints", "spacing"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fondamentaux demand\u00e9s",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "grid": {
+                    "columns": 12,
+                    "gutter": "24px",
+                    "container_max_width": "1248px"
+                  },
+                  "breakpoints": {
+                    "xs": "0px",
+                    "sm": "576px",
+                    "md": "768px",
+                    "lg": "992px",
+                    "xl": "1248px"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tools/obtenir_classes_css": {
+      "get": {
+        "summary": "R\u00e9cup\u00e9rer les classes CSS utilitaires",
+        "description": "185+ classes CSS utilitaires extraites de la documentation",
+        "operationId": "obtenirClassesCss",
+        "tags": ["Design"],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["colors", "spacing", "typography", "display", "grid"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Classes CSS disponibles",
+            "content": {
+              "application/json": {
+                "example": {
+                  "type": "colors",
+                  "count": 185,
+                  "classes": [
+                    "fr-background-action-low--green-tilleul-verveine",
+                    "fr-text-inverted--error",
+                    "fr-background-contrast--blue-cumulus"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tools/obtenir_template_page": {
+      "post": {
+        "summary": "G\u00e9n\u00e9rer un template de page compl\u00e8te",
+        "description": "Templates de pages compl\u00e8tes (erreur, connexion, inscription)",
+        "operationId": "obtenirTemplatePage",
+        "tags": ["Templates"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["template_type"],
+                "properties": {
+                  "template_type": {
+                    "type": "string",
+                    "enum": ["error_404", "error_500", "login", "signup", "basic"]
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tools/rechercher_documentation": {
+      "get": {
+        "summary": "Rechercher dans la documentation DSFR",
+        "description": "Recherche dans les 213 fiches extraites",
+        "operationId": "rechercherDocumentation",
+        "tags": ["Documentation"],
+        "parameters": [
+          {
+            "name": "topic",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "grille"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "R\u00e9sultats de recherche",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "topic": {
+                      "type": "string"
+                    },
+                    "guidelines": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "foundations": {
+                      "type": "object"
+                    },
+                    "utilities": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tools/analyser_cognitif": {
+      "post": {
+        "summary": "Analyse cognitive selon Rumsfeld",
+        "description": "Matrice Connu-Inconnu pour l'analyse de requ\u00eates",
+        "operationId": "analyserCognitif",
+        "tags": ["Intelligence"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["description"],
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tools/generer_tests": {
+      "post": {
+        "summary": "G\u00e9n\u00e9rer des tests pour un composant",
+        "description": "G\u00e9n\u00e8re des tests Jest, Cypress ou Playwright",
+        "operationId": "genererTests",
+        "tags": ["Tests"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["component"],
+                "properties": {
+                  "component": {
+                    "type": "string"
+                  },
+                  "test_type": {
+                    "type": "string",
+                    "enum": ["unit", "integration", "e2e"],
+                    "default": "unit"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Component": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "variants": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "metadata": {
+            "type": "object"
+          }
+        }
+      },
+      "ValidationResult": {
+        "type": "object",
+        "properties": {
+          "valid": {
+            "type": "boolean"
+          },
+          "score": {
+            "type": "integer"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "AuditReport": {
+        "type": "object",
+        "properties": {
+          "level": {
+            "type": "string"
+          },
+          "score": {
+            "type": "integer"
+          },
+          "conformity": {
+            "type": "boolean"
+          },
+          "issues": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Composants",
+      "description": "G\u00e9n\u00e9ration et gestion des composants DSFR (775+ variantes)"
+    },
+    {
+      "name": "Validation",
+      "description": "Validation HTML et conformit\u00e9 DSFR"
+    },
+    {
+      "name": "Accessibilit\u00e9",
+      "description": "Audit RGAA 4.1 et accessibilit\u00e9"
+    },
+    {
+      "name": "Design",
+      "description": "Fondamentaux, tokens et classes CSS (125 fiches documentation)"
+    },
+    {
+      "name": "Templates",
+      "description": "Templates de pages compl\u00e8tes"
+    },
+    {
+      "name": "Documentation",
+      "description": "Recherche dans les 213 fiches extraites"
+    },
+    {
+      "name": "Intelligence",
+      "description": "Analyse cognitive et assistance"
+    },
+    {
+      "name": "Tests",
+      "description": "G\u00e9n\u00e9ration de tests automatiques"
+    }
+  ]
+}

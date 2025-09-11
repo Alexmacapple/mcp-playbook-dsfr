@@ -40,8 +40,33 @@ class ComponentRegistry:
             self.base_path = Path(__file__).parent.parent.parent / 'gabarits'
             self.components: Dict[str, Dict[str, Any]] = {}
             self.metadata: Dict[str, Any] = {}
+            self.knowledge_base: Dict[str, Any] = {}
             self._load_components()
+            self._load_knowledge_base()
             ComponentRegistry._initialized = True
+    
+    def _load_knowledge_base(self) -> None:
+        """
+        Charge la Knowledge Base V2 avec 775 variantes.
+        """
+        # Nouveau chemin dans src/data/knowledge_base/
+        kb_path = Path(__file__).parent / 'knowledge_base' / 'components.json'
+        if kb_path.exists():
+            try:
+                with open(kb_path, 'r', encoding='utf-8') as f:
+                    self.knowledge_base = json.load(f)
+                    # Fusionner avec les composants existants
+                    for comp_name, comp_data in self.knowledge_base.items():
+                        if comp_name not in self.components:
+                            self.components[comp_name] = {'variants': {}}
+                        # Ajouter les variantes de la KB
+                        if 'variants' in comp_data:
+                            self.components[comp_name]['variants'].update(comp_data['variants'])
+                        # Ajouter les m\u00e9tadonn\u00e9es
+                        if 'metadata' in comp_data:
+                            self.metadata[comp_name] = comp_data['metadata']
+            except Exception as e:
+                print(f"[WARNING] Impossible de charger la Knowledge Base: {e}")
     
     def _load_components(self) -> None:
         """

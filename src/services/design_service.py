@@ -4,6 +4,8 @@ Fournit couleurs, icônes et thèmes officiels.
 Clean Code : SOLID, DRY, KISS
 """
 
+import json
+from pathlib import Path
 from typing import Dict, List, Optional, Any
 
 
@@ -14,11 +16,13 @@ class DesignService:
     """
     
     def __init__(self):
-        """Initialise le service avec les ressources design."""
+        """Initialise le service avec les ressources design et la documentation KB."""
         self.colors = self._init_colors()
         self.icons = self._init_icons()
         self.spacing = self._init_spacing()
         self.typography = self._init_typography()
+        self.documentation_kb = self._load_documentation_kb()
+        self.foundations = self._extract_foundations()
     
     def _init_colors(self) -> Dict[str, Dict[str, str]]:
         """
@@ -322,6 +326,144 @@ class DesignService:
     def get_typography(self) -> Dict[str, Dict[str, str]]:
         """Récupère le système typographique."""
         return self.typography
+    
+    def _load_documentation_kb(self) -> Dict[str, Any]:
+        """
+        Charge la Knowledge Base de documentation avec les fondamentaux.
+        """
+        # Nouveau chemin dans src/data/knowledge_base/
+        kb_path = Path(__file__).parent.parent / 'data' / 'knowledge_base' / 'documentation.json'
+        if kb_path.exists():
+            try:
+                with open(kb_path, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+            except Exception as e:
+                print(f"[WARNING] Impossible de charger la documentation KB: {e}")
+        return {}
+    
+    def _extract_foundations(self) -> Dict[str, Any]:
+        """
+        Extrait les fondamentaux depuis la documentation KB.
+        """
+        foundations = {
+            'grid': {},
+            'breakpoints': {},
+            'typography_rules': {},
+            'color_usage': {},
+            'spacing_rules': {}
+        }
+        
+        if not self.documentation_kb or 'foundations' not in self.documentation_kb:
+            return foundations
+        
+        # Extraire les règles de typographie
+        if 'typography' in self.documentation_kb['foundations']:
+            for doc in self.documentation_kb['foundations']['typography']:
+                if 'sections' in doc:
+                    for section in doc['sections']:
+                        if 'typographie' in section['title'].lower():
+                            foundations['typography_rules'][section['title']] = section['content']
+        
+        # Extraire les utilitaires CSS
+        if 'utilities' in self.documentation_kb:
+            # Classes de couleurs
+            if 'colors' in self.documentation_kb['utilities']:
+                for doc in self.documentation_kb['utilities']['colors']:
+                    if 'css_utilities' in doc and 'colors' in doc['css_utilities']:
+                        foundations['color_usage']['css_classes'] = doc['css_utilities']['colors']
+            
+            # Classes d'espacement
+            if 'spacing' in self.documentation_kb['utilities']:
+                for doc in self.documentation_kb['utilities'].get('spacing', []):
+                    if 'css_utilities' in doc and 'spacing' in doc['css_utilities']:
+                        foundations['spacing_rules']['css_classes'] = doc['css_utilities']['spacing']
+        
+        # Points de rupture responsive
+        foundations['breakpoints'] = {
+            'xs': '0px',
+            'sm': '576px',
+            'md': '768px',
+            'lg': '992px',
+            'xl': '1248px'
+        }
+        
+        # Système de grille
+        foundations['grid'] = {
+            'columns': 12,
+            'gutter': '24px',
+            'container_max_width': '1248px',
+            'classes': ['fr-container', 'fr-grid-row', 'fr-col', 'fr-col-12', 'fr-col-md-6', 'fr-col-lg-4']
+        }
+        
+        return foundations
+    
+    def get_foundations(self, category: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Récupère les fondamentaux DSFR.
+        
+        Args:
+            category: Catégorie spécifique (grid, typography, breakpoints)
+            
+        Returns:
+            Fondamentaux demandés
+        """
+        if category:
+            return self.foundations.get(category, {})
+        return self.foundations
+    
+    def get_css_utilities(self, type: Optional[str] = None) -> List[str]:
+        """
+        Récupère les classes CSS utilitaires depuis la documentation.
+        
+        Args:
+            type: Type d'utilitaire (colors, spacing, typography, display, grid)
+            
+        Returns:
+            Liste des classes CSS
+        """
+        utilities = []
+        
+        if not self.documentation_kb or 'utilities' not in self.documentation_kb:
+            return utilities
+        
+        for category in self.documentation_kb['utilities'].values():
+            if isinstance(category, list):
+                for doc in category:
+                    if 'css_utilities' in doc:
+                        if type and type in doc['css_utilities']:
+                            utilities.extend(doc['css_utilities'][type])
+                        elif not type:
+                            for util_list in doc['css_utilities'].values():
+                                utilities.extend(util_list)
+        
+        return list(set(utilities))  # Dédupliquer
+    
+    def get_guidelines(self, topic: Optional[str] = None) -> List[str]:
+        """
+        Récupère les guidelines et recommandations.
+        
+        Args:
+            topic: Sujet spécifique (accessibility, colors, typography)
+            
+        Returns:
+            Liste de recommandations
+        """
+        guidelines = []
+        
+        if not self.documentation_kb:
+            return guidelines
+        
+        # Parcourir toutes les catégories
+        for category in ['foundations', 'utilities', 'guidelines']:
+            if category in self.documentation_kb:
+                for sub_cat in self.documentation_kb[category].values():
+                    if isinstance(sub_cat, list):
+                        for doc in sub_cat:
+                            if 'guidelines' in doc:
+                                if not topic or topic.lower() in doc.get('title', '').lower():
+                                    guidelines.extend(doc['guidelines'])
+        
+        return list(set(guidelines))  # Dédupliquer
     
     def create_theme(self, name: str, overrides: Dict[str, Any]) -> Dict[str, Any]:
         """
