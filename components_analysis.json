@@ -1,0 +1,301 @@
+{
+  "total_fiches": 213,
+  "components_identified": 98,
+  "components_with_html": [
+    "fiche-031-carte-systeme-de-design.md",
+    "fiche-030-bouton-systeme-de-design.md",
+    "fiche-065-tuile-systeme-de-design.md",
+    "fiche-052-interrupteur-systeme-de-design.md",
+    "fiche-090-interrupteur-systeme-de-design.md",
+    "fiche-063-tag-systeme-de-design.md",
+    "fiche-033-contenu-medias-systeme-de-design.md",
+    "fiche-023-badge-systeme-de-design.md",
+    "fiche-029-bouton-radio-systeme-de-design.md",
+    "fiche-081-bouton-radio-systeme-de-design.md",
+    "fiche-038-en-tete-systeme-de-design.md",
+    "fiche-080-carte-systeme-de-design.md",
+    "fiche-036-case-a-cocher-systeme-de-design.md",
+    "fiche-034-champ-de-saisie-systeme-de-design.md",
+    "fiche-062-tableaux-systeme-de-design.md",
+    "fiche-083-champ-de-saisie-systeme-de-design.md",
+    "fiche-025-bandeau-d-information-importante-systeme-de-design.md",
+    "fiche-040-formulaire-systeme-de-design.md",
+    "fiche-024-alerte-systeme-de-design.md",
+    "fiche-132-pictogrammes-digital-systeme-de-design.md",
+    "fiche-037-curseur-systeme-de-design.md",
+    "fiche-094-tuile-systeme-de-design.md",
+    "fiche-092-telechargement-de-fichier-systeme-de-design.md",
+    "fiche-049-modale-systeme-de-design.md",
+    "fiche-084-case-a-cocher-systeme-de-design.md",
+    "fiche-045-lien-systeme-de-design.md",
+    "fiche-085-formulaire-systeme-de-design.md",
+    "fiche-131-pictogrammes-document-systeme-de-design.md",
+    "fiche-093-tuile-systeme-de-design.md",
+    "fiche-141-pictogrammes-systeme-systeme-de-design.md",
+    "fiche-135-pictogrammes-environment-systeme-de-design.md",
+    "fiche-043-lettre-d-information-et-reseaux-sociaux-systeme-de-design.md",
+    "fiche-091-tableaux-systeme-de-design.md",
+    "fiche-035-controle-segmente-systeme-de-design.md",
+    "fiche-149-bloc-fonctionnel-de-nom-et-prenom-systeme-de-design.md",
+    "fiche-082-carte-systeme-de-design.md",
+    "fiche-058-pied-de-page-systeme-de-design.md",
+    "fiche-042-information-contextuelle-et-infobulle-systeme-de-design.md",
+    "fiche-028-bloc-marque-systeme-de-design.md",
+    "fiche-059-pagination-systeme-de-design.md",
+    "fiche-048-liste-deroulante-systeme-de-design.md",
+    "fiche-136-pictogrammes-leisure-systeme-de-design.md",
+    "fiche-087-lien-systeme-de-design.md",
+    "fiche-133-pictogrammes-institutions-systeme-de-design.md",
+    "fiche-050-mise-en-avant-systeme-de-design.md",
+    "fiche-021-accordeon-systeme-de-design.md",
+    "fiche-054-partage-systeme-de-design.md",
+    "fiche-056-onglets-systeme-de-design.md",
+    "fiche-127-pictogrammes-buildings-systeme-de-design.md",
+    "fiche-051-mises-en-exergue-systeme-de-design.md",
+    "fiche-143-bloc-fonctionnel-de-demande-d-email-systeme-de-design.md",
+    "fiche-137-pictogrammes-health-systeme-de-design.md",
+    "fiche-047-menu-lateral-systeme-de-design.md",
+    "fiche-139-pictogrammes-map-systeme-de-design.md",
+    "fiche-044-gestionnaire-de-consentement-systeme-de-design.md",
+    "fiche-147-bloc-fonctionnel-de-societe-systeme-de-design.md",
+    "fiche-057-parametre-d-affichage-systeme-de-design.md",
+    "fiche-032-citation-systeme-de-design.md",
+    "fiche-053-mot-de-passe-systeme-de-design.md",
+    "fiche-022-ajout-de-fichier-systeme-de-design.md",
+    "fiche-142-bloc-fonctionnel-de-civilite-systeme-de-design.md",
+    "fiche-060-selecteur-de-langue-systeme-de-design.md",
+    "fiche-144-bloc-fonctionnel-de-date-unique-systeme-de-design.md",
+    "fiche-140-bloc-fonctionnel-d-adresse-postale-systeme-de-design.md",
+    "fiche-026-barre-de-recherche-systeme-de-design.md",
+    "fiche-077-accordeon-systeme-de-design.md",
+    "fiche-041-indicateur-d-etapes-systeme-de-design.md",
+    "fiche-027-bouton-franceconnect-systeme-de-design.md",
+    "fiche-089-liste-deroulante-systeme-de-design.md",
+    "fiche-148-bloc-fonctionnel-de-telephone-systeme-de-design.md",
+    "fiche-209-pages-de-creation-de-compte-systeme-de-design.md",
+    "fiche-055-navigation-principale-systeme-de-design.md",
+    "fiche-195-pages-de-connexion-systeme-de-design.md",
+    "fiche-039-fil-d-ariane-systeme-de-design.md",
+    "fiche-199-pages-de-connexion-systeme-de-design.md",
+    "fiche-086-fil-d-ariane-systeme-de-design.md",
+    "fiche-061-sommaire-systeme-de-design.md",
+    "fiche-212-pages-de-creation-de-compte-systeme-de-design.md",
+    "fiche-046-liens-d-evitement-systeme-de-design.md",
+    "fiche-210-pages-de-creation-de-compte-systeme-de-design.md",
+    "fiche-208-pages-de-creation-de-compte-systeme-de-design.md",
+    "fiche-066-transcription-systeme-de-design.md",
+    "fiche-211-pages-de-connexion-systeme-de-design.md",
+    "fiche-088-lien-systeme-de-design.md",
+    "fiche-146-bloc-fonctionnel-de-nationalite-systeme-de-design.md",
+    "fiche-207-pages-de-creation-de-compte-systeme-de-design.md",
+    "fiche-194-pages-de-creation-de-compte-systeme-de-design.md",
+    "fiche-213-pages-de-connexion-systeme-de-design.md"
+  ],
+  "components_without_html": [
+    "fiche-198-pages-de-connexion-systeme-de-design.md",
+    "fiche-145-pages-de-creation-de-compte-systeme-de-design.md",
+    "fiche-001-systeme-de-design-de-l-etat-systeme-de-design.md",
+    "fiche-197-pages-de-creation-de-compte-systeme-de-design.md",
+    "fiche-150-pages-de-connexion-systeme-de-design.md",
+    "fiche-003-composant-systeme-de-design.md",
+    "fiche-151-codes-de-statut-html-systeme-de-design.md",
+    "fiche-064-telechargement-de-fichier-systeme-de-design.md",
+    "fiche-196-pages-de-creation-de-compte-systeme-de-design.md",
+    "fiche-073-bloc-fonctionnel-systeme-de-design.md"
+  ],
+  "top_components": [
+    {
+      "name": "fiche-031-carte-systeme-de-design.md",
+      "extrait_count": 61
+    },
+    {
+      "name": "fiche-030-bouton-systeme-de-design.md",
+      "extrait_count": 44
+    },
+    {
+      "name": "fiche-065-tuile-systeme-de-design.md",
+      "extrait_count": 35
+    },
+    {
+      "name": "fiche-052-interrupteur-systeme-de-design.md",
+      "extrait_count": 32
+    },
+    {
+      "name": "fiche-090-interrupteur-systeme-de-design.md",
+      "extrait_count": 25
+    },
+    {
+      "name": "fiche-063-tag-systeme-de-design.md",
+      "extrait_count": 25
+    },
+    {
+      "name": "fiche-033-contenu-medias-systeme-de-design.md",
+      "extrait_count": 25
+    },
+    {
+      "name": "fiche-023-badge-systeme-de-design.md",
+      "extrait_count": 24
+    },
+    {
+      "name": "fiche-029-bouton-radio-systeme-de-design.md",
+      "extrait_count": 21
+    },
+    {
+      "name": "fiche-081-bouton-radio-systeme-de-design.md",
+      "extrait_count": 19
+    },
+    {
+      "name": "fiche-038-en-tete-systeme-de-design.md",
+      "extrait_count": 17
+    },
+    {
+      "name": "fiche-080-carte-systeme-de-design.md",
+      "extrait_count": 17
+    },
+    {
+      "name": "fiche-036-case-a-cocher-systeme-de-design.md",
+      "extrait_count": 16
+    },
+    {
+      "name": "fiche-034-champ-de-saisie-systeme-de-design.md",
+      "extrait_count": 15
+    },
+    {
+      "name": "fiche-062-tableaux-systeme-de-design.md",
+      "extrait_count": 15
+    },
+    {
+      "name": "fiche-083-champ-de-saisie-systeme-de-design.md",
+      "extrait_count": 14
+    },
+    {
+      "name": "fiche-025-bandeau-d-information-importante-systeme-de-design.md",
+      "extrait_count": 14
+    },
+    {
+      "name": "fiche-040-formulaire-systeme-de-design.md",
+      "extrait_count": 14
+    },
+    {
+      "name": "fiche-024-alerte-systeme-de-design.md",
+      "extrait_count": 13
+    },
+    {
+      "name": "fiche-132-pictogrammes-digital-systeme-de-design.md",
+      "extrait_count": 12
+    },
+    {
+      "name": "fiche-037-curseur-systeme-de-design.md",
+      "extrait_count": 12
+    },
+    {
+      "name": "fiche-094-tuile-systeme-de-design.md",
+      "extrait_count": 12
+    },
+    {
+      "name": "fiche-092-telechargement-de-fichier-systeme-de-design.md",
+      "extrait_count": 11
+    },
+    {
+      "name": "fiche-049-modale-systeme-de-design.md",
+      "extrait_count": 11
+    },
+    {
+      "name": "fiche-084-case-a-cocher-systeme-de-design.md",
+      "extrait_count": 11
+    },
+    {
+      "name": "fiche-045-lien-systeme-de-design.md",
+      "extrait_count": 11
+    },
+    {
+      "name": "fiche-085-formulaire-systeme-de-design.md",
+      "extrait_count": 11
+    },
+    {
+      "name": "fiche-131-pictogrammes-document-systeme-de-design.md",
+      "extrait_count": 10
+    },
+    {
+      "name": "fiche-093-tuile-systeme-de-design.md",
+      "extrait_count": 9
+    },
+    {
+      "name": "fiche-141-pictogrammes-systeme-systeme-de-design.md",
+      "extrait_count": 9
+    },
+    {
+      "name": "fiche-135-pictogrammes-environment-systeme-de-design.md",
+      "extrait_count": 9
+    },
+    {
+      "name": "fiche-043-lettre-d-information-et-reseaux-sociaux-systeme-de-design.md",
+      "extrait_count": 9
+    },
+    {
+      "name": "fiche-091-tableaux-systeme-de-design.md",
+      "extrait_count": 9
+    },
+    {
+      "name": "fiche-035-controle-segmente-systeme-de-design.md",
+      "extrait_count": 8
+    },
+    {
+      "name": "fiche-149-bloc-fonctionnel-de-nom-et-prenom-systeme-de-design.md",
+      "extrait_count": 8
+    },
+    {
+      "name": "fiche-082-carte-systeme-de-design.md",
+      "extrait_count": 7
+    },
+    {
+      "name": "fiche-058-pied-de-page-systeme-de-design.md",
+      "extrait_count": 7
+    },
+    {
+      "name": "fiche-042-information-contextuelle-et-infobulle-systeme-de-design.md",
+      "extrait_count": 6
+    },
+    {
+      "name": "fiche-028-bloc-marque-systeme-de-design.md",
+      "extrait_count": 6
+    },
+    {
+      "name": "fiche-059-pagination-systeme-de-design.md",
+      "extrait_count": 6
+    },
+    {
+      "name": "fiche-048-liste-deroulante-systeme-de-design.md",
+      "extrait_count": 6
+    },
+    {
+      "name": "fiche-136-pictogrammes-leisure-systeme-de-design.md",
+      "extrait_count": 6
+    },
+    {
+      "name": "fiche-087-lien-systeme-de-design.md",
+      "extrait_count": 6
+    },
+    {
+      "name": "fiche-133-pictogrammes-institutions-systeme-de-design.md",
+      "extrait_count": 5
+    },
+    {
+      "name": "fiche-050-mise-en-avant-systeme-de-design.md",
+      "extrait_count": 5
+    },
+    {
+      "name": "fiche-021-accordeon-systeme-de-design.md",
+      "extrait_count": 5
+    },
+    {
+      "name": "fiche-054-partage-systeme-de-design.md",
+      "extrait_count": 5
+    },
+    {
+      "name": "fiche-056-onglets-systeme-de-design.md",
+      "extrait_count": 5
+    }
+  ],
+  "success_rate": 89.79591836734694
+}

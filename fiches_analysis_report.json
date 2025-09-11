@@ -1,0 +1,685 @@
+{
+  "total_fiches": 213,
+  "fiches_analyzed": 213,
+  "fiches_with_html": 127,
+  "fiches_without_html": 86,
+  "pattern_distribution": {
+    "###_newline_Extrait": 1521
+  },
+  "problematic_fiches": [
+    {
+      "name": "fiche-119-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-118-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-128-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-155-utilitaires-de-couleur-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-095-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-192-modele-de-page-ressource-non-trouvee-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-096-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-190-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-097-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-007-modeles-et-exemples-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-178-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-198-pages-de-connexion-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-179-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-193-modele-de-page-service-indisponible-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-072-utilitaires-de-pictogrammes-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-145-pages-de-creation-de-compte-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-001-systeme-de-design-de-l-etat-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-197-pages-de-creation-de-compte-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-188-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-189-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-076-utilitaires-d-icones-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-200-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-074-modele-de-page-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-150-pages-de-connexion-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-159-utilitaires-de-couleur-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-075-utilitaires-de-couleur-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-067-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-191-modele-de-page-erreur-inattendue-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-134-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-003-composant-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-103-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-004-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-102-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-101-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-100-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-106-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-002-fondamentaux-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-107-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-130-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-013-fondamentaux-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-104-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-151-codes-de-statut-html-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-064-telechargement-de-fichier-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-105-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-120-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-117-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-006-utilitaire-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-121-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-116-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-115-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-122-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-114-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-123-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-112-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-125-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-113-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-124-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-110-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-126-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-111-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-173-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-172-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-098-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-099-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-070-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-176-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-071-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-177-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-174-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-175-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-186-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-187-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-157-utilitaires-de-couleur-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-196-pages-de-creation-de-compte-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-184-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-185-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-183-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-182-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-181-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-068-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-180-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-069-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-138-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-073-bloc-fonctionnel-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-108-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    },
+    {
+      "name": "fiche-109-outils-d-analyse-systeme-de-design.md",
+      "issues": [
+        "NO_HTML",
+        "NO_EXTRAIT_CODE"
+      ]
+    }
+  ],
+  "html_tags_found": [
+    "tr",
+    "main",
+    "label",
+    "code",
+    "div",
+    "em",
+    "table",
+    "option",
+    "body",
+    "ol",
+    "td",
+    "h",
+    "a",
+    "g",
+    "textarea",
+    "thead",
+    "select",
+    "iframe",
+    "section",
+    "link",
+    "footer",
+    "input",
+    "blockquote",
+    "button",
+    "legend",
+    "fieldset",
+    "svg",
+    "optgroup",
+    "dl",
+    "figure",
+    "meta",
+    "li",
+    "header",
+    "figcaption",
+    "sub",
+    "dd",
+    "dt",
+    "img",
+    "br",
+    "head",
+    "path",
+    "ul",
+    "nav",
+    "dialog",
+    "script",
+    "span",
+    "ellipse",
+    "p",
+    "tbody",
+    "i",
+    "rect",
+    "cite",
+    "use",
+    "symbol",
+    "sup",
+    "th",
+    "b",
+    "caption",
+    "hr",
+    "style",
+    "form"
+  ],
+  "metadata_coverage": {
+    "with_url": 213,
+    "with_title": 213,
+    "with_version": 190,
+    "with_doc_link": 82
+  },
+  "recommendations": [
+    "ATTENTION: 86 fiches sans HTML - Prévoir fallback ou exclusion"
+  ]
+}
