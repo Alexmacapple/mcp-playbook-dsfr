@@ -1,0 +1,103 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-playbook-dsfr"
+version = "2.0.0"
+description = "Serveur Model Context Protocol intégrant le Design System de l'État français dans Claude Desktop"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    {name = "Alexandra Guiderdoni", email = "alexandra.guiderdoni@gmail.com"}
+]
+maintainers = [
+    {name = "Alexandra Guiderdoni", email = "alexandra.guiderdoni@gmail.com"}
+]
+keywords = ["mcp", "dsfr", "claude", "design-system", "france", "accessibility", "rgaa"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
+
+dependencies = [
+    "mcp>=0.1.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=4.9.0",
+    "bleach>=6.0.0",
+    "typing-extensions>=4.0.0",
+    "python-dotenv>=1.0.0",
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.0.0",
+    "pytest-mock>=3.10.0",
+    "black>=22.0.0",
+    "mypy>=0.950",
+    "ruff>=0.1.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Alexmacapple/mcp-playbook-dsfr"
+"Bug Reports" = "https://github.com/Alexmacapple/mcp-playbook-dsfr/issues"
+"Source" = "https://github.com/Alexmacapple/mcp-playbook-dsfr"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["mcp_local*", "src*", "gabarits*"]
+exclude = ["tests*", "docs*", "archive*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+    \.git
+  | \.venv
+  | venv
+  | build
+  | dist
+)/
+'''
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "I", "N", "W"]
+ignore = ["E501"]  # Line too long - handled by black
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    "build",
+    "dist",
+]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+exclude = [
+    "venv",
+    ".venv",
+    "tests",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py", "test-*.py"]
+addopts = "-v --tb=short"

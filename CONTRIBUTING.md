@@ -7,7 +7,8 @@ Merci de votre intérêt pour contribuer à MCP DSFR ! Ce document fournit les d
 - [Code de conduite](#code-de-conduite)
 - [Comment contribuer](#comment-contribuer)
 - [Développement](#développement)
-- [Standards de code](#standards-de-code)
+- [Standards de code et d'architecture](#standards-de-code-et-darchitecture)
+  - [Principes d'architecture et de développement](#principes-darchitecture-et-de-développement)
 - [Tests](#tests)
 - [Documentation](#documentation)
 - [Process de Pull Request](#process-de-pull-request)
@@ -61,9 +62,9 @@ Exemples de comportements inacceptables :
 1. **Fork le repository**
    ```bash
    # Sur GitHub, cliquer sur "Fork"
-   git clone https://github.com/votre-username/mcp-playbook-dsfr.git
+   git clone https://github.com/Alexmacapple/mcp-playbook-dsfr.git
    cd mcp-playbook-dsfr
-   git remote add upstream https://github.com/original/mcp-playbook-dsfr.git
+   git remote add upstream https://github.com/Alexmacapple/mcp-playbook-dsfr.git
    ```
 
 2. **Vérifier l'installation**
@@ -170,7 +171,46 @@ pytest --cov=src --cov-report=html
 open htmlcov/index.html
 ```
 
-## Standards de code
+## Standards de code et d'architecture
+
+### Principes d'architecture et de développement
+
+#### Règles de l'Orchestrateur de Code
+
+##### Principes fondamentaux
+
+###### Clean Code
+- **DRY** (Don't Repeat Yourself) : Réutilise le code existant
+  - Exemple : Services singleton dans `src/services/__init__.py`
+- **KISS** (Keep It Stupid Simple) : Privilégie la simplicité  
+  - Exemple : `cognitive_service.py` ligne 82 - Structure simple pour l'évaluation
+- **YAGNI** (You Ain't Gonna Need It) : Implémente uniquement le nécessaire
+  - Exemple : Pas d'orchestrateur car non requis actuellement
+
+###### Principes SOLID
+- **S** - Responsabilité unique : une classe, une responsabilité
+  - Exemple : Chaque service dans `src/services/` a une seule responsabilité
+- **O** - Ouvert-fermé : extensible sans modification
+  - Exemple : `cognitive_service.py` ligne 214 - Extensible pour nouveaux patterns
+- **L** - Substitution de Liskov : sous-classes interchangeables
+- **I** - Ségrégation des interfaces : interfaces spécifiques
+- **D** - Inversion des dépendances : dépendre d'abstractions
+
+##### Règles d'implémentation
+
+1. **Simplicité** : Code concis et efficace
+2. **Structure** : Organisation claire et maintenable  
+3. **Documentation** : Commenter toutes les nouvelles fonctions
+4. **Préservation** : Conserver les commentaires existants sauf instruction contraire
+
+##### Objectif
+Produire du code professionnel, lisible et évolutif en appliquant systématiquement ces principes.
+
+##### Exemples du projet
+- Pattern Singleton : `get_generator()`, `get_validator()` 
+- Pattern Factory : `GeneratorService.generate()`
+- Pattern Registry : `ComponentRegistry`
+- Clean Code : >1.5M ops/sec grâce à l'optimisation
 
 ### Style Python
 
@@ -407,7 +447,7 @@ Brève description des changements
 
 ### Avant de signaler
 
-1. Vérifier les [issues existantes](https://github.com/yourusername/mcp-playbook-dsfr/issues)
+1. Vérifier les [issues existantes](https://github.com/Alexmacapple/mcp-playbook-dsfr/issues)
 2. Tester avec la dernière version
 3. Collecter les informations nécessaires
 
@@ -447,7 +487,7 @@ Si applicable
 
 ### Process
 
-1. Vérifier les [discussions](https://github.com/yourusername/mcp-playbook-dsfr/discussions)
+1. Vérifier les [discussions](https://github.com/Alexmacapple/mcp-playbook-dsfr/discussions)
 2. Ouvrir une discussion pour les changements majeurs
 3. Créer une issue pour les améliorations approuvées
 
@@ -474,7 +514,7 @@ Toute information utile
 1. **Documentation** : Vérifier d'abord la [documentation](docs/)
 2. **Discussions GitHub** : Pour les questions générales
 3. **Issues** : Pour les problèmes spécifiques
-4. **Email** : contact@example.com pour les questions privées
+4. **Email** : alexandra.guiderdoni@gmail.com pour les questions privées
 
 ### Comment poser une bonne question
 
@@ -492,4 +532,4 @@ Merci de contribuer à rendre le DSFR plus accessible via Claude Desktop !
 
 ---
 
-Pour toute question sur ce guide, ouvrez une [discussion](https://github.com/yourusername/mcp-playbook-dsfr/discussions).
+Pour toute question sur ce guide, ouvrez une [discussion](https://github.com/Alexmacapple/mcp-playbook-dsfr/discussions).

@@ -1,10 +1,11 @@
 # MCP DSFR
 
-[![Version](https://img.shields.io/badge/version-2.0.0-blue)](https://github.com/yourusername/mcp-playbook-dsfr/releases)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue)](https://github.com/Alexmacapple/mcp-playbook-dsfr/releases)
 [![Python](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-100%25_passing-brightgreen)](tests/resultats-test/RAPPORT_100_POURCENT.txt)
 [![DSFR](https://img.shields.io/badge/DSFR-v1.14-red)](https://www.systeme-de-design.gouv.fr)
+[![Tests CI](https://github.com/Alexmacapple/mcp-playbook-dsfr/workflows/Tests%20CI/badge.svg)](https://github.com/Alexmacapple/mcp-playbook-dsfr/actions)
 
 Serveur Model Context Protocol intégrant le Design System de l'État français (DSFR) dans Claude Desktop. Génération, validation et audit de composants DSFR conformes RGAA 4.1.
 
@@ -34,7 +35,7 @@ Serveur Model Context Protocol intégrant le Design System de l'État français 
 ### Installation automatique (recommandée)
 
 ```bash
-git clone https://github.com/yourusername/mcp-playbook-dsfr.git
+git clone https://github.com/Alexmacapple/mcp-playbook-dsfr.git
 cd mcp-playbook-dsfr
 ./install.sh
 ```
@@ -59,7 +60,7 @@ Le script run_tests.sh active l'environnement virtuel et exécute les 13 tests d
 
 ```bash
 # Cloner le repository
-git clone https://github.com/yourusername/mcp-playbook-dsfr.git
+git clone https://github.com/Alexmacapple/mcp-playbook-dsfr.git
 cd mcp-playbook-dsfr
 
 # Créer l'environnement virtuel
@@ -348,9 +349,9 @@ Les contributions sont les bienvenues ! Voir [CONTRIBUTING.md](CONTRIBUTING.md) 
 
 ### Obtenir de l'aide
 
-- [Issues GitHub](https://github.com/yourusername/mcp-playbook-dsfr/issues) - Rapporter des bugs
-- [Discussions](https://github.com/yourusername/mcp-playbook-dsfr/discussions) - Questions et idées
-- [Wiki](https://github.com/yourusername/mcp-playbook-dsfr/wiki) - Documentation étendue
+- [Issues GitHub](https://github.com/Alexmacapple/mcp-playbook-dsfr/issues) - Rapporter des bugs
+- [Discussions](https://github.com/Alexmacapple/mcp-playbook-dsfr/discussions) - Questions et idées
+- [Wiki](https://github.com/Alexmacapple/mcp-playbook-dsfr/wiki) - Documentation étendue
 
 ### Dépannage courant
 
